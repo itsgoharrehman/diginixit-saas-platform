@@ -1,6 +1,12 @@
-# wrangler files
-.wrangler
-.dev.vars*
-!.dev.vars.example
-.env*
+# Environment & Secrets
+.env
+.env.*
 !.env.example
+
+# Temporary & Logs
+*.log
+tmp/
+
+# Operating System Files
+.DS_Store
+Thumbs.db
