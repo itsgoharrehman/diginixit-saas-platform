@@ -10,3 +10,6 @@ tmp/
 # Operating System Files
 .DS_Store
 Thumbs.db
+
+# Cloudflare Wrangler
+.wrangler/
