@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        try {
+            if (JSON.parse(localStorage.getItem('settings') || '{}').maintenanceMode) {
+                document.documentElement.style.display = 'none';
+                window.location.replace('maintenance.html');
+            }
+        } catch (e) {}
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-3363493243397953">
+    <title>Bespoke UI/UX Product Design & Scalable Design Systems | DiginixIT</title>
+    <meta name="description"
+        content="Human-centric product interface design, scalable design systems, and conversion-engineered user flows. Built for 100% Figma-to-code parity and WCAG 2.1 AA accessibility.">
+    <meta name="keywords"
+        content="UI UX design services, enterprise design systems, SaaS product design agency, Figma design tokens, user experience architecture, conversion rate optimization UX, interaction design Pakistan">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://diginixit.com/ui-ux-design.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://diginixit.com/ui-ux-design.html">
+    <meta property="og:title" content="Bespoke UI/UX Product Design & Scalable Design Systems | DiginixIT">
+    <meta property="og:description"
+        content="Human-centric product interface design, scalable design systems, and conversion-engineered user flows. Built for 100% Figma-to-code parity.">
+    <meta property="og:image" content="https://diginixit.com/images/og-home.jpg">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://diginixit.com/ui-ux-design.html">
+    <meta name="twitter:title" content="Bespoke UI/UX Product Design & Scalable Design Systems | DiginixIT">
+    <meta name="twitter:description"
+        content="Human-centric product interface design, scalable design systems, and conversion-engineered user flows. Built for 100% Figma-to-code parity.">
+    <meta name="twitter:image" content="https://diginixit.com/images/og-home.jpg">
+
+    <!-- DNS Prefetch & Preconnect -->
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://unpkg.com">
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <meta name="color-scheme" content="light">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Tailwind Configuration -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        canvas: '#ffffff',
+                        'canvas-soft': '#fafafa',
+                        'canvas-night': '#1c1c1c',
+                        ink: '#171717',
+                        'ink-mute': '#707070',
+                        'ink-faint': '#b2b2b2',
+                        primary: '#3ecf8e',
+                        'primary-deep': '#24b47e',
+                        hairline: '#dfdfdf',
+                        'hairline-strong': '#c7c7c7',
+                        'hairline-cool': '#ededed'
+                    },
+                    letterSpacing: { tighter: '-0.04em', tight: '-0.02em' }
+                }
+            }
+        };
+    </script>
+
+    <!-- Core Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://diginixit.com/" },
+                    { "@type": "ListItem", "position": 2, "name": "Our Services", "item": "https://diginixit.com/services.html" },
+                    { "@type": "ListItem", "position": 3, "name": "UI/UX Product Design", "item": "https://diginixit.com/ui-ux-design.html" }
+                ]
+            },
+            {
+                "@type": "Service",
+                "name": "Bespoke UI/UX Product Design & Systems",
+                "serviceType": "Product Design",
+                "provider": {
+                    "@type": "Organization",
+                    "name": "DiginixIT",
+                    "url": "https://diginixit.com/"
+                },
+                "description": "Human-centric interface design, scalable design systems, and conversion-engineered user flows built for 100% Figma-to-code parity and accessibility.",
+                "areaServed": "Global",
+                "hasOfferCatalog": {
+                    "@type": "OfferCatalog",
+                    "name": "UI/UX Design Deliverables",
+                    "itemListElement": [
+                        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tokenized Design Systems & Component Libraries" } },
+                        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "SaaS Product Dashboard UX Architecture" } },
+                        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Conversion Rate Optimization User Flows" } },
+                        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "WCAG 2.1 AA Accessibility Compliance Audits" } }
+                    ]
+                }
+            },
+            {
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "How do you ensure Figma designs translate accurately into code?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "We build design systems with automated design tokens (colors, spacing, typography, radii) that map 1:1 to CSS variables and Tailwind configuration. Developers receive exact specifications, eliminating visual drift and handoff disputes."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Are your designs compliant with accessibility standards (WCAG)?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes. Every interface is designed to meet or exceed WCAG 2.1 AA accessibility guidelines, with verified color contrast ratios, distinct focus indicators, and logical keyboard navigation paths."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Do you design for mobile apps as well as web applications?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes. We design responsive web applications that seamlessly scale from ultra-wide 4K displays down to mobile viewports, as well as native iOS and Android mobile interfaces with platform-standard design patterns."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "What deliverables do we receive at the end of a design project?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "You receive a complete, organized Figma file containing the component library, interactive high-fidelity prototypes, user journey diagrams, responsive screen layouts, design tokens export, and developer handoff documentation."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "How long does a typical product design sprint take?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "A targeted UI/UX overhaul or new MVP design sprint typically takes 2 to 4 weeks. Multi-product enterprise design systems are executed across iterative sprints."
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+    </script>
+</head>
+
+<body class="bg-canvas text-ink">
+
+    <div class="noise"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 py-4 px-6 md:px-12" aria-label="Main Navigation">
+        <div class="max-w-[1280px] mx-auto flex justify-between items-center">
+            <a href="./" class="text-xl font-medium tracking-tighter text-ink" style="letter-spacing: -0.04em;">DIGINIXIT.</a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-8 items-center text-sm font-medium">
+                <a href="./" class="nav-item-link" id="nav-home">Home</a>
+                <div class="nav-dropdown-wrapper relative group" id="nav-services-dropdown">
+                    <a href="services.html" class="nav-item-link inline-flex items-center gap-1.5 py-2 active-nav-link" id="nav-services" aria-haspopup="true" aria-expanded="false">
+                        <span>Our Services</span>
+                        <svg class="w-3.5 h-3.5 nav-dropdown-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+                    </a>
+                    <div class="nav-dropdown-menu">
+                        <a href="web-engineering.html" class="nav-dropdown-item">
+                            <span class="item-title">Web Engineering</span>
+                            <span class="item-desc">High-performance apps &amp; custom SaaS architecture</span>
+                        </a>
+                        <a href="ui-ux-design.html" class="nav-dropdown-item">
+                            <span class="item-title">UI/UX Product Design</span>
+                            <span class="item-desc">Bespoke design systems &amp; cognitive flows</span>
+                        </a>
+                        <a href="technical-seo.html" class="nav-dropdown-item">
+                            <span class="item-title">Technical SEO</span>
+                            <span class="item-desc">Core Web Vitals &amp; entity search architecture</span>
+                        </a>
+                        <a href="social-media-marketing.html" class="nav-dropdown-item">
+                            <span class="item-title">Social Media Marketing</span>
+                            <span class="item-desc">Audience acquisition &amp; organic distribution loops</span>
+                        </a>
+                        <a href="law-compliance.html" class="nav-dropdown-item">
+                            <span class="item-title">Law &amp; Tech Compliance</span>
+                            <span class="item-desc">GDPR audits, enterprise MSAs &amp; IP protection</span>
+                        </a>
+                        <a href="corporate-finance.html" class="nav-dropdown-item">
+                            <span class="item-title">Corporate Finance</span>
+                            <span class="item-desc">Dynamic financial models, valuations &amp; runways</span>
+                        </a>
+                        <div class="nav-dropdown-divider"></div>
+                        <a href="services.html" class="nav-dropdown-footer">
+                            <span>Overview: All Capabilities</span>
+                            <span class="text-primary font-bold">&rarr;</span>
+                        </a>
+                    </div>
+                </div>
+                <a href="blog.html" class="nav-item-link" id="nav-blog">Blog</a>
+                <a href="contact.html" class="nav-item-link" id="nav-contact">Contact</a>
+            </div>
+
+            <!-- Desktop Auth -->
+            <div class="hidden md:flex space-x-4 items-center" id="desktop-auth-container">
+                <a href="auth.html?mode=signin" class="text-sm font-medium text-ink-mute hover:text-ink transition-colors" id="btn-signin">Sign In</a>
+                <div class="magnetic-wrap">
+                    <a href="auth.html?mode=signup" class="btn-primary" id="btn-signup">Get Started</a>
+                </div>
+            </div>
+
+            <div class="flex md:hidden items-center space-x-3">
+                <button id="hamburger-btn" class="p-2 text-ink focus:outline-none" aria-label="Toggle Menu">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Drawer -->
+    <div id="mobile-menu" class="fixed inset-0 z-40 bg-canvas transform translate-x-full transition-transform duration-300 ease-in-out md:hidden flex flex-col justify-between p-8 pt-24 overflow-y-auto">
+        <div class="flex flex-col space-y-4 text-xl font-medium" style="letter-spacing: -0.02em;">
+            <a href="./" class="mobile-nav-link hover:text-ink-mute transition-colors">Home</a>
+            
+            <div class="mobile-services-accordion">
+                <button type="button" id="mobile-services-toggle" class="w-full flex items-center justify-between text-xl font-medium hover:text-ink-mute transition-colors py-1 text-left" aria-expanded="false">
+                    <span>Our Services</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-200" id="mobile-services-chevron"></i>
+                </button>
+                <div id="mobile-services-list" class="hidden pl-4 pr-1 py-3 flex-col space-y-3 text-sm text-ink-mute border-l border-hairline mt-2">
+                    <a href="web-engineering.html" class="hover:text-ink transition-colors block">Web Engineering</a>
+                    <a href="ui-ux-design.html" class="hover:text-ink transition-colors block font-semibold text-primary">UI/UX Product Design</a>
+                    <a href="technical-seo.html" class="hover:text-ink transition-colors block">Technical SEO</a>
+                    <a href="social-media-marketing.html" class="hover:text-ink transition-colors block">Social Media Marketing</a>
+                    <a href="law-compliance.html" class="hover:text-ink transition-colors block">Law &amp; Tech Compliance</a>
+                    <a href="corporate-finance.html" class="hover:text-ink transition-colors block">Corporate Finance</a>
+                    <a href="services.html" class="text-xs font-semibold text-primary pt-1 block">All Capabilities &rarr;</a>
+                </div>
+            </div>
+
+            <a href="blog.html" class="mobile-nav-link hover:text-ink-mute transition-colors">Blog</a>
+            <a href="contact.html" class="mobile-nav-link hover:text-ink-mute transition-colors">Contact</a>
+        </div>
+        <div class="flex flex-col space-y-4 pt-6" id="mobile-auth-container">
+            <a href="auth.html?mode=signin" class="w-full text-center py-4 border border-hairline rounded-md font-medium hover:bg-canvas-soft transition-colors text-sm" id="mobile-btn-signin">Sign In</a>
+            <a href="auth.html?mode=signup" class="btn-primary w-full text-center py-4 text-sm" id="mobile-btn-signup">Get Started</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="pt-32 pb-0">
+        <div class="container-main">
+            <!-- Breadcrumbs -->
+            <nav class="mb-8 flex items-center space-x-2 text-xs font-medium text-ink-mute uppercase tracking-widest" aria-label="Breadcrumb">
+                <a href="./" class="hover:text-ink transition-colors">Home</a>
+                <span>/</span>
+                <a href="services.html" class="hover:text-ink transition-colors">Our Services</a>
+                <span>/</span>
+                <span class="text-ink font-medium">UI/UX Product Design</span>
+            </nav>
+
+            <!-- Hero Section -->
+            <div class="max-w-4xl mb-16 gsap-fade-up">
+                <p class="text-xs font-semibold tracking-widest text-primary uppercase mb-3">Product Design &amp; Systems</p>
+                <h1 class="display-xxl mb-6">Bespoke UI/UX Product Design &amp; Scalable Design Systems</h1>
+                <p class="body-lg text-ink-mute max-w-3xl leading-relaxed mb-8">
+                    Great product design is not superficial decoration; it is cognitive architecture. We engineer clean, conversion-focused user interfaces and scalable design systems that eliminate friction, shorten user onboarding cycles, and translate with zero ambiguity into production code.
+                </p>
+                <div class="flex flex-wrap items-center gap-4">
+                    <div class="magnetic-wrap">
+                        <a href="contact.html?service=ux-design" class="btn-primary btn-primary-lg">Initiate Design Sprint</a>
+                    </div>
+                    <div class="magnetic-wrap">
+                        <a href="#capabilities" class="btn-secondary btn-secondary-lg">Explore Deliverables</a>
+                    </div>
+                </div>
+
+                <!-- Proof Badges -->
+                <div class="pt-8 flex flex-wrap items-center gap-x-8 gap-y-3 text-xs text-ink-mute font-medium border-t border-hairline mt-10">
+                    <span class="inline-flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span> 100% Figma-to-Code Token Parity</span>
+                    <span class="inline-flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span> WCAG 2.1 AA Accessibility Standards</span>
+                    <span class="inline-flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span> Sub-16ms Micro-Interaction Tuning</span>
+                </div>
+            </div>
+
+            <!-- Hero Media & Quick Specs -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-24 gsap-fade-up">
+                <div class="lg:col-span-8 bg-canvas-soft border border-hairline rounded-2xl p-6 md:p-10 flex items-center justify-center">
+                    <img src="images/ui_ux_design.webp" alt="UI UX product design systems, Figma tokens and user experience architecture illustration" class="w-full max-w-lg h-auto object-contain" width="600" height="420" loading="eager">
+                </div>
+                <div class="lg:col-span-4 p-6 md:p-8 bg-canvas rounded-2xl border border-hairline shadow-1 space-y-4 text-xs">
+                    <div class="font-mono text-[11px] font-semibold uppercase tracking-wider text-primary">Design System Specifications</div>
+                    <div class="flex justify-between py-2 border-b border-hairline text-ink-mute"><span>Tooling Standard</span><span class="font-mono text-ink">Figma (Variables &amp; Auto-Layout)</span></div>
+                    <div class="flex justify-between py-2 border-b border-hairline text-ink-mute"><span>Token Architecture</span><span class="font-mono text-ink">Spacing, Color, Radii &amp; Type Tokens</span></div>
+                    <div class="flex justify-between py-2 border-b border-hairline text-ink-mute"><span>Accessibility</span><span class="font-mono text-primary font-semibold">WCAG 2.1 AA Compliant</span></div>
+                    <div class="flex justify-between py-2 border-b border-hairline text-ink-mute"><span>Developer Handoff</span><span class="font-mono text-ink">Component Specs &amp; Token JSON</span></div>
+                    <div class="flex justify-between pt-2 text-ink-mute"><span>Micro-Interactions</span><span class="font-mono text-ink">Sub-16ms Smooth Transitions</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section: The Design Challenge -->
+        <section class="section-padding bg-canvas-soft border-t border-hairline">
+            <div class="container-main">
+                <div class="max-w-2xl mb-16 gsap-fade-up">
+                    <p class="text-xs font-semibold tracking-widest text-ink-mute uppercase mb-2">The Real Challenge</p>
+                    <h2 class="display-xl mb-4">Why Product Interfaces Fail to Convert</h2>
+                    <p class="body-md text-ink-mute">When user interfaces are treated merely as visual mockups, products suffer from high bounce rates, developer frustration, and inconsistent brand experiences.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 gsap-fade-up">
+                    <div class="p-8 bg-canvas rounded-2xl border border-hairline space-y-4">
+                        <div class="w-10 h-10 rounded-lg bg-canvas-soft border border-hairline flex items-center justify-center font-mono text-sm font-semibold text-primary">01</div>
+                        <h3 class="heading-lg text-ink">High Onboarding Drop-Off</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Convoluted registration flows and cognitive overload in user setup screens cause 40%+ of new signups to abandon platforms before reaching their core aha-moment.</p>
+                    </div>
+
+                    <div class="p-8 bg-canvas rounded-2xl border border-hairline space-y-4">
+                        <div class="w-10 h-10 rounded-lg bg-canvas-soft border border-hairline flex items-center justify-center font-mono text-sm font-semibold text-primary">02</div>
+                        <h3 class="heading-lg text-ink">Developer Handoff Friction</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Disorganized design files without responsive auto-layout or systematic tokens force developers to guess padding, font weights, and edge cases, ballooning sprint hours.</p>
+                    </div>
+
+                    <div class="p-8 bg-canvas rounded-2xl border border-hairline space-y-4">
+                        <div class="w-10 h-10 rounded-lg bg-canvas-soft border border-hairline flex items-center justify-center font-mono text-sm font-semibold text-primary">03</div>
+                        <h3 class="heading-lg text-ink">Accessibility Violations</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Low-contrast text, missing focus states, and unlabelled interactive controls alienate users with assistive devices and expose enterprise brands to statutory legal risks.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Core Capabilities & Deliverables -->
+        <section id="capabilities" class="section-padding border-t border-hairline">
+            <div class="container-main">
+                <div class="max-w-2xl mb-16 gsap-fade-up">
+                    <p class="text-xs font-semibold tracking-widest text-primary uppercase mb-2">Capabilities</p>
+                    <h2 class="display-xl mb-4">Precision UI/UX Design Deliverables</h2>
+                    <p class="body-md text-ink-mute">Every interface we deliver is built on clean architectural foundations, structured tokens, and empirical user psychology.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 gsap-fade-up">
+                    <!-- Item 1 -->
+                    <div class="p-8 bg-canvas rounded-2xl border border-hairline space-y-3 hover:border-hairline-strong transition-colors">
+                        <h3 class="font-semibold text-base text-ink">Multi-Brand Design Systems</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Systematic Figma component libraries powered by auto-layout, nested variants, and unified design tokens that scale seamlessly across multiple products.</p>
+                        <div class="pt-2 text-[11px] font-mono text-primary">Design Tokens &bull; Figma Variants &bull; Atomic Architecture</div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="p-8 bg-canvas rounded-2xl border border-hairline space-y-3 hover:border-hairline-strong transition-colors">
+                        <h3 class="font-semibold text-base text-ink">SaaS Dashboard &amp; Data UX</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Information architecture engineered for high-density SaaS workflows, complex data tables, real-time analytics graphs, and intuitive filter hierarchies.</p>
+                        <div class="pt-2 text-[11px] font-mono text-primary">Data Tables &bull; Filter Workflows &bull; KPI Dashboards</div>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="p-8 bg-canvas rounded-2xl border border-hairline space-y-3 hover:border-hairline-strong transition-colors">
+                        <h3 class="font-semibold text-base text-ink">Conversion-Centric User Flows</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Frictionless onboarding, checkout, and self-serve upgrade funnels designed using heuristic evaluation and behavioral economics to drive activation.</p>
+                        <div class="pt-2 text-[11px] font-mono text-primary">Funnel Optimization &bull; Onboarding UX &bull; Checkout Flows</div>
+                    </div>
+
+                    <!-- Item 4 -->
+                    <div class="p-8 bg-canvas rounded-2xl border border-hairline space-y-3 hover:border-hairline-strong transition-colors">
+                        <h3 class="font-semibold text-base text-ink">Interactive Clickable Prototypes</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">High-fidelity functional prototypes simulating genuine product interaction for stakeholder alignment, investor demonstrations, and user testing.</p>
+                        <div class="pt-2 text-[11px] font-mono text-primary">Figma Prototyping &bull; Usability Testing &bull; Micro-Flows</div>
+                    </div>
+
+                    <!-- Item 5 -->
+                    <div class="p-8 bg-canvas rounded-2xl border border-hairline space-y-3 hover:border-hairline-strong transition-colors">
+                        <h3 class="font-semibold text-base text-ink">WCAG 2.1 AA Accessibility Audits</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Rigorous accessibility auditing across contrast ratios, target touch sizes, keyboard navigation paths, and screen reader semantic landmarks.</p>
+                        <div class="pt-2 text-[11px] font-mono text-primary">WCAG 2.1 AA &bull; Contrast Validation &bull; Focus Navigation</div>
+                    </div>
+
+                    <!-- Item 6 -->
+                    <div class="p-8 bg-canvas rounded-2xl border border-hairline space-y-3 hover:border-hairline-strong transition-colors">
+                        <h3 class="font-semibold text-base text-ink">Developer Handoff Specifications</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Pixel-accurate redlines, component state matrices (hover, focus, disabled, active), and exportable token JSON tailored for Tailwind CSS and React.</p>
+                        <div class="pt-2 text-[11px] font-mono text-primary">Component State Matrices &bull; CSS Variable Mapping</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Sprint Methodology -->
+        <section class="section-padding bg-canvas-soft border-t border-hairline">
+            <div class="container-main">
+                <div class="max-w-2xl mb-16 gsap-fade-up">
+                    <p class="text-xs font-semibold tracking-widest text-ink-mute uppercase mb-2">Our Process</p>
+                    <h2 class="display-xl mb-4">Structured Product Design Sprint</h2>
+                    <p class="body-md text-ink-mute">We transform complex user needs into intuitive digital products through an iterative, research-backed methodology.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 gsap-fade-up">
+                    <div class="p-6 bg-canvas rounded-xl border border-hairline space-y-3">
+                        <div class="font-mono text-xs text-primary font-bold">STAGE 01</div>
+                        <h4 class="font-semibold text-sm text-ink">Cognitive Journey Mapping</h4>
+                        <p class="text-xs text-ink-mute leading-relaxed">Auditing user personas, identifying operational friction points, and mapping user journeys from first touch to conversion.</p>
+                    </div>
+
+                    <div class="p-6 bg-canvas rounded-xl border border-hairline space-y-3">
+                        <div class="font-mono text-xs text-primary font-bold">STAGE 02</div>
+                        <h4 class="font-semibold text-sm text-ink">Wireframing &amp; Architecture</h4>
+                        <p class="text-xs text-ink-mute leading-relaxed">Structuring low-fidelity layouts to test information hierarchy, screen ergonomics, and core task paths without visual distraction.</p>
+                    </div>
+
+                    <div class="p-6 bg-canvas rounded-xl border border-hairline space-y-3">
+                        <div class="font-mono text-xs text-primary font-bold">STAGE 03</div>
+                        <h4 class="font-semibold text-sm text-ink">High-Fidelity UI &amp; Tokens</h4>
+                        <p class="text-xs text-ink-mute leading-relaxed">Crafting production-ready visual interfaces, defining typography scales, component variants, and building exportable design tokens.</p>
+                    </div>
+
+                    <div class="p-6 bg-canvas rounded-xl border border-hairline space-y-3">
+                        <div class="font-mono text-xs text-primary font-bold">STAGE 04</div>
+                        <h4 class="font-semibold text-sm text-ink">Prototyping &amp; Code Handoff</h4>
+                        <p class="text-xs text-ink-mute leading-relaxed">Assembling interactive clickable prototypes, validating responsive behavior, and conducting detailed developer handoff walkthroughs.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Real-World Use Cases -->
+        <section class="section-padding border-t border-hairline">
+            <div class="container-main">
+                <div class="max-w-2xl mb-16 gsap-fade-up">
+                    <p class="text-xs font-semibold tracking-widest text-primary uppercase mb-2">Real-World Applications</p>
+                    <h2 class="display-xl mb-4">Design Systems Built for High-Impact Scenarios</h2>
+                    <p class="body-md text-ink-mute">From early-stage product prototypes to enterprise platform modernizations, we tailor our design deliverables to commercial objectives.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 gsap-fade-up">
+                    <div class="p-8 bg-canvas-soft rounded-2xl border border-hairline space-y-3">
+                        <div class="text-xs font-mono font-semibold text-ink uppercase tracking-wider">B2B SaaS Platforms</div>
+                        <h3 class="font-semibold text-base text-ink">High-Density Portal Redesign</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Consolidating disjointed dashboards into a cohesive workspace with standardized modal patterns, keyboard shortcuts, and clear data tables.</p>
+                    </div>
+
+                    <div class="p-8 bg-canvas-soft rounded-2xl border border-hairline space-y-3">
+                        <div class="text-xs font-mono font-semibold text-ink uppercase tracking-wider">E-Commerce &amp; FinTech</div>
+                        <h3 class="font-semibold text-base text-ink">Checkout Friction Elimination</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Streamlining multi-step transaction funnels into intuitive progressive-disclosure flows that measurably increase completed payments.</p>
+                    </div>
+
+                    <div class="p-8 bg-canvas-soft rounded-2xl border border-hairline space-y-3">
+                        <div class="text-xs font-mono font-semibold text-ink uppercase tracking-wider">Multi-Product Tech Firms</div>
+                        <h3 class="font-semibold text-base text-ink">Unified Enterprise Design Systems</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Deploying an atomic component system shared across multiple brand touchpoints, cutting frontend development sprint cycles by over 40%.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: FAQs -->
+        <section class="section-padding bg-canvas-soft border-t border-hairline">
+            <div class="container-main max-w-4xl">
+                <div class="mb-14 text-center gsap-fade-up">
+                    <p class="text-xs font-semibold tracking-widest text-primary uppercase mb-2">Common Inquiries</p>
+                    <h2 class="display-xl mb-3">Frequently Asked Questions</h2>
+                    <p class="body-md text-ink-mute">Clear answers on our design tools, methodologies, and developer collaboration models.</p>
+                </div>
+
+                <div class="space-y-4 gsap-fade-up">
+                    <details class="article-accordion p-6 bg-canvas rounded-xl border border-hairline group">
+                        <summary class="font-semibold text-sm cursor-pointer list-none flex justify-between items-center text-ink">
+                            <span>How do you ensure Figma designs translate accurately into code?</span>
+                            <span class="text-primary transition-transform group-open:rotate-180">&darr;</span>
+                        </summary>
+                        <p class="text-xs text-ink-mute mt-4 leading-relaxed">We build design systems with automated design tokens (colors, spacing, typography, radii) that map 1:1 to CSS variables and Tailwind configuration. Developers receive exact specifications, eliminating visual drift and handoff disputes.</p>
+                    </details>
+
+                    <details class="article-accordion p-6 bg-canvas rounded-xl border border-hairline group">
+                        <summary class="font-semibold text-sm cursor-pointer list-none flex justify-between items-center text-ink">
+                            <span>Are your designs compliant with accessibility standards (WCAG)?</span>
+                            <span class="text-primary transition-transform group-open:rotate-180">&darr;</span>
+                        </summary>
+                        <p class="text-xs text-ink-mute mt-4 leading-relaxed">Yes. Every interface is designed to meet or exceed WCAG 2.1 AA accessibility guidelines, with verified color contrast ratios, distinct focus indicators, and logical keyboard navigation paths.</p>
+                    </details>
+
+                    <details class="article-accordion p-6 bg-canvas rounded-xl border border-hairline group">
+                        <summary class="font-semibold text-sm cursor-pointer list-none flex justify-between items-center text-ink">
+                            <span>Do you design for mobile apps as well as web applications?</span>
+                            <span class="text-primary transition-transform group-open:rotate-180">&darr;</span>
+                        </summary>
+                        <p class="text-xs text-ink-mute mt-4 leading-relaxed">Yes. We design responsive web applications that seamlessly scale from ultra-wide 4K displays down to mobile viewports, as well as native iOS and Android mobile interfaces with platform-standard design patterns.</p>
+                    </details>
+
+                    <details class="article-accordion p-6 bg-canvas rounded-xl border border-hairline group">
+                        <summary class="font-semibold text-sm cursor-pointer list-none flex justify-between items-center text-ink">
+                            <span>What deliverables do we receive at the end of a design project?</span>
+                            <span class="text-primary transition-transform group-open:rotate-180">&darr;</span>
+                        </summary>
+                        <p class="text-xs text-ink-mute mt-4 leading-relaxed">You receive a complete, organized Figma file containing the component library, interactive high-fidelity prototypes, user journey diagrams, responsive screen layouts, design tokens export, and developer handoff documentation.</p>
+                    </details>
+
+                    <details class="article-accordion p-6 bg-canvas rounded-xl border border-hairline group">
+                        <summary class="font-semibold text-sm cursor-pointer list-none flex justify-between items-center text-ink">
+                            <span>How long does a typical product design sprint take?</span>
+                            <span class="text-primary transition-transform group-open:rotate-180">&darr;</span>
+                        </summary>
+                        <p class="text-xs text-ink-mute mt-4 leading-relaxed">A targeted UI/UX overhaul or new MVP design sprint typically takes 2 to 4 weeks. Multi-product enterprise design systems are executed across iterative sprints with continuous stakeholder reviews.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Complementary Services -->
+        <section class="section-padding border-t border-hairline">
+            <div class="container-main">
+                <div class="max-w-2xl mb-12 gsap-fade-up">
+                    <p class="text-xs font-semibold tracking-widest text-primary uppercase mb-2">Integrated Solutions</p>
+                    <h2 class="display-lg mb-3">Frequently Paired Capabilities</h2>
+                    <p class="body-sm text-ink-mute">Pair product design with our engineering and growth disciplines for seamless execution.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 gsap-fade-up">
+                    <a href="web-engineering.html" class="p-8 bg-canvas-soft rounded-2xl border border-hairline block hover:border-hairline-strong transition-all group">
+                        <div class="text-xs font-mono text-primary font-semibold uppercase mb-2">01 &mdash; Engineering</div>
+                        <h3 class="heading-lg text-ink group-hover:text-primary transition-colors mb-2">Web Engineering &amp; Platform Architecture &rarr;</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Turn your Figma design system into production-ready software with sub-100ms Core Web Vitals, clean code, and scalable database schemas.</p>
+                    </a>
+
+                    <a href="social-media-marketing.html" class="p-8 bg-canvas-soft rounded-2xl border border-hairline block hover:border-hairline-strong transition-all group">
+                        <div class="text-xs font-mono text-primary font-semibold uppercase mb-2">04 &mdash; Growth</div>
+                        <h3 class="heading-lg text-ink group-hover:text-primary transition-colors mb-2">Social Media Marketing &amp; Growth &rarr;</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Drive qualified target audience traffic directly to your high-converting product interfaces through data-backed content distribution.</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Final CTA -->
+        <section class="cta-section bg-canvas-soft border-t border-hairline gsap-fade-up">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="display-xxl mb-6">Ready to Design a Category-Leading Interface?</h2>
+                <p class="body-lg max-w-xl mx-auto mb-10 text-ink-mute">Schedule a design consultation with our product leads to review your current UX metrics and map your interface overhaul.</p>
+                <div class="magnetic-wrap">
+                    <a href="contact.html?service=ux-design" class="btn-primary btn-primary-lg">Book Design Consultation</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer-light">
+        <div class="max-w-[1280px] mx-auto flex flex-col md:flex-row justify-between items-center text-sm gap-y-4 md:gap-y-0">
+            <div class="font-medium" style="letter-spacing: -0.04em;">DIGINIXIT.</div>
+            <div class="flex flex-wrap justify-center gap-x-6 gap-y-2">
+                <a href="./">Home</a>
+                <a href="services.html">Services</a>
+                <a href="blog.html">Blog</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div>&copy; 2026 DiginixIT. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/ui-primitives.js" defer></script>
+    <script src="js/ui-components.js" defer></script>
+    <script src="js/common.js" defer></script>
+    <script src="js/script.js" defer></script>
+</body>
+
+</html>

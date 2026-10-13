@@ -246,6 +246,119 @@ html.lenis {
     font-weight: 600;
 }
 
+/* --- Services Dropdown Menu (Desktop & Mobile) --- */
+.nav-dropdown-wrapper {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+/* Invisible bridge to prevent dropdown closing when moving mouse */
+.nav-dropdown-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    height: 12px;
+}
+
+.nav-dropdown-arrow {
+    transition: transform 0.2s ease;
+}
+
+.nav-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: -12px;
+    width: 300px;
+    background-color: var(--color-canvas);
+    border: 1px solid var(--color-hairline);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
+    padding: 8px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(6px);
+    transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.2s ease;
+    z-index: 100;
+    pointer-events: none;
+}
+
+.nav-dropdown-wrapper:hover .nav-dropdown-menu,
+.nav-dropdown-wrapper:focus-within .nav-dropdown-menu,
+.nav-dropdown-wrapper.is-open .nav-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.nav-dropdown-wrapper:hover .nav-dropdown-arrow,
+.nav-dropdown-wrapper:focus-within .nav-dropdown-arrow,
+.nav-dropdown-wrapper.is-open .nav-dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+.nav-dropdown-item {
+    display: block;
+    padding: 8px 12px;
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    transition: background-color 0.15s ease;
+}
+
+.nav-dropdown-item:hover,
+.nav-dropdown-item:focus {
+    background-color: var(--color-canvas-soft);
+}
+
+.nav-dropdown-item .item-title {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-ink);
+    letter-spacing: -0.01em;
+    transition: color 0.15s ease;
+}
+
+.nav-dropdown-item:hover .item-title,
+.nav-dropdown-item:focus .item-title {
+    color: var(--color-primary-deep);
+}
+
+.nav-dropdown-item .item-desc {
+    display: block;
+    font-size: 11px;
+    color: var(--color-ink-mute);
+    margin-top: 1px;
+    line-height: 1.35;
+}
+
+.nav-dropdown-divider {
+    height: 1px;
+    background-color: var(--color-hairline);
+    margin: 6px 4px;
+}
+
+.nav-dropdown-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-ink);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.nav-dropdown-footer:hover {
+    background-color: var(--color-canvas-soft);
+    color: var(--color-primary-deep);
+}
+
 /* --- Buttons (design.md spec) --- */
 
 /* Primary Green — emerald bg, near-black text, 6px radius */

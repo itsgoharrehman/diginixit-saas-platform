@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        try {
+            if (JSON.parse(localStorage.getItem('settings') || '{}').maintenanceMode) {
+                document.documentElement.style.display = 'none';
+                window.location.replace('maintenance.html');
+            }
+        } catch (e) {}
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-3363493243397953">
+    <title>Corporate Financial Engineering, Valuation & Capital Strategy | DiginixIT</title>
+    <meta name="description"
+        content="Dynamic 3-statement financial models, SaaS unit economics (CAC, LTV, payback), defensible venture valuations, and capital runway stress-testing for technology leaders.">
+    <meta name="keywords"
+        content="corporate finance consulting, SaaS financial modeling, startup valuation Pakistan, 3 statement financial model, cap table modeling, unit economics audit, runway stress testing, fundraising advisory">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://diginixit.com/corporate-finance.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://diginixit.com/corporate-finance.html">
+    <meta property="og:title" content="Corporate Financial Engineering, Valuation & Capital Strategy | DiginixIT">
+    <meta property="og:description"
+        content="Dynamic 3-statement financial models, SaaS unit economics, defensible venture valuations, and capital runway stress-testing. Built for institutional diligence.">
+    <meta property="og:image" content="https://diginixit.com/images/og-home.jpg">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://diginixit.com/corporate-finance.html">
+    <meta name="twitter:title" content="Corporate Financial Engineering, Valuation & Capital Strategy | DiginixIT">
+    <meta name="twitter:description"
+        content="Dynamic 3-statement financial models, SaaS unit economics, defensible venture valuations, and capital runway stress-testing. Built for institutional diligence.">
+    <meta name="twitter:image" content="https://diginixit.com/images/og-home.jpg">
+
+    <!-- DNS Prefetch & Preconnect -->
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://unpkg.com">
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <meta name="color-scheme" content="light">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Tailwind Configuration -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        canvas: '#ffffff',
+                        'canvas-soft': '#fafafa',
+                        'canvas-night': '#1c1c1c',
+                        ink: '#171717',
+                        'ink-mute': '#707070',
+                        'ink-faint': '#b2b2b2',
+                        primary: '#3ecf8e',
+                        'primary-deep': '#24b47e',
+                        hairline: '#dfdfdf',
+                        'hairline-strong': '#c7c7c7',
+                        'hairline-cool': '#ededed'
+                    },
+                    letterSpacing: { tighter: '-0.04em', tight: '-0.02em' }
+                }
+            }
+        };
+    </script>
+
+    <!-- Core Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://diginixit.com/" },
+                    { "@type": "ListItem", "position": 2, "name": "Our Services", "item": "https://diginixit.com/services.html" },
+                    { "@type": "ListItem", "position": 3, "name": "Corporate Finance", "item": "https://diginixit.com/corporate-finance.html" }
+                ]
+            },
+            {
+                "@type": "Service",
+                "name": "Corporate Financial Engineering & Valuation",
+                "serviceType": "Financial Advisory",
+                "provider": {
+                    "@type": "Organization",
+                    "name": "DiginixIT",
+                    "url": "https://diginixit.com/"
+                },
+                "description": "Dynamic 3-statement financial modeling, SaaS unit economic audits, company valuations, cap tables, and runway scenario planning.",
+                "areaServed": "Global",
+                "hasOfferCatalog": {
+                    "@type": "OfferCatalog",
+                    "name": "Corporate Finance Deliverables",
+                    "itemListElement": [
+                        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Dynamic 3-Statement & Cohort Forecast Modeling" } },
+                        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "SaaS Unit Economics & Margin Optimization Audits" } },
+                        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Pre-Money Valuations & Cap Table Dilution Modeling" } },
+                        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Cash Runway Stress-Testing & Capital Allocation Plans" } }
+                    ]
+                }
+            },
+            {
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "How does operational financial engineering differ from standard bookkeeping or accounting?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Bookkeeping records historical compliance data. Financial engineering is forward-looking: it links operational software metrics (churn, CAC, pipeline velocity, server hosting per seat) into dynamic predictive forecasts that drive strategic board decisions."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Will your valuation models withstand institutional VC and Private Equity due diligence?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes. Our valuation reports synthesize Discounted Cash Flow (DCF), Scorecard Benchmarks, and comparative public/private multiple methodologies, providing transparent mathematical driver logic that institutional analysts can stress-test."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "What SaaS unit economic metrics do you evaluate and optimize?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "We model Customer Acquisition Cost (CAC), Lifetime Value (LTV), LTV:CAC ratios, CAC Payback Period, Net Revenue Retention (NRR), Gross Margin Yield, and Magic Number to ensure capital efficiency."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "How long does it take to construct an investor-ready financial model?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "A standard financial modeling sprint takes 1 to 2 weeks, depending on the complexity of your historical accounting data, subscription tiers, and multi-currency operations."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Do you help with investor pitch deck data rooms and board presentations?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes. We package the financial outputs into executive summary dashboards, cap table dilution waterfalls, and clean virtual data room schedules formatted for institutional investment committees."
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+    </script>
+</head>
+
+<body class="bg-canvas text-ink">
+
+    <div class="noise"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 py-4 px-6 md:px-12" aria-label="Main Navigation">
+        <div class="max-w-[1280px] mx-auto flex justify-between items-center">
+            <a href="./" class="text-xl font-medium tracking-tighter text-ink" style="letter-spacing: -0.04em;">DIGINIXIT.</a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-8 items-center text-sm font-medium">
+                <a href="./" class="nav-item-link" id="nav-home">Home</a>
+                <div class="nav-dropdown-wrapper relative group" id="nav-services-dropdown">
+                    <a href="services.html" class="nav-item-link inline-flex items-center gap-1.5 py-2 active-nav-link" id="nav-services" aria-haspopup="true" aria-expanded="false">
+                        <span>Our Services</span>
+                        <svg class="w-3.5 h-3.5 nav-dropdown-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+                    </a>
+                    <div class="nav-dropdown-menu">
+                        <a href="web-engineering.html" class="nav-dropdown-item">
+                            <span class="item-title">Web Engineering</span>
+                            <span class="item-desc">High-performance apps &amp; custom SaaS architecture</span>
+                        </a>
+                        <a href="ui-ux-design.html" class="nav-dropdown-item">
+                            <span class="item-title">UI/UX Product Design</span>
+                            <span class="item-desc">Bespoke design systems &amp; cognitive flows</span>
+                        </a>
+                        <a href="technical-seo.html" class="nav-dropdown-item">
+                            <span class="item-title">Technical SEO</span>
+                            <span class="item-desc">Core Web Vitals &amp; entity search architecture</span>
+                        </a>
+                        <a href="social-media-marketing.html" class="nav-dropdown-item">
+                            <span class="item-title">Social Media Marketing</span>
+                            <span class="item-desc">Audience acquisition &amp; organic distribution loops</span>
+                        </a>
+                        <a href="law-compliance.html" class="nav-dropdown-item">
+                            <span class="item-title">Law &amp; Tech Compliance</span>
+                            <span class="item-desc">GDPR audits, enterprise MSAs &amp; IP protection</span>
+                        </a>
+                        <a href="corporate-finance.html" class="nav-dropdown-item">
+                            <span class="item-title">Corporate Finance</span>
+                            <span class="item-desc">Dynamic financial models, valuations &amp; runways</span>
+                        </a>
+                        <div class="nav-dropdown-divider"></div>
+                        <a href="services.html" class="nav-dropdown-footer">
+                            <span>Overview: All Capabilities</span>
+                            <span class="text-primary font-bold">&rarr;</span>
+                        </a>
+                    </div>
+                </div>
+                <a href="blog.html" class="nav-item-link" id="nav-blog">Blog</a>
+                <a href="contact.html" class="nav-item-link" id="nav-contact">Contact</a>
+            </div>
+
+            <!-- Desktop Auth -->
+            <div class="hidden md:flex space-x-4 items-center" id="desktop-auth-container">
+                <a href="auth.html?mode=signin" class="text-sm font-medium text-ink-mute hover:text-ink transition-colors" id="btn-signin">Sign In</a>
+                <div class="magnetic-wrap">
+                    <a href="auth.html?mode=signup" class="btn-primary" id="btn-signup">Get Started</a>
+                </div>
+            </div>
+
+            <div class="flex md:hidden items-center space-x-3">
+                <button id="hamburger-btn" class="p-2 text-ink focus:outline-none" aria-label="Toggle Menu">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Drawer -->
+    <div id="mobile-menu" class="fixed inset-0 z-40 bg-canvas transform translate-x-full transition-transform duration-300 ease-in-out md:hidden flex flex-col justify-between p-8 pt-24 overflow-y-auto">
+        <div class="flex flex-col space-y-4 text-xl font-medium" style="letter-spacing: -0.02em;">
+            <a href="./" class="mobile-nav-link hover:text-ink-mute transition-colors">Home</a>
+            
+            <div class="mobile-services-accordion">
+                <button type="button" id="mobile-services-toggle" class="w-full flex items-center justify-between text-xl font-medium hover:text-ink-mute transition-colors py-1 text-left" aria-expanded="false">
+                    <span>Our Services</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-200" id="mobile-services-chevron"></i>
+                </button>
+                <div id="mobile-services-list" class="hidden pl-4 pr-1 py-3 flex-col space-y-3 text-sm text-ink-mute border-l border-hairline mt-2">
+                    <a href="web-engineering.html" class="hover:text-ink transition-colors block">Web Engineering</a>
+                    <a href="ui-ux-design.html" class="hover:text-ink transition-colors block">UI/UX Product Design</a>
+                    <a href="technical-seo.html" class="hover:text-ink transition-colors block">Technical SEO</a>
+                    <a href="social-media-marketing.html" class="hover:text-ink transition-colors block">Social Media Marketing</a>
+                    <a href="law-compliance.html" class="hover:text-ink transition-colors block">Law &amp; Tech Compliance</a>
+                    <a href="corporate-finance.html" class="hover:text-ink transition-colors block font-semibold text-primary">Corporate Finance</a>
+                    <a href="services.html" class="text-xs font-semibold text-primary pt-1 block">All Capabilities &rarr;</a>
+                </div>
+            </div>
+
+            <a href="blog.html" class="mobile-nav-link hover:text-ink-mute transition-colors">Blog</a>
+            <a href="contact.html" class="mobile-nav-link hover:text-ink-mute transition-colors">Contact</a>
+        </div>
+        <div class="flex flex-col space-y-4 pt-6" id="mobile-auth-container">
+            <a href="auth.html?mode=signin" class="w-full text-center py-4 border border-hairline rounded-md font-medium hover:bg-canvas-soft transition-colors text-sm" id="mobile-btn-signin">Sign In</a>
+            <a href="auth.html?mode=signup" class="btn-primary w-full text-center py-4 text-sm" id="mobile-btn-signup">Get Started</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="pt-32 pb-0">
+        <div class="container-main">
+            <!-- Breadcrumbs -->
+            <nav class="mb-8 flex items-center space-x-2 text-xs font-medium text-ink-mute uppercase tracking-widest" aria-label="Breadcrumb">
+                <a href="./" class="hover:text-ink transition-colors">Home</a>
+                <span>/</span>
+                <a href="services.html" class="hover:text-ink transition-colors">Our Services</a>
+                <span>/</span>
+                <span class="text-ink font-medium">Corporate Finance</span>
+            </nav>
+
+            <!-- Hero Section -->
+            <div class="max-w-4xl mb-16 gsap-fade-up">
+                <p class="text-xs font-semibold tracking-widest text-primary uppercase mb-3">Capital Strategy &amp; Modeling</p>
+                <h1 class="display-xxl mb-6">Corporate Financial Engineering, Valuation &amp; Capital Strategy</h1>
+                <p class="body-lg text-ink-mute max-w-3xl leading-relaxed mb-8">
+                    Sustainable scale requires financial discipline. Intuitive guesswork and brittle spreadsheets burn capital and compromise investor confidence. We engineer institution-grade financial models, unit-economic frameworks, and defensible company valuations that provide leadership with absolute capital clarity and equip founders to negotiate from strength during fundraising.
+                </p>
+                <div class="flex flex-wrap items-center gap-4">
+                    <div class="magnetic-wrap">
+                        <a href="contact.html?service=corporate-finance" class="btn-primary btn-primary-lg">Schedule Financial Advisory</a>
+                    </div>
+                    <div class="magnetic-wrap">
+                        <a href="#capabilities" class="btn-secondary btn-secondary-lg">Explore Deliverables</a>
+                    </div>
+                </div>
+
+                <!-- Proof Badges -->
+                <div class="pt-8 flex flex-wrap items-center gap-x-8 gap-y-3 text-xs text-ink-mute font-medium border-t border-hairline mt-10">
+                    <span class="inline-flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span> Dynamic 3-Statement &amp; Cohort Driver Architecture</span>
+                    <span class="inline-flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span> Institutional VC/PE Data Room Standards</span>
+                    <span class="inline-flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span> 18–24 Month Buffer Runway Stress-Testing</span>
+                </div>
+            </div>
+
+            <!-- Hero Media & Quick Specs -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-24 gsap-fade-up">
+                <div class="lg:col-span-8 bg-canvas-soft border border-hairline rounded-2xl p-6 md:p-10 flex items-center justify-center">
+                    <img src="images/corporate_finance.webp" alt="Corporate financial modeling, startup valuation and cap table architecture illustration" class="w-full max-w-lg h-auto object-contain" width="600" height="420" loading="eager">
+                </div>
+                <div class="lg:col-span-4 p-6 md:p-8 bg-canvas rounded-2xl border border-hairline shadow-1 space-y-4 text-xs">
+                    <div class="font-mono text-[11px] font-semibold uppercase tracking-wider text-primary">Financial Modeling Targets</div>
+                    <div class="flex justify-between py-2 border-b border-hairline text-ink-mute"><span>Model Structure</span><span class="font-mono text-ink">Dynamic 3-Statement &amp; Cohort Driven</span></div>
+                    <div class="flex justify-between py-2 border-b border-hairline text-ink-mute"><span>Efficiency KPIs</span><span class="font-mono text-primary font-semibold">LTV:CAC &gt; 3.5x / Payback &lt; 12 Mo</span></div>
+                    <div class="flex justify-between py-2 border-b border-hairline text-ink-mute"><span>Valuation Methods</span><span class="font-mono text-ink">DCF, VC Multiples &amp; Scorecards</span></div>
+                    <div class="flex justify-between py-2 border-b border-hairline text-ink-mute"><span>Cap Table Structuring</span><span class="font-mono text-ink">SAFEs, Options &amp; Anti-Dilution</span></div>
+                    <div class="flex justify-between pt-2 text-ink-mute"><span>Scenario Stress-Testing</span><span class="font-mono text-ink">Base, Bull &amp; Severe Downside Curves</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section: The Financial Challenge -->
+        <section class="section-padding bg-canvas-soft border-t border-hairline">
+            <div class="container-main">
+                <div class="max-w-2xl mb-16 gsap-fade-up">
+                    <p class="text-xs font-semibold tracking-widest text-ink-mute uppercase mb-2">The Real Challenge</p>
+                    <h2 class="display-xl mb-4">Why Growing Companies Suffer Cash Crises</h2>
+                    <p class="body-md text-ink-mute">Operating on static spreadsheets obscures unit-economic burn, leading to sudden runway compression and weak investor negotiations.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 gsap-fade-up">
+                    <div class="p-8 bg-canvas rounded-2xl border border-hairline space-y-4">
+                        <div class="w-10 h-10 rounded-lg bg-canvas-soft border border-hairline flex items-center justify-center font-mono text-sm font-semibold text-primary">01</div>
+                        <h3 class="heading-lg text-ink">Sudden Runway Compression</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Failing to isolate fixed overheads from variable customer acquisition costs causes surprise cash shortages, forcing painful emergency dilution rounds.</p>
+                    </div>
+
+                    <div class="p-8 bg-canvas rounded-2xl border border-hairline space-y-4">
+                        <div class="w-10 h-10 rounded-lg bg-canvas-soft border border-hairline flex items-center justify-center font-mono text-sm font-semibold text-primary">02</div>
+                        <h3 class="heading-lg text-ink">Due Diligence Bottlenecks</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Presenting disconnected spreadsheets with hardcoded formulas damages founder credibility during institutional VC partner meetings and stalls funding rounds.</p>
+                    </div>
+
+                    <div class="p-8 bg-canvas rounded-2xl border border-hairline space-y-4">
+                        <div class="w-10 h-10 rounded-lg bg-canvas-soft border border-hairline flex items-center justify-center font-mono text-sm font-semibold text-primary">03</div>
+                        <h3 class="heading-lg text-ink">Uncalibrated Pricing Tiers</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Setting software pricing without margin modeling causes enterprise customer expansions to paradoxically erode gross margins due to unforeseen server compute costs.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Core Capabilities & Deliverables -->
+        <section id="capabilities" class="section-padding border-t border-hairline">
+            <div class="container-main">
+                <div class="max-w-2xl mb-16 gsap-fade-up">
+                    <p class="text-xs font-semibold tracking-widest text-primary uppercase mb-2">Capabilities</p>
+                    <h2 class="display-xl mb-4">Corporate Financial Engineering Deliverables</h2>
+                    <p class="body-md text-ink-mute">We engineer mathematical models linked directly to operational software drivers, giving leadership a real-time flight simulator of their business.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 gsap-fade-up">
+                    <!-- Item 1 -->
+                    <div class="p-8 bg-canvas rounded-2xl border border-hairline space-y-3 hover:border-hairline-strong transition-colors">
+                        <h3 class="font-semibold text-base text-ink">Dynamic 3-Statement Models</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Fully interlinked income statement, balance sheet, and cash flow forecasts driven by cohort customer acquisition, churn elasticity, and hiring schedules.</p>
+                        <div class="pt-2 text-[11px] font-mono text-primary">3-Statement &bull; Cohort Driver Logic &bull; Dynamic P&amp;L</div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="p-8 bg-canvas rounded-2xl border border-hairline space-y-3 hover:border-hairline-strong transition-colors">
+                        <h3 class="font-semibold text-base text-ink">SaaS Unit Economic Audits</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Granular calculations of blended vs paid CAC, LTV, Magic Number, Net Revenue Retention (NRR), and payback period to optimize marketing budget allocations.</p>
+                        <div class="pt-2 text-[11px] font-mono text-primary">CAC / LTV &bull; Payback Curves &bull; NRR Telemetry</div>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="p-8 bg-canvas rounded-2xl border border-hairline space-y-3 hover:border-hairline-strong transition-colors">
+                        <h3 class="font-semibold text-base text-ink">Valuations &amp; Cap Table Architecture</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Defensible pre-money valuation benchmarks using DCF, Scorecard, and venture capital multiples alongside detailed anti-dilution waterfall modeling.</p>
+                        <div class="pt-2 text-[11px] font-mono text-primary">DCF &bull; VC Multiples &bull; Waterfall Dilution</div>
+                    </div>
+
+                    <!-- Item 4 -->
+                    <div class="p-8 bg-canvas rounded-2xl border border-hairline space-y-3 hover:border-hairline-strong transition-colors">
+                        <h3 class="font-semibold text-base text-ink">Cash Runway Sensitivity Stress-Testing</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Scenario analysis simulating varying market conditions, delayed receivables, and sales slowdowns to safeguard an 18 to 24 month operating runway.</p>
+                        <div class="pt-2 text-[11px] font-mono text-primary">Burn Multiple &bull; Stress Testing &bull; 24-Mo Buffer</div>
+                    </div>
+
+                    <!-- Item 5 -->
+                    <div class="p-8 bg-canvas rounded-2xl border border-hairline space-y-3 hover:border-hairline-strong transition-colors">
+                        <h3 class="font-semibold text-base text-ink">Pricing &amp; Gross Margin Optimization</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Restructuring SaaS subscription tiers, usage-based metrics, and enterprise seat minimums to expand gross margin yield across account expansion.</p>
+                        <div class="pt-2 text-[11px] font-mono text-primary">Tier Structuring &bull; Usage Elasticity &bull; Margin Expansion</div>
+                    </div>
+
+                    <!-- Item 6 -->
+                    <div class="p-8 bg-canvas rounded-2xl border border-hairline space-y-3 hover:border-hairline-strong transition-colors">
+                        <h3 class="font-semibold text-base text-ink">Virtual Data Room (VDR) Packaging</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Structuring standardized institutional financial exhibits, audit-ready formulas, and executive summary charts ready for investor scrutiny.</p>
+                        <div class="pt-2 text-[11px] font-mono text-primary">Data Room Standards &bull; Formula Integrity &bull; Executive Summaries</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Sprint Methodology -->
+        <section class="section-padding bg-canvas-soft border-t border-hairline">
+            <div class="container-main">
+                <div class="max-w-2xl mb-16 gsap-fade-up">
+                    <p class="text-xs font-semibold tracking-widest text-ink-mute uppercase mb-2">Our Process</p>
+                    <h2 class="display-xl mb-4">Structured Financial Engineering Sprint</h2>
+                    <p class="body-md text-ink-mute">We translate messy accounting ledgers into dynamic, defensible models through an efficient 4-stage sprint.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 gsap-fade-up">
+                    <div class="p-6 bg-canvas rounded-xl border border-hairline space-y-3">
+                        <div class="font-mono text-xs text-primary font-bold">STAGE 01</div>
+                        <h4 class="font-semibold text-sm text-ink">Historical Ingestion</h4>
+                        <p class="text-xs text-ink-mute leading-relaxed">Consolidating general ledger data, customer billing histories, payroll registers, and categorizing variable vs fixed operational costs.</p>
+                    </div>
+
+                    <div class="p-6 bg-canvas rounded-xl border border-hairline space-y-3">
+                        <div class="font-mono text-xs text-primary font-bold">STAGE 02</div>
+                        <h4 class="font-semibold text-sm text-ink">Driver Architecture</h4>
+                        <p class="text-xs text-ink-mute leading-relaxed">Constructing dynamic customer cohort engines linking marketing spend to customer acquisition, churn, expansion, and server hosting costs.</p>
+                    </div>
+
+                    <div class="p-6 bg-canvas rounded-xl border border-hairline space-y-3">
+                        <div class="font-mono text-xs text-primary font-bold">STAGE 03</div>
+                        <h4 class="font-semibold text-sm text-ink">Sensitivity Stress-Testing</h4>
+                        <p class="text-xs text-ink-mute leading-relaxed">Simulating base, bull, and severe downside macro curves to establish exact hiring triggers and ensure a resilient cash buffer.</p>
+                    </div>
+
+                    <div class="p-6 bg-canvas rounded-xl border border-hairline space-y-3">
+                        <div class="font-mono text-xs text-primary font-bold">STAGE 04</div>
+                        <h4 class="font-semibold text-sm text-ink">Executive Data Room</h4>
+                        <p class="text-xs text-ink-mute leading-relaxed">Packaging the finalized model with cap table waterfall schedules, KPI dashboards, and conducting walkthrough sessions with company leadership.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Real-World Use Cases -->
+        <section class="section-padding border-t border-hairline">
+            <div class="container-main">
+                <div class="max-w-2xl mb-16 gsap-fade-up">
+                    <p class="text-xs font-semibold tracking-widest text-primary uppercase mb-2">Proven Applications</p>
+                    <h2 class="display-xl mb-4">Capital Clarity for Every Phase of Growth</h2>
+                    <p class="body-md text-ink-mute">We engineer financial clarity for technology leaders navigating high-stakes capital decisions.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 gsap-fade-up">
+                    <div class="p-8 bg-canvas-soft rounded-2xl border border-hairline space-y-3">
+                        <div class="text-xs font-mono font-semibold text-ink uppercase tracking-wider">Seed &amp; Series A Founders</div>
+                        <h3 class="font-semibold text-base text-ink">Fundraising Valuation Defense</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Equipping founders to defend valuation asks with institutional 3-statement models that survive rigorous VC analyst due diligence.</p>
+                    </div>
+
+                    <div class="p-8 bg-canvas-soft rounded-2xl border border-hairline space-y-3">
+                        <div class="text-xs font-mono font-semibold text-ink uppercase tracking-wider">Scaling SaaS ($1M–$10M ARR)</div>
+                        <h3 class="font-semibold text-base text-ink">Unit Economics Optimization</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Pinpointing customer acquisition channels with sub-12-month payback velocity and optimizing pricing tiers to expand gross margins.</p>
+                    </div>
+
+                    <div class="p-8 bg-canvas-soft rounded-2xl border border-hairline space-y-3">
+                        <div class="text-xs font-mono font-semibold text-ink uppercase tracking-wider">Board &amp; Leadership Teams</div>
+                        <h3 class="font-semibold text-base text-ink">Runway &amp; Headcount Planning</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Simulating the cash impact of upcoming engineering hires and marketing expansions before committing capital.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: FAQs -->
+        <section class="section-padding bg-canvas-soft border-t border-hairline">
+            <div class="container-main max-w-4xl">
+                <div class="mb-14 text-center gsap-fade-up">
+                    <p class="text-xs font-semibold tracking-widest text-primary uppercase mb-2">Common Inquiries</p>
+                    <h2 class="display-xl mb-3">Frequently Asked Questions</h2>
+                    <p class="body-md text-ink-mute">Direct insights into our financial engineering standards, valuation models, and deliverable formats.</p>
+                </div>
+
+                <div class="space-y-4 gsap-fade-up">
+                    <details class="article-accordion p-6 bg-canvas rounded-xl border border-hairline group">
+                        <summary class="font-semibold text-sm cursor-pointer list-none flex justify-between items-center text-ink">
+                            <span>How does operational financial engineering differ from standard bookkeeping or accounting?</span>
+                            <span class="text-primary transition-transform group-open:rotate-180">&darr;</span>
+                        </summary>
+                        <p class="text-xs text-ink-mute mt-4 leading-relaxed">Bookkeeping records historical compliance data. Financial engineering is forward-looking: it links operational software metrics (churn, CAC, pipeline velocity, server hosting per seat) into dynamic predictive forecasts that drive strategic board decisions.</p>
+                    </details>
+
+                    <details class="article-accordion p-6 bg-canvas rounded-xl border border-hairline group">
+                        <summary class="font-semibold text-sm cursor-pointer list-none flex justify-between items-center text-ink">
+                            <span>Will your valuation models withstand institutional VC and Private Equity due diligence?</span>
+                            <span class="text-primary transition-transform group-open:rotate-180">&darr;</span>
+                        </summary>
+                        <p class="text-xs text-ink-mute mt-4 leading-relaxed">Yes. Our valuation reports synthesize Discounted Cash Flow (DCF), Scorecard Benchmarks, and comparative public/private multiple methodologies, providing transparent mathematical driver logic that institutional analysts can stress-test.</p>
+                    </details>
+
+                    <details class="article-accordion p-6 bg-canvas rounded-xl border border-hairline group">
+                        <summary class="font-semibold text-sm cursor-pointer list-none flex justify-between items-center text-ink">
+                            <span>What SaaS unit economic metrics do you evaluate and optimize?</span>
+                            <span class="text-primary transition-transform group-open:rotate-180">&darr;</span>
+                        </summary>
+                        <p class="text-xs text-ink-mute mt-4 leading-relaxed">We model Customer Acquisition Cost (CAC), Lifetime Value (LTV), LTV:CAC ratios, CAC Payback Period, Net Revenue Retention (NRR), Gross Margin Yield, and Magic Number to ensure capital efficiency.</p>
+                    </details>
+
+                    <details class="article-accordion p-6 bg-canvas rounded-xl border border-hairline group">
+                        <summary class="font-semibold text-sm cursor-pointer list-none flex justify-between items-center text-ink">
+                            <span>How long does it take to construct an investor-ready financial model?</span>
+                            <span class="text-primary transition-transform group-open:rotate-180">&darr;</span>
+                        </summary>
+                        <p class="text-xs text-ink-mute mt-4 leading-relaxed">A standard financial modeling sprint takes 1 to 2 weeks, depending on the complexity of your historical accounting data, subscription tiers, and multi-currency operations.</p>
+                    </details>
+
+                    <details class="article-accordion p-6 bg-canvas rounded-xl border border-hairline group">
+                        <summary class="font-semibold text-sm cursor-pointer list-none flex justify-between items-center text-ink">
+                            <span>Do you help with investor pitch deck data rooms and board presentations?</span>
+                            <span class="text-primary transition-transform group-open:rotate-180">&darr;</span>
+                        </summary>
+                        <p class="text-xs text-ink-mute mt-4 leading-relaxed">Yes. We package the financial outputs into executive summary dashboards, cap table dilution waterfalls, and clean virtual data room schedules formatted for institutional investment committees.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Complementary Services -->
+        <section class="section-padding border-t border-hairline">
+            <div class="container-main">
+                <div class="max-w-2xl mb-12 gsap-fade-up">
+                    <p class="text-xs font-semibold tracking-widest text-primary uppercase mb-2">Integrated Solutions</p>
+                    <h2 class="display-lg mb-3">Frequently Paired Capabilities</h2>
+                    <p class="body-sm text-ink-mute">Pair capital strategy with legal compliance and engineering architecture for comprehensive corporate governance.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 gsap-fade-up">
+                    <a href="law-compliance.html" class="p-8 bg-canvas-soft rounded-2xl border border-hairline block hover:border-hairline-strong transition-all group">
+                        <div class="text-xs font-mono text-primary font-semibold uppercase mb-2">04 &mdash; Protection &amp; Governance</div>
+                        <h3 class="heading-lg text-ink group-hover:text-primary transition-colors mb-2">Law &amp; Tech Compliance Advisory &rarr;</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Ensure corporate contracts, developer IP assignments, and GDPR compliance align directly with your cap table valuation documentation.</p>
+                    </a>
+
+                    <a href="web-engineering.html" class="p-8 bg-canvas-soft rounded-2xl border border-hairline block hover:border-hairline-strong transition-all group">
+                        <div class="text-xs font-mono text-primary font-semibold uppercase mb-2">01 &mdash; Engineering</div>
+                        <h3 class="heading-lg text-ink group-hover:text-primary transition-colors mb-2">Web Engineering &amp; Platform Architecture &rarr;</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Build products with high unit-economic gross margins by deploying cloud-native architectures that keep server compute costs under control.</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Final CTA -->
+        <section class="cta-section bg-canvas-soft border-t border-hairline gsap-fade-up">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="display-xxl mb-6">Ready to Master Your Capital Runway?</h2>
+                <p class="body-lg max-w-xl mx-auto mb-10 text-ink-mute">Schedule a confidential financial strategy session to review your unit economics, burn multiple, and model architecture.</p>
+                <div class="magnetic-wrap">
+                    <a href="contact.html?service=corporate-finance" class="btn-primary btn-primary-lg">Schedule Financial Advisory</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer-light">
+        <div class="max-w-[1280px] mx-auto flex flex-col md:flex-row justify-between items-center text-sm gap-y-4 md:gap-y-0">
+            <div class="font-medium" style="letter-spacing: -0.04em;">DIGINIXIT.</div>
+            <div class="flex flex-wrap justify-center gap-x-6 gap-y-2">
+                <a href="./">Home</a>
+                <a href="services.html">Services</a>
+                <a href="blog.html">Blog</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div>&copy; 2026 DiginixIT. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/ui-primitives.js" defer></script>
+    <script src="js/ui-components.js" defer></script>
+    <script src="js/common.js" defer></script>
+    <script src="js/script.js" defer></script>
+</body>
+
+</html>

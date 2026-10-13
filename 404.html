@@ -74,7 +74,43 @@
 
             <div class="hidden md:flex space-x-8 items-center text-sm font-medium">
                 <a href="./" class="nav-item-link" id="nav-home">Home</a>
-                <a href="services.html" class="nav-item-link" id="nav-services">Our Services</a>
+                <div class="nav-dropdown-wrapper relative group" id="nav-services-dropdown">
+                    <a href="services.html" class="nav-item-link inline-flex items-center gap-1.5 py-2" id="nav-services" aria-haspopup="true" aria-expanded="false">
+                        <span>Our Services</span>
+                        <svg class="w-3.5 h-3.5 nav-dropdown-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+                    </a>
+                    <div class="nav-dropdown-menu">
+                        <a href="web-engineering.html" class="nav-dropdown-item">
+                            <span class="item-title">Web Engineering</span>
+                            <span class="item-desc">High-performance apps &amp; custom SaaS architecture</span>
+                        </a>
+                        <a href="ui-ux-design.html" class="nav-dropdown-item">
+                            <span class="item-title">UI/UX Product Design</span>
+                            <span class="item-desc">Bespoke design systems &amp; cognitive flows</span>
+                        </a>
+                        <a href="technical-seo.html" class="nav-dropdown-item">
+                            <span class="item-title">Technical SEO</span>
+                            <span class="item-desc">Core Web Vitals &amp; entity search architecture</span>
+                        </a>
+                        <a href="social-media-marketing.html" class="nav-dropdown-item">
+                            <span class="item-title">Social Media Marketing</span>
+                            <span class="item-desc">Audience acquisition &amp; organic distribution loops</span>
+                        </a>
+                        <a href="law-compliance.html" class="nav-dropdown-item">
+                            <span class="item-title">Law &amp; Tech Compliance</span>
+                            <span class="item-desc">GDPR audits, enterprise MSAs &amp; IP protection</span>
+                        </a>
+                        <a href="corporate-finance.html" class="nav-dropdown-item">
+                            <span class="item-title">Corporate Finance</span>
+                            <span class="item-desc">Dynamic financial models, valuations &amp; runways</span>
+                        </a>
+                        <div class="nav-dropdown-divider"></div>
+                        <a href="services.html" class="nav-dropdown-footer">
+                            <span>Overview: All Capabilities</span>
+                            <span class="text-primary font-bold">&rarr;</span>
+                        </a>
+                    </div>
+                </div>
                 <a href="blog.html" class="nav-item-link" id="nav-blog">Blog</a>
                 <a href="contact.html" class="nav-item-link" id="nav-contact">Contact</a>
             </div>
@@ -95,14 +131,30 @@
     </nav>
 
     <!-- Mobile Drawer -->
-    <div id="mobile-menu" class="fixed inset-0 z-40 bg-canvas transform translate-x-full transition-transform duration-300 ease-in-out md:hidden flex flex-col justify-between p-8 pt-24">
-        <div class="flex flex-col space-y-6 text-2xl font-medium" style="letter-spacing: -0.02em;">
+    <div id="mobile-menu" class="fixed inset-0 z-40 bg-canvas transform translate-x-full transition-transform duration-300 ease-in-out md:hidden flex flex-col justify-between p-8 pt-24 overflow-y-auto">
+        <div class="flex flex-col space-y-4 text-xl font-medium" style="letter-spacing: -0.02em;">
             <a href="./" class="mobile-nav-link hover:text-ink-mute transition-colors">Home</a>
-            <a href="services.html" class="mobile-nav-link hover:text-ink-mute transition-colors">Our Services</a>
+            
+            <div class="mobile-services-accordion">
+                <button type="button" id="mobile-services-toggle" class="w-full flex items-center justify-between text-xl font-medium hover:text-ink-mute transition-colors py-1 text-left" aria-expanded="false">
+                    <span>Our Services</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-200" id="mobile-services-chevron"></i>
+                </button>
+                <div id="mobile-services-list" class="hidden pl-4 pr-1 py-3 flex-col space-y-3 text-sm text-ink-mute border-l border-hairline mt-2">
+                    <a href="web-engineering.html" class="hover:text-ink transition-colors block">Web Engineering</a>
+                    <a href="ui-ux-design.html" class="hover:text-ink transition-colors block">UI/UX Product Design</a>
+                    <a href="technical-seo.html" class="hover:text-ink transition-colors block">Technical SEO</a>
+                    <a href="social-media-marketing.html" class="hover:text-ink transition-colors block">Social Media Marketing</a>
+                    <a href="law-compliance.html" class="hover:text-ink transition-colors block">Law &amp; Tech Compliance</a>
+                    <a href="corporate-finance.html" class="hover:text-ink transition-colors block">Corporate Finance</a>
+                    <a href="services.html" class="text-xs font-semibold text-primary pt-1 block">All Capabilities &rarr;</a>
+                </div>
+            </div>
+
             <a href="blog.html" class="mobile-nav-link hover:text-ink-mute transition-colors">Blog</a>
             <a href="contact.html" class="mobile-nav-link hover:text-ink-mute transition-colors">Contact</a>
         </div>
-        <div class="flex flex-col space-y-4" id="mobile-auth-container">
+        <div class="flex flex-col space-y-4 pt-6" id="mobile-auth-container">
             <a href="auth.html?mode=signin" class="w-full text-center py-4 border border-hairline rounded-md font-medium hover:bg-canvas-soft transition-colors text-sm" id="mobile-btn-signin">Sign In</a>
             <a href="auth.html?mode=signup" class="btn-primary w-full text-center py-4 text-sm" id="mobile-btn-signup">Get Started</a>
         </div>

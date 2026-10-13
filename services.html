@@ -104,7 +104,7 @@
         "@context": "https://schema.org",
         "@type": "ItemList",
         "name": "DiginixIT Services",
-        "description": "Premium technology and consulting services for modern businesses",
+        "description": "Premium technology, design, and strategic consulting services for modern businesses",
         "itemListElement": [
             {
                 "@type": "ListItem",
@@ -114,7 +114,7 @@
                     "name": "Web Engineering",
                     "description": "Custom high-performance web applications, SaaS platforms, and API integrations built with modern tech stacks.",
                     "provider": {"@type": "Organization", "name": "DiginixIT"},
-                    "url": "https://diginixit.com/services.html#web-engineering"
+                    "url": "https://diginixit.com/web-engineering.html"
                 }
             },
             {
@@ -125,7 +125,7 @@
                     "name": "UI/UX Design",
                     "description": "Bespoke design systems, user experience architecture, and premium interface design for web and mobile.",
                     "provider": {"@type": "Organization", "name": "DiginixIT"},
-                    "url": "https://diginixit.com/services.html#ux-design"
+                    "url": "https://diginixit.com/ui-ux-design.html"
                 }
             },
             {
@@ -136,7 +136,7 @@
                     "name": "Technical SEO",
                     "description": "Core Web Vitals optimisation, structured data implementation, crawl budget management, and search ranking strategy.",
                     "provider": {"@type": "Organization", "name": "DiginixIT"},
-                    "url": "https://diginixit.com/services.html#technical-seo"
+                    "url": "https://diginixit.com/technical-seo.html"
                 }
             },
             {
@@ -144,10 +144,10 @@
                 "position": 4,
                 "item": {
                     "@type": "Service",
-                    "name": "Law & Compliance",
-                    "description": "Technology law consulting, GDPR/CCPA compliance audits, IP protection, and privacy policy drafting for digital businesses.",
+                    "name": "Social Media Marketing",
+                    "description": "Data-driven social media growth, editorial content architecture, and closed-loop conversion attribution.",
                     "provider": {"@type": "Organization", "name": "DiginixIT"},
-                    "url": "https://diginixit.com/services.html#law-compliance"
+                    "url": "https://diginixit.com/social-media-marketing.html"
                 }
             },
             {
@@ -155,10 +155,21 @@
                 "position": 5,
                 "item": {
                     "@type": "Service",
+                    "name": "Law & Compliance",
+                    "description": "Technology law consulting, GDPR/CCPA compliance audits, IP protection, and privacy policy drafting for digital businesses.",
+                    "provider": {"@type": "Organization", "name": "DiginixIT"},
+                    "url": "https://diginixit.com/law-compliance.html"
+                }
+            },
+            {
+                "@type": "ListItem",
+                "position": 6,
+                "item": {
+                    "@type": "Service",
                     "name": "Corporate Finance",
                     "description": "Financial modelling, company valuations, fundraising strategy, and cash flow management for technology companies.",
                     "provider": {"@type": "Organization", "name": "DiginixIT"},
-                    "url": "https://diginixit.com/services.html#corporate-finance"
+                    "url": "https://diginixit.com/corporate-finance.html"
                 }
             }
         ]
@@ -178,17 +189,52 @@
             <a href="./" class="text-xl font-medium tracking-tighter text-ink"
                 style="letter-spacing: -0.04em;">DIGINIXIT.</a>
 
+            <!-- Desktop Menu -->
             <div class="hidden md:flex space-x-8 items-center text-sm font-medium">
                 <a href="./" class="nav-item-link" id="nav-home">Home</a>
-                <a href="services.html" class="nav-item-link" id="nav-services">Our Services</a>
+                <div class="nav-dropdown-wrapper relative group" id="nav-services-dropdown">
+                    <a href="services.html" class="nav-item-link inline-flex items-center gap-1.5 py-2 active-nav-link" id="nav-services" aria-haspopup="true" aria-expanded="false">
+                        <span>Our Services</span>
+                        <svg class="w-3.5 h-3.5 nav-dropdown-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+                    </a>
+                    <div class="nav-dropdown-menu">
+                        <a href="web-engineering.html" class="nav-dropdown-item">
+                            <span class="item-title">Web Engineering</span>
+                            <span class="item-desc">High-performance apps &amp; custom SaaS architecture</span>
+                        </a>
+                        <a href="ui-ux-design.html" class="nav-dropdown-item">
+                            <span class="item-title">UI/UX Product Design</span>
+                            <span class="item-desc">Bespoke design systems &amp; cognitive flows</span>
+                        </a>
+                        <a href="technical-seo.html" class="nav-dropdown-item">
+                            <span class="item-title">Technical SEO</span>
+                            <span class="item-desc">Core Web Vitals &amp; entity search architecture</span>
+                        </a>
+                        <a href="social-media-marketing.html" class="nav-dropdown-item">
+                            <span class="item-title">Social Media Marketing</span>
+                            <span class="item-desc">Audience acquisition &amp; organic distribution loops</span>
+                        </a>
+                        <a href="law-compliance.html" class="nav-dropdown-item">
+                            <span class="item-title">Law &amp; Tech Compliance</span>
+                            <span class="item-desc">GDPR audits, enterprise MSAs &amp; IP protection</span>
+                        </a>
+                        <a href="corporate-finance.html" class="nav-dropdown-item">
+                            <span class="item-title">Corporate Finance</span>
+                            <span class="item-desc">Dynamic financial models, valuations &amp; runways</span>
+                        </a>
+                        <div class="nav-dropdown-divider"></div>
+                        <a href="services.html" class="nav-dropdown-footer">
+                            <span>Overview: All Capabilities</span>
+                            <span class="text-primary font-bold">&rarr;</span>
+                        </a>
+                    </div>
+                </div>
                 <a href="blog.html" class="nav-item-link" id="nav-blog">Blog</a>
                 <a href="contact.html" class="nav-item-link" id="nav-contact">Contact</a>
             </div>
 
             <div class="hidden md:flex space-x-4 items-center" id="desktop-auth-container">
-                <a href="auth.html?mode=signin"
-                    class="text-sm font-medium text-ink-mute hover:text-ink transition-colors" id="btn-signin">Sign
-                    In</a>
+                <a href="auth.html?mode=signin" class="text-sm font-medium text-ink-mute hover:text-ink transition-colors" id="btn-signin">Sign In</a>
                 <div class="magnetic-wrap">
                     <a href="auth.html?mode=signup" class="btn-primary" id="btn-signup">Get Started</a>
                 </div>
@@ -204,14 +250,30 @@
 
     <!-- Mobile Drawer -->
     <div id="mobile-menu"
-        class="fixed inset-0 z-40 bg-canvas transform translate-x-full transition-transform duration-300 ease-in-out md:hidden flex flex-col justify-between p-8 pt-24">
-        <div class="flex flex-col space-y-6 text-2xl font-medium" style="letter-spacing: -0.02em;">
+        class="fixed inset-0 z-40 bg-canvas transform translate-x-full transition-transform duration-300 ease-in-out md:hidden flex flex-col justify-between p-8 pt-24 overflow-y-auto">
+        <div class="flex flex-col space-y-4 text-xl font-medium" style="letter-spacing: -0.02em;">
             <a href="./" class="mobile-nav-link hover:text-ink-mute transition-colors">Home</a>
-            <a href="services.html" class="mobile-nav-link hover:text-ink-mute transition-colors">Our Services</a>
+            
+            <div class="mobile-services-accordion">
+                <button type="button" id="mobile-services-toggle" class="w-full flex items-center justify-between text-xl font-medium hover:text-ink-mute transition-colors py-1 text-left" aria-expanded="false">
+                    <span>Our Services</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-200" id="mobile-services-chevron"></i>
+                </button>
+                <div id="mobile-services-list" class="hidden pl-4 pr-1 py-3 flex-col space-y-3 text-sm text-ink-mute border-l border-hairline mt-2">
+                    <a href="web-engineering.html" class="hover:text-ink transition-colors block">Web Engineering</a>
+                    <a href="ui-ux-design.html" class="hover:text-ink transition-colors block">UI/UX Product Design</a>
+                    <a href="technical-seo.html" class="hover:text-ink transition-colors block">Technical SEO</a>
+                    <a href="social-media-marketing.html" class="hover:text-ink transition-colors block">Social Media Marketing</a>
+                    <a href="law-compliance.html" class="hover:text-ink transition-colors block">Law &amp; Tech Compliance</a>
+                    <a href="corporate-finance.html" class="hover:text-ink transition-colors block">Corporate Finance</a>
+                    <a href="services.html" class="text-xs font-semibold text-primary pt-1 block">All Capabilities &rarr;</a>
+                </div>
+            </div>
+
             <a href="blog.html" class="mobile-nav-link hover:text-ink-mute transition-colors">Blog</a>
             <a href="contact.html" class="mobile-nav-link hover:text-ink-mute transition-colors">Contact</a>
         </div>
-        <div class="flex flex-col space-y-4" id="mobile-auth-container">
+        <div class="flex flex-col space-y-4 pt-6" id="mobile-auth-container">
             <a href="auth.html?mode=signin"
                 class="w-full text-center py-4 border border-hairline rounded-md font-medium hover:bg-canvas-soft transition-colors text-sm"
                 id="mobile-btn-signin">Sign In</a>
@@ -292,9 +354,10 @@
                             <p class="text-xs text-ink-mute leading-relaxed">Every engagement follows strict engineering milestones: comprehensive architectural scoping, test-driven development, automated performance benchmarks, and rigorous code reviews before production rollout.</p>
                         </div>
 
-                        <!-- CTA -->
-                        <div class="pt-2">
-                            <a href="contact.html?service=web-engineering" class="btn-primary" style="display: inline-flex; align-items: center; gap: 0.5rem;">Scope Web Engineering Project <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                        <!-- CTA & Dedicated Page Link -->
+                        <div class="pt-2 flex flex-wrap items-center gap-4">
+                            <a href="web-engineering.html" class="btn-primary" style="display: inline-flex; align-items: center; gap: 0.5rem;">Explore Full Web Engineering Page <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                            <a href="contact.html?service=web-engineering" class="btn-secondary" style="display: inline-flex; align-items: center; gap: 0.5rem;">Scope Project</a>
                         </div>
                     </div>
 
@@ -387,9 +450,10 @@
                             <p class="text-xs text-ink-mute leading-relaxed">We design with code in mind. Every layout, typography decision, and spacing token is structured to translate cleanly into production CSS without design compromises.</p>
                         </div>
 
-                        <!-- CTA -->
-                        <div class="pt-2">
-                            <a href="contact.html?service=ux-design" class="btn-primary" style="display: inline-flex; align-items: center; gap: 0.5rem;">Initiate UI/UX Design Sprint <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                        <!-- CTA & Dedicated Page Link -->
+                        <div class="pt-2 flex flex-wrap items-center gap-4">
+                            <a href="ui-ux-design.html" class="btn-primary" style="display: inline-flex; align-items: center; gap: 0.5rem;">Explore Full UI/UX Design Page <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                            <a href="contact.html?service=ux-design" class="btn-secondary" style="display: inline-flex; align-items: center; gap: 0.5rem;">Initiate Sprint</a>
                         </div>
                     </div>
                 </div>
@@ -449,9 +513,10 @@
                             <p class="text-xs text-ink-mute leading-relaxed">We don't hand you an overwhelming PDF report and walk away. Our engineers directly implement the code, server headers, and structured data changes necessary to achieve measurable ranking lifts.</p>
                         </div>
 
-                        <!-- CTA -->
-                        <div class="pt-2">
-                            <a href="contact.html?service=technical-seo" class="btn-primary" style="display: inline-flex; align-items: center; gap: 0.5rem;">Schedule a Technical SEO Audit <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                        <!-- CTA & Dedicated Page Link -->
+                        <div class="pt-2 flex flex-wrap items-center gap-4">
+                            <a href="technical-seo.html" class="btn-primary" style="display: inline-flex; align-items: center; gap: 0.5rem;">Explore Full Technical SEO Page <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                            <a href="contact.html?service=technical-seo" class="btn-secondary" style="display: inline-flex; align-items: center; gap: 0.5rem;">Schedule Audit</a>
                         </div>
                     </div>
 
@@ -544,9 +609,10 @@
                             <p class="text-xs text-ink-mute leading-relaxed">Our advisory is tailored specifically for digital software ventures. We don't produce passive legal disclaimers; we construct enforceable operational agreements and privacy workflows that directly protect your balance sheet.</p>
                         </div>
 
-                        <!-- CTA -->
-                        <div class="pt-2">
-                            <a href="contact.html?service=law-compliance" class="btn-primary" style="display: inline-flex; align-items: center; gap: 0.5rem;">Request Compliance Audit <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                        <!-- CTA & Dedicated Page Link -->
+                        <div class="pt-2 flex flex-wrap items-center gap-4">
+                            <a href="law-compliance.html" class="btn-primary" style="display: inline-flex; align-items: center; gap: 0.5rem;">Explore Full Legal Compliance Page <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                            <a href="contact.html?service=law-compliance" class="btn-secondary" style="display: inline-flex; align-items: center; gap: 0.5rem;">Request Audit</a>
                         </div>
                     </div>
                 </div>
@@ -606,9 +672,10 @@
                             <p class="text-xs text-ink-mute leading-relaxed">We approach corporate finance as an engineering discipline. Every metric links directly to operational software drivers, giving board members and founders an accurate simulation of their business trajectory.</p>
                         </div>
 
-                        <!-- CTA -->
-                        <div class="pt-2">
-                            <a href="contact.html?service=corporate-finance" class="btn-primary" style="display: inline-flex; align-items: center; gap: 0.5rem;">Schedule Financial Advisory Session <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                        <!-- CTA & Dedicated Page Link -->
+                        <div class="pt-2 flex flex-wrap items-center gap-4">
+                            <a href="corporate-finance.html" class="btn-primary" style="display: inline-flex; align-items: center; gap: 0.5rem;">Explore Full Corporate Finance Page <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                            <a href="contact.html?service=corporate-finance" class="btn-secondary" style="display: inline-flex; align-items: center; gap: 0.5rem;">Schedule Session</a>
                         </div>
                     </div>
 
@@ -631,8 +698,88 @@
             </div>
         </section>
 
+        <!-- Service 6: Social Media Marketing -->
+        <section id="social-media-marketing" class="section-padding bg-canvas-soft border-t border-hairline">
+            <div class="container-main">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+                    <!-- Left Column: Illustration & Key Specs -->
+                    <div class="order-last lg:order-first gsap-fade-up lg:sticky lg:top-32 space-y-8 flex flex-col items-center">
+                        <div class="w-full max-w-md bg-canvas rounded-2xl p-6 flex items-center justify-center relative overflow-hidden border border-hairline shadow-1">
+                            <img src="images/social_media_marketing.webp" alt="Data-driven social media marketing, content planning and organic audience growth illustration" class="w-full h-auto object-contain" width="480" height="400" loading="lazy">
+                        </div>
+
+                        <!-- Specs Card -->
+                        <div class="w-full max-w-md p-6 bg-canvas rounded-2xl border border-hairline space-y-3 text-xs">
+                            <div class="font-medium text-ink uppercase tracking-wider font-mono text-[11px]">Marketing &amp; Distribution Targets</div>
+                            <div class="flex justify-between py-1.5 border-b border-hairline text-ink-mute"><span>Channel Focus</span><span class="font-mono text-ink">LinkedIn, X (Twitter), Meta, YouTube</span></div>
+                            <div class="flex justify-between py-1.5 border-b border-hairline text-ink-mute"><span>Planning Cadence</span><span class="font-mono text-ink">Bi-Weekly Pre-Approved Sprints</span></div>
+                            <div class="flex justify-between py-1.5 border-b border-hairline text-ink-mute"><span>Attribution Standard</span><span class="font-mono text-primary font-semibold">Custom UTMs &amp; GA4 Telemetry</span></div>
+                            <div class="flex justify-between pt-1.5 text-ink-mute"><span>Content Integrity</span><span class="font-mono text-ink">Subject-Matter Human Expertise</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Text & Deep Content -->
+                    <div class="space-y-8 gsap-fade-up">
+                        <div>
+                            <p class="text-xs font-medium tracking-widest text-ink-mute uppercase mb-3">06 — Growth &amp; Distribution</p>
+                            <h2 class="display-xl mb-4">Data-Driven Social Media Marketing &amp; Organic Growth</h2>
+                            <p class="body-lg text-ink-mute leading-relaxed">Random posting and superficial engagement metrics do not build sustainable enterprise value. We engineer structured, platform-specific content systems that translate your technical subject-matter expertise into market authority, audience trust, and qualified inbound inquiries.</p>
+                        </div>
+
+                        <!-- What The Service Includes -->
+                        <div class="space-y-4">
+                            <h3 class="heading-lg text-ink">Social Growth Engineering Scope</h3>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div class="p-5 bg-canvas rounded-xl border border-hairline space-y-2">
+                                    <h4 class="font-semibold text-sm text-ink">Platform Content Architecture</h4>
+                                    <p class="text-xs text-ink-mute leading-relaxed">Tailored editorial frameworks for LinkedIn, X (Twitter), Meta, and YouTube aligned with native distribution algorithms.</p>
+                                </div>
+                                <div class="p-5 bg-canvas rounded-xl border border-hairline space-y-2">
+                                    <h4 class="font-semibold text-sm text-ink">Editorial Calendars &amp; Assets</h4>
+                                    <p class="text-xs text-ink-mute leading-relaxed">Pre-approved bi-weekly content sprints featuring high-value thought leadership, technical teardowns, carousels, and custom branded graphics.</p>
+                                </div>
+                                <div class="p-5 bg-canvas rounded-xl border border-hairline space-y-2">
+                                    <h4 class="font-semibold text-sm text-ink">Audience Engagement Loops</h4>
+                                    <p class="text-xs text-ink-mute leading-relaxed">Proactive comment management, industry peer discussion participation, and executive outreach that embeds your brand into peer networks.</p>
+                                </div>
+                                <div class="p-5 bg-canvas rounded-xl border border-hairline space-y-2">
+                                    <h4 class="font-semibold text-sm text-ink">Closed-Loop Conversion Tracking</h4>
+                                    <p class="text-xs text-ink-mute leading-relaxed">Strict UTM parameter taxonomies and Google Analytics 4 event mapping to track leads from social impression to closed contract.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Problems We Solve -->
+                        <div class="space-y-3 pt-2">
+                            <h3 class="heading-lg text-ink">Problems We Solve</h3>
+                            <ul class="space-y-2.5 text-sm text-ink-mute">
+                                <li class="flex items-start gap-3"><span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span> <span><strong>Superficial Vanity Follower Traps:</strong> Eliminating reliance on passive follower counts to prioritize verified customer inquiry and pipeline generation.</span></li>
+                                <li class="flex items-start gap-3"><span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span> <span><strong>Generic Clichéd Copy:</strong> Eradicating generic AI-generated copy in favor of authoritative, human-crafted technical insight that impresses decision-makers.</span></li>
+                                <li class="flex items-start gap-3"><span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span> <span><strong>Unmeasured Social Spend:</strong> Providing transparent attribution reports so leadership knows exact revenue returns from every social campaign.</span></li>
+                            </ul>
+                        </div>
+
+                        <!-- Approach & Why Choose Us -->
+                        <div class="p-6 bg-canvas rounded-xl border border-hairline space-y-3">
+                            <div class="flex items-center justify-between text-xs font-mono text-ink">
+                                <span class="text-primary font-semibold uppercase tracking-wider">Methodology</span>
+                                <span>Audience Audit &rarr; Editorial Architecture &rarr; Sprints &rarr; Attribution Telemetry</span>
+                            </div>
+                            <p class="text-xs text-ink-mute leading-relaxed">We treat social media as an organic distribution pipeline. Every post connects to verified customer pain points and drives qualified visitors toward conversion-optimized landing pages.</p>
+                        </div>
+
+                        <!-- CTA & Dedicated Page Link -->
+                        <div class="pt-2 flex flex-wrap items-center gap-4">
+                            <a href="social-media-marketing.html" class="btn-primary" style="display: inline-flex; align-items: center; gap: 0.5rem;">Explore Full Social Media Page <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                            <a href="contact.html?service=social-media-marketing" class="btn-secondary" style="display: inline-flex; align-items: center; gap: 0.5rem;">Book Growth Consultation</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- CTA -->
-        <section class="cta-section bg-canvas-soft border-t border-hairline gsap-fade-up">
+        <section class="cta-section bg-canvas border-t border-hairline gsap-fade-up">
             <div class="max-w-3xl mx-auto">
                 <h2 class="display-xxl mb-6">Ready to Engineer Your Advantage?</h2>
                 <p class="body-lg max-w-xl mx-auto mb-10 text-ink-mute">Schedule a confidential strategic consultation with our engineering, legal, or finance leadership to map out your implementation roadmap.</p>

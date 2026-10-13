@@ -1571,21 +1571,72 @@ async function initializeAuth() {
 }
 window.initializeAuth = initializeAuth;
 
-// --- 7. Mobile Hamburger Drawer Menu Toggle ---
+// --- 7. Mobile Hamburger Drawer Menu & Services Accordion Toggle ---
 function initMobileMenu() {
     const hamburgerBtn = document.getElementById('hamburger-btn');
     const mobileMenu = document.getElementById('mobile-menu');
-    if (!hamburgerBtn || !mobileMenu) return;
+    if (hamburgerBtn && mobileMenu) {
+        hamburgerBtn.addEventListener('click', () => {
+            const isOpen = mobileMenu.classList.toggle('active');
+            hamburgerBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            if (isOpen) {
+                hamburgerBtn.innerHTML = `<i data-lucide="x" class="w-6 h-6"></i>`;
+            } else {
+                hamburgerBtn.innerHTML = `<i data-lucide="menu" class="w-6 h-6"></i>`;
+            }
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        });
+    }
 
-    hamburgerBtn.addEventListener('click', () => {
-        const isOpen = mobileMenu.classList.toggle('active');
-        if (isOpen) {
-            hamburgerBtn.innerHTML = `<i data-lucide="x" class="w-6 h-6"></i>`;
-        } else {
-            hamburgerBtn.innerHTML = `<i data-lucide="menu" class="w-6 h-6"></i>`;
+    // Mobile services accordion
+    const mobileServicesToggle = document.getElementById('mobile-services-toggle');
+    const mobileServicesList = document.getElementById('mobile-services-list');
+    const mobileServicesChevron = document.getElementById('mobile-services-chevron');
+    if (mobileServicesToggle && mobileServicesList) {
+        mobileServicesToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            const isHidden = mobileServicesList.classList.toggle('hidden');
+            mobileServicesToggle.setAttribute('aria-expanded', isHidden ? 'false' : 'true');
+            if (mobileServicesChevron) {
+                mobileServicesChevron.style.transform = isHidden ? 'rotate(0deg)' : 'rotate(180deg)';
+            }
+        });
+    }
+}
+
+// --- 7b. Desktop Services Dropdown Accessibility ---
+function initServicesDropdown() {
+    const dropdownWrap = document.getElementById('nav-services-dropdown');
+    const dropdownTrigger = document.getElementById('nav-services');
+    if (!dropdownWrap || !dropdownTrigger) return;
+
+    dropdownTrigger.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowDown') {
+            e.preventDefault();
+            dropdownWrap.classList.toggle('is-open');
+            const isOpen = dropdownWrap.classList.contains('is-open');
+            dropdownTrigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            if (isOpen) {
+                const firstItem = dropdownWrap.querySelector('.nav-dropdown-item');
+                if (firstItem) firstItem.focus();
+            }
         }
-        if (typeof lucide !== 'undefined') {
-            lucide.createIcons();
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!dropdownWrap.contains(e.target)) {
+            dropdownWrap.classList.remove('is-open');
+            dropdownTrigger.setAttribute('aria-expanded', 'false');
+        }
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && dropdownWrap.classList.contains('is-open')) {
+            dropdownWrap.classList.remove('is-open');
+            dropdownTrigger.setAttribute('aria-expanded', 'false');
+            dropdownTrigger.focus();
         }
     });
 }
@@ -1597,7 +1648,14 @@ function highlightActiveNav() {
 
     const navMap = {
         'index.html': 'nav-home',
+        '': 'nav-home',
         'services.html': 'nav-services',
+        'web-engineering.html': 'nav-services',
+        'ui-ux-design.html': 'nav-services',
+        'technical-seo.html': 'nav-services',
+        'social-media-marketing.html': 'nav-services',
+        'law-compliance.html': 'nav-services',
+        'corporate-finance.html': 'nav-services',
         'blog.html': 'nav-blog',
         'article.html': 'nav-blog',
         'profile.html': 'nav-profile',
@@ -1628,6 +1686,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initLocalStorage();
     updateNavbarAuth();
     initMobileMenu();
+    initServicesDropdown();
     highlightActiveNav();
     if (typeof lucide !== 'undefined') {
         lucide.createIcons();

@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        try {
+            if (JSON.parse(localStorage.getItem('settings') || '{}').maintenanceMode) {
+                document.documentElement.style.display = 'none';
+                window.location.replace('maintenance.html');
+            }
+        } catch (e) {}
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-3363493243397953">
+    <title>Custom Web Engineering & SaaS Architecture Services | DiginixIT</title>
+    <meta name="description"
+        content="Production-grade custom web application engineering, microservices architecture, and scalable SaaS platforms. Sub-100ms Core Web Vitals and 100% client code ownership.">
+    <meta name="keywords"
+        content="web engineering services, custom web app development, SaaS platform architecture, full stack web engineering, microservices architecture, cloud native web development, API engineering Pakistan">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://diginixit.com/web-engineering.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://diginixit.com/web-engineering.html">
+    <meta property="og:title" content="Custom Web Engineering & SaaS Architecture Services | DiginixIT">
+    <meta property="og:description"
+        content="Production-grade custom web application engineering, microservices architecture, and scalable SaaS platforms. Built for sub-100ms performance and zero vendor lock-in.">
+    <meta property="og:image" content="https://diginixit.com/images/og-home.jpg">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://diginixit.com/web-engineering.html">
+    <meta name="twitter:title" content="Custom Web Engineering & SaaS Architecture Services | DiginixIT">
+    <meta name="twitter:description"
+        content="Production-grade custom web application engineering, microservices architecture, and scalable SaaS platforms. Built for sub-100ms performance and zero vendor lock-in.">
+    <meta name="twitter:image" content="https://diginixit.com/images/og-home.jpg">
+
+    <!-- DNS Prefetch & Preconnect -->
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://unpkg.com">
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <meta name="color-scheme" content="light">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Tailwind Configuration -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        canvas: '#ffffff',
+                        'canvas-soft': '#fafafa',
+                        'canvas-night': '#1c1c1c',
+                        ink: '#171717',
+                        'ink-mute': '#707070',
+                        'ink-faint': '#b2b2b2',
+                        primary: '#3ecf8e',
+                        'primary-deep': '#24b47e',
+                        hairline: '#dfdfdf',
+                        'hairline-strong': '#c7c7c7',
+                        'hairline-cool': '#ededed'
+                    },
+                    letterSpacing: { tighter: '-0.04em', tight: '-0.02em' }
+                }
+            }
+        };
+    </script>
+
+    <!-- Core Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://diginixit.com/" },
+                    { "@type": "ListItem", "position": 2, "name": "Our Services", "item": "https://diginixit.com/services.html" },
+                    { "@type": "ListItem", "position": 3, "name": "Web Engineering", "item": "https://diginixit.com/web-engineering.html" }
+                ]
+            },
+            {
+                "@type": "Service",
+                "name": "Web Engineering & Platform Architecture",
+                "serviceType": "Software Engineering",
+                "provider": {
+                    "@type": "Organization",
+                    "name": "DiginixIT",
+                    "url": "https://diginixit.com/"
+                },
+                "description": "Production-grade custom web application engineering, microservices architecture, and scalable SaaS platforms built with sub-100ms Core Web Vitals.",
+                "areaServed": "Global",
+                "hasOfferCatalog": {
+                    "@type": "OfferCatalog",
+                    "name": "Web Engineering Deliverables",
+                    "itemListElement": [
+                        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Custom SaaS Platform Engineering" } },
+                        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Cloud-Native Microservices & APIs" } },
+                        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Headless Architecture & Edge Delivery" } },
+                        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Database Modeling & Data Pipelines" } }
+                    ]
+                }
+            },
+            {
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "What tech stacks do you specialize in for web engineering?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "We architect solutions using modern, high-velocity stacks including TypeScript, Node.js, Python, PostgreSQL, Redis, Cloudflare Workers/Pages, and React/Next.js. We prioritize clean architectures without third-party vendor lock-in."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "How do you guarantee sub-100ms Core Web Vitals?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "We optimize the critical rendering path end-to-end: zero-bloat modular JS, edge-side caching, critical CSS inlining, modern WebP/AVIF asset optimization, and minimal DOM depth."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Do we own the source code and infrastructure after completion?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes, completely. 100% of all code repositories, database schemas, CI/CD pipelines, and cloud accounts are assigned directly to you with zero recurring proprietary licensing fees."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Can you refactor or take over an existing legacy codebase?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes. We conduct a thorough architectural and dependency audit to identify performance bottlenecks, technical debt, and security flaws, establishing an incremental refactoring roadmap that maintains 100% operational uptime."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "What is the typical engagement timeline for a web engineering project?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Targeted architectural overhauls or MVPs typically launch within 3 to 6 weeks. Complex enterprise SaaS platforms are executed across milestone-driven two-week sprints."
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+    </script>
+</head>
+
+<body class="bg-canvas text-ink">
+
+    <div class="noise"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 py-4 px-6 md:px-12" aria-label="Main Navigation">
+        <div class="max-w-[1280px] mx-auto flex justify-between items-center">
+            <a href="./" class="text-xl font-medium tracking-tighter text-ink" style="letter-spacing: -0.04em;">DIGINIXIT.</a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-8 items-center text-sm font-medium">
+                <a href="./" class="nav-item-link" id="nav-home">Home</a>
+                <div class="nav-dropdown-wrapper relative group" id="nav-services-dropdown">
+                    <a href="services.html" class="nav-item-link inline-flex items-center gap-1.5 py-2 active-nav-link" id="nav-services" aria-haspopup="true" aria-expanded="false">
+                        <span>Our Services</span>
+                        <svg class="w-3.5 h-3.5 nav-dropdown-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+                    </a>
+                    <div class="nav-dropdown-menu">
+                        <a href="web-engineering.html" class="nav-dropdown-item">
+                            <span class="item-title">Web Engineering</span>
+                            <span class="item-desc">High-performance apps &amp; custom SaaS architecture</span>
+                        </a>
+                        <a href="ui-ux-design.html" class="nav-dropdown-item">
+                            <span class="item-title">UI/UX Product Design</span>
+                            <span class="item-desc">Bespoke design systems &amp; cognitive flows</span>
+                        </a>
+                        <a href="technical-seo.html" class="nav-dropdown-item">
+                            <span class="item-title">Technical SEO</span>
+                            <span class="item-desc">Core Web Vitals &amp; entity search architecture</span>
+                        </a>
+                        <a href="social-media-marketing.html" class="nav-dropdown-item">
+                            <span class="item-title">Social Media Marketing</span>
+                            <span class="item-desc">Audience acquisition &amp; organic distribution loops</span>
+                        </a>
+                        <a href="law-compliance.html" class="nav-dropdown-item">
+                            <span class="item-title">Law &amp; Tech Compliance</span>
+                            <span class="item-desc">GDPR audits, enterprise MSAs &amp; IP protection</span>
+                        </a>
+                        <a href="corporate-finance.html" class="nav-dropdown-item">
+                            <span class="item-title">Corporate Finance</span>
+                            <span class="item-desc">Dynamic financial models, valuations &amp; runways</span>
+                        </a>
+                        <div class="nav-dropdown-divider"></div>
+                        <a href="services.html" class="nav-dropdown-footer">
+                            <span>Overview: All Capabilities</span>
+                            <span class="text-primary font-bold">&rarr;</span>
+                        </a>
+                    </div>
+                </div>
+                <a href="blog.html" class="nav-item-link" id="nav-blog">Blog</a>
+                <a href="contact.html" class="nav-item-link" id="nav-contact">Contact</a>
+            </div>
+
+            <!-- Desktop Auth -->
+            <div class="hidden md:flex space-x-4 items-center" id="desktop-auth-container">
+                <a href="auth.html?mode=signin" class="text-sm font-medium text-ink-mute hover:text-ink transition-colors" id="btn-signin">Sign In</a>
+                <div class="magnetic-wrap">
+                    <a href="auth.html?mode=signup" class="btn-primary" id="btn-signup">Get Started</a>
+                </div>
+            </div>
+
+            <div class="flex md:hidden items-center space-x-3">
+                <button id="hamburger-btn" class="p-2 text-ink focus:outline-none" aria-label="Toggle Menu">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Drawer -->
+    <div id="mobile-menu" class="fixed inset-0 z-40 bg-canvas transform translate-x-full transition-transform duration-300 ease-in-out md:hidden flex flex-col justify-between p-8 pt-24 overflow-y-auto">
+        <div class="flex flex-col space-y-4 text-xl font-medium" style="letter-spacing: -0.02em;">
+            <a href="./" class="mobile-nav-link hover:text-ink-mute transition-colors">Home</a>
+            
+            <div class="mobile-services-accordion">
+                <button type="button" id="mobile-services-toggle" class="w-full flex items-center justify-between text-xl font-medium hover:text-ink-mute transition-colors py-1 text-left" aria-expanded="false">
+                    <span>Our Services</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-200" id="mobile-services-chevron"></i>
+                </button>
+                <div id="mobile-services-list" class="hidden pl-4 pr-1 py-3 flex-col space-y-3 text-sm text-ink-mute border-l border-hairline mt-2">
+                    <a href="web-engineering.html" class="hover:text-ink transition-colors block font-semibold text-primary">Web Engineering</a>
+                    <a href="ui-ux-design.html" class="hover:text-ink transition-colors block">UI/UX Product Design</a>
+                    <a href="technical-seo.html" class="hover:text-ink transition-colors block">Technical SEO</a>
+                    <a href="social-media-marketing.html" class="hover:text-ink transition-colors block">Social Media Marketing</a>
+                    <a href="law-compliance.html" class="hover:text-ink transition-colors block">Law &amp; Tech Compliance</a>
+                    <a href="corporate-finance.html" class="hover:text-ink transition-colors block">Corporate Finance</a>
+                    <a href="services.html" class="text-xs font-semibold text-primary pt-1 block">All Capabilities &rarr;</a>
+                </div>
+            </div>
+
+            <a href="blog.html" class="mobile-nav-link hover:text-ink-mute transition-colors">Blog</a>
+            <a href="contact.html" class="mobile-nav-link hover:text-ink-mute transition-colors">Contact</a>
+        </div>
+        <div class="flex flex-col space-y-4 pt-6" id="mobile-auth-container">
+            <a href="auth.html?mode=signin" class="w-full text-center py-4 border border-hairline rounded-md font-medium hover:bg-canvas-soft transition-colors text-sm" id="mobile-btn-signin">Sign In</a>
+            <a href="auth.html?mode=signup" class="btn-primary w-full text-center py-4 text-sm" id="mobile-btn-signup">Get Started</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="pt-32 pb-0">
+        <div class="container-main">
+            <!-- Breadcrumbs -->
+            <nav class="mb-8 flex items-center space-x-2 text-xs font-medium text-ink-mute uppercase tracking-widest" aria-label="Breadcrumb">
+                <a href="./" class="hover:text-ink transition-colors">Home</a>
+                <span>/</span>
+                <a href="services.html" class="hover:text-ink transition-colors">Our Services</a>
+                <span>/</span>
+                <span class="text-ink font-medium">Web Engineering</span>
+            </nav>
+
+            <!-- Hero Section -->
+            <div class="max-w-4xl mb-16 gsap-fade-up">
+                <p class="text-xs font-semibold tracking-widest text-primary uppercase mb-3">Enterprise Web Engineering</p>
+                <h1 class="display-xxl mb-6">Custom Web Engineering &amp; Scalable Platform Architecture</h1>
+                <p class="body-lg text-ink-mute max-w-3xl leading-relaxed mb-8">
+                    Off-the-shelf templates and bloated page builders hit a wall when user concurrency, complex relational schemas, and sub-100ms latency matter. DiginixIT architects bespoke web applications, SaaS backends, and decoupled digital platforms built to withstand real-world enterprise traffic with zero vendor lock-in.
+                </p>
+                <div class="flex flex-wrap items-center gap-4">
+                    <div class="magnetic-wrap">
+                        <a href="contact.html?service=web-engineering" class="btn-primary btn-primary-lg">Initiate Architecture Sprint</a>
+                    </div>
+                    <div class="magnetic-wrap">
+                        <a href="#capabilities" class="btn-secondary btn-secondary-lg">Explore Deliverables</a>
+                    </div>
+                </div>
+
+                <!-- Proof Badges -->
+                <div class="pt-8 flex flex-wrap items-center gap-x-8 gap-y-3 text-xs text-ink-mute font-medium border-t border-hairline mt-10">
+                    <span class="inline-flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span> Sub-100ms Core Web Vitals SLA</span>
+                    <span class="inline-flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span> 99.99% High-Availability Cloud Architecture</span>
+                    <span class="inline-flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span> 100% Client Code &amp; IP Ownership</span>
+                </div>
+            </div>
+
+            <!-- Hero Media & Quick Specs -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-24 gsap-fade-up">
+                <div class="lg:col-span-8 bg-canvas-soft border border-hairline rounded-2xl p-6 md:p-10 flex items-center justify-center">
+                    <img src="images/web_engineering.webp" alt="Custom web engineering architecture and cloud infrastructure illustration" class="w-full max-w-lg h-auto object-contain" width="600" height="420" loading="eager">
+                </div>
+                <div class="lg:col-span-4 p-6 md:p-8 bg-canvas rounded-2xl border border-hairline shadow-1 space-y-4 text-xs">
+                    <div class="font-mono text-[11px] font-semibold uppercase tracking-wider text-primary">Architecture Benchmarks</div>
+                    <div class="flex justify-between py-2 border-b border-hairline text-ink-mute"><span>Frontend Architecture</span><span class="font-mono text-ink">Modular Vanilla / Next.js / TypeScript</span></div>
+                    <div class="flex justify-between py-2 border-b border-hairline text-ink-mute"><span>API Layer</span><span class="font-mono text-ink">RESTful &amp; GraphQL / Edge Workers</span></div>
+                    <div class="flex justify-between py-2 border-b border-hairline text-ink-mute"><span>Database Engine</span><span class="font-mono text-ink">PostgreSQL / Supabase / Redis</span></div>
+                    <div class="flex justify-between py-2 border-b border-hairline text-ink-mute"><span>Deployment Model</span><span class="font-mono text-ink">Automated CI/CD / Zero-Downtime</span></div>
+                    <div class="flex justify-between pt-2 text-ink-mute"><span>Security Posture</span><span class="font-mono text-primary font-semibold">Strict CSP, OWASP Top 10 Hardened</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section: The Engineering Challenge -->
+        <section class="section-padding bg-canvas-soft border-t border-hairline">
+            <div class="container-main">
+                <div class="max-w-2xl mb-16 gsap-fade-up">
+                    <p class="text-xs font-semibold tracking-widest text-ink-mute uppercase mb-2">The Real Challenge</p>
+                    <h2 class="display-xl mb-4">Why Most Web Applications Fail to Scale</h2>
+                    <p class="body-md text-ink-mute">Modern web development often prioritizes rapid prototyping over sustainable engineering. As platforms grow, foundational compromises manifest as severe operational bottlenecks.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 gsap-fade-up">
+                    <div class="p-8 bg-canvas rounded-2xl border border-hairline space-y-4">
+                        <div class="w-10 h-10 rounded-lg bg-canvas-soft border border-hairline flex items-center justify-center font-mono text-sm font-semibold text-primary">01</div>
+                        <h3 class="heading-lg text-ink">Excessive Framework Bloat</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Stacking third-party npm libraries and heavyweight frameworks triggers multi-second Time to Interactive (TTI), driving bounce rates up and tanking Google ranking signals.</p>
+                    </div>
+
+                    <div class="p-8 bg-canvas rounded-2xl border border-hairline space-y-4">
+                        <div class="w-10 h-10 rounded-lg bg-canvas-soft border border-hairline flex items-center justify-center font-mono text-sm font-semibold text-primary">02</div>
+                        <h3 class="heading-lg text-ink">Brittle Monolithic Backends</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Unoptimized database queries and tight coupling between presentation and data tiers cause server CPU spikes during minor traffic surges, leading to costly downtime.</p>
+                    </div>
+
+                    <div class="p-8 bg-canvas rounded-2xl border border-hairline space-y-4">
+                        <div class="w-10 h-10 rounded-lg bg-canvas-soft border border-hairline flex items-center justify-center font-mono text-sm font-semibold text-primary">03</div>
+                        <h3 class="heading-lg text-ink">Vendor Lock-In &amp; License Debt</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Proprietary platforms trap your business data in walled gardens with escalating per-seat monthly subscription taxes that cripple SaaS gross margins.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Core Capabilities & Deliverables -->
+        <section id="capabilities" class="section-padding border-t border-hairline">
+            <div class="container-main">
+                <div class="max-w-2xl mb-16 gsap-fade-up">
+                    <p class="text-xs font-semibold tracking-widest text-primary uppercase mb-2">Capabilities</p>
+                    <h2 class="display-xl mb-4">Production-Grade Web Engineering Deliverables</h2>
+                    <p class="body-md text-ink-mute">We engineer custom software systems designed for high throughput, maintainability, and clean architectural separation.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 gsap-fade-up">
+                    <!-- Item 1 -->
+                    <div class="p-8 bg-canvas rounded-2xl border border-hairline space-y-3 hover:border-hairline-strong transition-colors">
+                        <h3 class="font-semibold text-base text-ink">Custom SaaS Applications</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Multi-tenant software platforms engineered with strict role-based access control (RBAC), subscription metering, tenant isolation, and interactive data dashboards.</p>
+                        <div class="pt-2 text-[11px] font-mono text-primary">React &bull; TypeScript &bull; Supabase</div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="p-8 bg-canvas rounded-2xl border border-hairline space-y-3 hover:border-hairline-strong transition-colors">
+                        <h3 class="font-semibold text-base text-ink">Microservices &amp; REST/GraphQL APIs</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Decoupled backend endpoints built for low-latency serialization, rate-limiting, comprehensive OpenAPI documentation, and fault-tolerant event processing.</p>
+                        <div class="pt-2 text-[11px] font-mono text-primary">Node.js &bull; Python &bull; Redis Cache</div>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="p-8 bg-canvas rounded-2xl border border-hairline space-y-3 hover:border-hairline-strong transition-colors">
+                        <h3 class="font-semibold text-base text-ink">Headless &amp; Edge Architecture</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Global CDN edge computing and serverless edge functions that execute compute logic within 20ms of the user, slashing server origin workloads.</p>
+                        <div class="pt-2 text-[11px] font-mono text-primary">Cloudflare Workers &bull; Vercel &bull; Edge KV</div>
+                    </div>
+
+                    <!-- Item 4 -->
+                    <div class="p-8 bg-canvas rounded-2xl border border-hairline space-y-3 hover:border-hairline-strong transition-colors">
+                        <h3 class="font-semibold text-base text-ink">Relational Database Modeling</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">PostgreSQL schema architecture with indexed query paths, automated connection pooling, row-level security (RLS), and zero-loss migration scripts.</p>
+                        <div class="pt-2 text-[11px] font-mono text-primary">PostgreSQL &bull; Prisma &bull; TimescaleDB</div>
+                    </div>
+
+                    <!-- Item 5 -->
+                    <div class="p-8 bg-canvas rounded-2xl border border-hairline space-y-3 hover:border-hairline-strong transition-colors">
+                        <h3 class="font-semibold text-base text-ink">Automated CI/CD &amp; Infrastructure</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Infrastructure as Code (IaC) with automated GitHub Actions testing, security vulnerability scanning, preview environments, and blue-green deployments.</p>
+                        <div class="pt-2 text-[11px] font-mono text-primary">Docker &bull; GitHub Actions &bull; Terraform</div>
+                    </div>
+
+                    <!-- Item 6 -->
+                    <div class="p-8 bg-canvas rounded-2xl border border-hairline space-y-3 hover:border-hairline-strong transition-colors">
+                        <h3 class="font-semibold text-base text-ink">Core Web Vitals Engineering</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Granular elimination of layout shifts (CLS), sub-50ms interaction response (INP), and asset pipeline tuning to achieve green-tier 95+ PageSpeed scores.</p>
+                        <div class="pt-2 text-[11px] font-mono text-primary">Lighthouse 95+ &bull; Zero-Shift &bull; Edge Inlining</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Sprint Methodology -->
+        <section class="section-padding bg-canvas-soft border-t border-hairline">
+            <div class="container-main">
+                <div class="max-w-2xl mb-16 gsap-fade-up">
+                    <p class="text-xs font-semibold tracking-widest text-ink-mute uppercase mb-2">Our Process</p>
+                    <h2 class="display-xl mb-4">Structured Engineering Lifecycle</h2>
+                    <p class="body-md text-ink-mute">We eliminate speculation through a milestone-driven engineering process with complete code transparency.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 gsap-fade-up">
+                    <div class="p-6 bg-canvas rounded-xl border border-hairline space-y-3">
+                        <div class="font-mono text-xs text-primary font-bold">STAGE 01</div>
+                        <h4 class="font-semibold text-sm text-ink">System Architecture &amp; Schemas</h4>
+                        <p class="text-xs text-ink-mute leading-relaxed">Drafting entity relationship diagrams (ERD), API specifications, data contracts, and selecting the optimal technology stack.</p>
+                    </div>
+
+                    <div class="p-6 bg-canvas rounded-xl border border-hairline space-y-3">
+                        <div class="font-mono text-xs text-primary font-bold">STAGE 02</div>
+                        <h4 class="font-semibold text-sm text-ink">Core Engine &amp; API Build</h4>
+                        <p class="text-xs text-ink-mute leading-relaxed">Building database models, authentication workflows, background queues, and core business logic with automated unit tests.</p>
+                    </div>
+
+                    <div class="p-6 bg-canvas rounded-xl border border-hairline space-y-3">
+                        <div class="font-mono text-xs text-primary font-bold">STAGE 03</div>
+                        <h4 class="font-semibold text-sm text-ink">Frontend Integration &amp; Telemetry</h4>
+                        <p class="text-xs text-ink-mute leading-relaxed">Connecting stateful UI components, integrating error tracing, configuring edge caching, and executing Core Web Vitals audits.</p>
+                    </div>
+
+                    <div class="p-6 bg-canvas rounded-xl border border-hairline space-y-3">
+                        <div class="font-mono text-xs text-primary font-bold">STAGE 04</div>
+                        <h4 class="font-semibold text-sm text-ink">Production Handover &amp; Scaling</h4>
+                        <p class="text-xs text-ink-mute leading-relaxed">Deploying production infrastructure, conducting load testing, establishing monitoring alerts, and transferring 100% repository ownership.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Real-World Use Cases -->
+        <section class="section-padding border-t border-hairline">
+            <div class="container-main">
+                <div class="max-w-2xl mb-16 gsap-fade-up">
+                    <p class="text-xs font-semibold tracking-widest text-primary uppercase mb-2">Proven Applications</p>
+                    <h2 class="display-xl mb-4">Engineering for Every Growth Phase</h2>
+                    <p class="body-md text-ink-mute">Whether you are building your flagship MVP or replacing an overburdened legacy platform, we tailor the architecture to your stage.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 gsap-fade-up">
+                    <div class="p-8 bg-canvas-soft rounded-2xl border border-hairline space-y-3">
+                        <div class="text-xs font-mono font-semibold text-ink uppercase tracking-wider">Startup Founders</div>
+                        <h3 class="font-semibold text-base text-ink">Rapid-Launch Enterprise MVPs</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Ship your market-ready product in 4 weeks on scalable cloud primitives that impress seed-round investors without incurring technical debt.</p>
+                    </div>
+
+                    <div class="p-8 bg-canvas-soft rounded-2xl border border-hairline space-y-3">
+                        <div class="text-xs font-mono font-semibold text-ink uppercase tracking-wider">Scaling SaaS</div>
+                        <h3 class="font-semibold text-base text-ink">Monolith Decomposition &amp; Speed</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Extract mission-critical services into asynchronous edge endpoints, eliminating database contention and stabilizing response times.</p>
+                    </div>
+
+                    <div class="p-8 bg-canvas-soft rounded-2xl border border-hairline space-y-3">
+                        <div class="text-xs font-mono font-semibold text-ink uppercase tracking-wider">Mid-Market B2B</div>
+                        <h3 class="font-semibold text-base text-ink">Custom Workflow Portals</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Replace manual spreadsheet workflows with bespoke web applications featuring role permissions, audit trails, and automated reporting.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: FAQs -->
+        <section class="section-padding bg-canvas-soft border-t border-hairline">
+            <div class="container-main max-w-4xl">
+                <div class="mb-14 text-center gsap-fade-up">
+                    <p class="text-xs font-semibold tracking-widest text-primary uppercase mb-2">Common Inquiries</p>
+                    <h2 class="display-xl mb-3">Frequently Asked Questions</h2>
+                    <p class="body-md text-ink-mute">Everything you need to know about our web engineering standards and workflows.</p>
+                </div>
+
+                <div class="space-y-4 gsap-fade-up">
+                    <details class="article-accordion p-6 bg-canvas rounded-xl border border-hairline group">
+                        <summary class="font-semibold text-sm cursor-pointer list-none flex justify-between items-center text-ink">
+                            <span>What tech stacks do you specialize in for web engineering?</span>
+                            <span class="text-primary transition-transform group-open:rotate-180">&darr;</span>
+                        </summary>
+                        <p class="text-xs text-ink-mute mt-4 leading-relaxed">We architect solutions using modern, high-velocity stacks including TypeScript, Node.js, Python, PostgreSQL, Redis, Cloudflare Workers/Pages, and React/Next.js. We prioritize clean architectures without third-party vendor lock-in.</p>
+                    </details>
+
+                    <details class="article-accordion p-6 bg-canvas rounded-xl border border-hairline group">
+                        <summary class="font-semibold text-sm cursor-pointer list-none flex justify-between items-center text-ink">
+                            <span>How do you guarantee sub-100ms Core Web Vitals?</span>
+                            <span class="text-primary transition-transform group-open:rotate-180">&darr;</span>
+                        </summary>
+                        <p class="text-xs text-ink-mute mt-4 leading-relaxed">We optimize the critical rendering path end-to-end: zero-bloat modular JS, edge-side caching, critical CSS inlining, modern WebP/AVIF asset optimization, and minimal DOM depth.</p>
+                    </details>
+
+                    <details class="article-accordion p-6 bg-canvas rounded-xl border border-hairline group">
+                        <summary class="font-semibold text-sm cursor-pointer list-none flex justify-between items-center text-ink">
+                            <span>Do we own the source code and infrastructure after completion?</span>
+                            <span class="text-primary transition-transform group-open:rotate-180">&darr;</span>
+                        </summary>
+                        <p class="text-xs text-ink-mute mt-4 leading-relaxed">Yes, completely. 100% of all code repositories, database schemas, CI/CD pipelines, and cloud accounts are assigned directly to you with zero recurring proprietary licensing fees.</p>
+                    </details>
+
+                    <details class="article-accordion p-6 bg-canvas rounded-xl border border-hairline group">
+                        <summary class="font-semibold text-sm cursor-pointer list-none flex justify-between items-center text-ink">
+                            <span>Can you refactor or take over an existing legacy codebase?</span>
+                            <span class="text-primary transition-transform group-open:rotate-180">&darr;</span>
+                        </summary>
+                        <p class="text-xs text-ink-mute mt-4 leading-relaxed">Yes. We conduct a thorough architectural and dependency audit to identify performance bottlenecks, technical debt, and security flaws, establishing an incremental refactoring roadmap that maintains 100% operational uptime.</p>
+                    </details>
+
+                    <details class="article-accordion p-6 bg-canvas rounded-xl border border-hairline group">
+                        <summary class="font-semibold text-sm cursor-pointer list-none flex justify-between items-center text-ink">
+                            <span>What is the typical engagement timeline for a web engineering project?</span>
+                            <span class="text-primary transition-transform group-open:rotate-180">&darr;</span>
+                        </summary>
+                        <p class="text-xs text-ink-mute mt-4 leading-relaxed">Targeted architectural overhauls or MVPs typically launch within 3 to 6 weeks. Complex enterprise SaaS platforms are executed across milestone-driven two-week sprints with transparent code releases.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Complementary Services -->
+        <section class="section-padding border-t border-hairline">
+            <div class="container-main">
+                <div class="max-w-2xl mb-12 gsap-fade-up">
+                    <p class="text-xs font-semibold tracking-widest text-primary uppercase mb-2">Integrated Solutions</p>
+                    <h2 class="display-lg mb-3">Frequently Paired Capabilities</h2>
+                    <p class="body-sm text-ink-mute">Pair engineering with our design and growth disciplines for maximum commercial impact.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 gsap-fade-up">
+                    <a href="ui-ux-design.html" class="p-8 bg-canvas-soft rounded-2xl border border-hairline block hover:border-hairline-strong transition-all group">
+                        <div class="text-xs font-mono text-primary font-semibold uppercase mb-2">02 &mdash; Design Systems</div>
+                        <h3 class="heading-lg text-ink group-hover:text-primary transition-colors mb-2">UI/UX Product Design &amp; Systems &rarr;</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Bridge engineering and aesthetics with tokenized design systems that guarantee 100% Figma-to-code parity and eliminate frontend guesswork.</p>
+                    </a>
+
+                    <a href="technical-seo.html" class="p-8 bg-canvas-soft rounded-2xl border border-hairline block hover:border-hairline-strong transition-all group">
+                        <div class="text-xs font-mono text-primary font-semibold uppercase mb-2">03 &mdash; Search Architecture</div>
+                        <h3 class="heading-lg text-ink group-hover:text-primary transition-colors mb-2">Technical SEO &amp; Search Engineering &rarr;</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Ensure your engineered web platform dominates search rankings through structured entity graphs, edge indexing, and sub-100ms crawl responses.</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Final CTA -->
+        <section class="cta-section bg-canvas-soft border-t border-hairline gsap-fade-up">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="display-xxl mb-6">Ready to Engineer Your Platform?</h2>
+                <p class="body-lg max-w-xl mx-auto mb-10 text-ink-mute">Schedule an architecture sprint with our lead engineers to map your database schema, system requirements, and delivery milestones.</p>
+                <div class="magnetic-wrap">
+                    <a href="contact.html?service=web-engineering" class="btn-primary btn-primary-lg">Book Architecture Consultation</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer-light">
+        <div class="max-w-[1280px] mx-auto flex flex-col md:flex-row justify-between items-center text-sm gap-y-4 md:gap-y-0">
+            <div class="font-medium" style="letter-spacing: -0.04em;">DIGINIXIT.</div>
+            <div class="flex flex-wrap justify-center gap-x-6 gap-y-2">
+                <a href="./">Home</a>
+                <a href="services.html">Services</a>
+                <a href="blog.html">Blog</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div>&copy; 2026 DiginixIT. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/ui-primitives.js" defer></script>
+    <script src="js/ui-components.js" defer></script>
+    <script src="js/common.js" defer></script>
+    <script src="js/script.js" defer></script>
+</body>
+
+</html>

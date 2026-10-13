@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        try {
+            if (JSON.parse(localStorage.getItem('settings') || '{}').maintenanceMode) {
+                document.documentElement.style.display = 'none';
+                window.location.replace('maintenance.html');
+            }
+        } catch (e) {}
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-3363493243397953">
+    <title>Data-Driven Social Media Marketing & Growth Strategy | DiginixIT</title>
+    <meta name="description"
+        content="Transform social channels into reliable pipeline drivers. Multi-platform content planning, audience engagement loops, brand authority building, and closed-loop conversion attribution.">
+    <meta name="keywords"
+        content="social media marketing agency, B2B social media strategy, LinkedIn organic marketing, content calendar planning, audience engagement loops, conversion attribution social media, digital growth agency Pakistan">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://diginixit.com/social-media-marketing.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://diginixit.com/social-media-marketing.html">
+    <meta property="og:title" content="Data-Driven Social Media Marketing & Growth Strategy | DiginixIT">
+    <meta property="og:description"
+        content="Transform social channels into reliable pipeline drivers. Multi-platform content planning, audience engagement loops, and closed-loop conversion attribution.">
+    <meta property="og:image" content="https://diginixit.com/images/og-home.jpg">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://diginixit.com/social-media-marketing.html">
+    <meta name="twitter:title" content="Data-Driven Social Media Marketing & Growth Strategy | DiginixIT">
+    <meta name="twitter:description"
+        content="Transform social channels into reliable pipeline drivers. Multi-platform content planning, audience engagement loops, and closed-loop conversion attribution.">
+    <meta name="twitter:image" content="https://diginixit.com/images/og-home.jpg">
+
+    <!-- DNS Prefetch & Preconnect -->
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://unpkg.com">
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <meta name="color-scheme" content="light">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Tailwind Configuration -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        canvas: '#ffffff',
+                        'canvas-soft': '#fafafa',
+                        'canvas-night': '#1c1c1c',
+                        ink: '#171717',
+                        'ink-mute': '#707070',
+                        'ink-faint': '#b2b2b2',
+                        primary: '#3ecf8e',
+                        'primary-deep': '#24b47e',
+                        hairline: '#dfdfdf',
+                        'hairline-strong': '#c7c7c7',
+                        'hairline-cool': '#ededed'
+                    },
+                    letterSpacing: { tighter: '-0.04em', tight: '-0.02em' }
+                }
+            }
+        };
+    </script>
+
+    <!-- Core Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://diginixit.com/" },
+                    { "@type": "ListItem", "position": 2, "name": "Our Services", "item": "https://diginixit.com/services.html" },
+                    { "@type": "ListItem", "position": 3, "name": "Social Media Marketing", "item": "https://diginixit.com/social-media-marketing.html" }
+                ]
+            },
+            {
+                "@type": "Service",
+                "name": "Social Media Marketing & Growth Strategy",
+                "serviceType": "Digital Marketing",
+                "provider": {
+                    "@type": "Organization",
+                    "name": "DiginixIT",
+                    "url": "https://diginixit.com/"
+                },
+                "description": "Multi-platform social media strategy, editorial content planning, community engagement loops, and closed-loop conversion attribution.",
+                "areaServed": "Global",
+                "hasOfferCatalog": {
+                    "@type": "OfferCatalog",
+                    "name": "Social Media Marketing Deliverables",
+                    "itemListElement": [
+                        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Platform-Specific Content Architecture (LinkedIn, X, Meta)" } },
+                        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Editorial Calendar & Creative Asset Production" } },
+                        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Audience Engagement Loops & Community Management" } },
+                        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Closed-Loop Attribution & GA4 Telemetry Reporting" } }
+                    ]
+                }
+            },
+            {
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "How do you measure ROI from social media marketing instead of vanity metrics?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "We evaluate success using commercial indicators: inbound website referral traffic, qualified demo requests, email list signups, and UTM-tagged conversions in GA4, rather than prioritizing empty vanity follower counts."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Which social platforms should our business prioritize?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Platform priority depends entirely on your buyer persona. For B2B software and advisory, LinkedIn and X (Twitter) drive the highest commercial leverage. For consumer brands, Meta (Instagram/Facebook) and visual storytelling deliver greater audience velocity."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "How do you ensure content maintains our authentic technical brand voice?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "We conduct an intensive onboarding interview with your subject-matter experts to codify your technical terminology, tone of voice, and brand points. We avoid generic, unedited AI output and ensure every post delivers genuine insight."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "What is the content review and approval process before publishing?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "We operate through bi-weekly content sprint batches. You receive a structured editorial calendar with copy, visual creatives, and scheduling dates for review and approval prior to distribution."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Do you manage paid social advertising (PPC) or focus on organic growth?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Our core focus is organic authority, community loops, and high-converting editorial distribution. We also support targeted sponsored post amplifications to accelerate verified high-performing content."
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+    </script>
+</head>
+
+<body class="bg-canvas text-ink">
+
+    <div class="noise"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 py-4 px-6 md:px-12" aria-label="Main Navigation">
+        <div class="max-w-[1280px] mx-auto flex justify-between items-center">
+            <a href="./" class="text-xl font-medium tracking-tighter text-ink" style="letter-spacing: -0.04em;">DIGINIXIT.</a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-8 items-center text-sm font-medium">
+                <a href="./" class="nav-item-link" id="nav-home">Home</a>
+                <div class="nav-dropdown-wrapper relative group" id="nav-services-dropdown">
+                    <a href="services.html" class="nav-item-link inline-flex items-center gap-1.5 py-2 active-nav-link" id="nav-services" aria-haspopup="true" aria-expanded="false">
+                        <span>Our Services</span>
+                        <svg class="w-3.5 h-3.5 nav-dropdown-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+                    </a>
+                    <div class="nav-dropdown-menu">
+                        <a href="web-engineering.html" class="nav-dropdown-item">
+                            <span class="item-title">Web Engineering</span>
+                            <span class="item-desc">High-performance apps &amp; custom SaaS architecture</span>
+                        </a>
+                        <a href="ui-ux-design.html" class="nav-dropdown-item">
+                            <span class="item-title">UI/UX Product Design</span>
+                            <span class="item-desc">Bespoke design systems &amp; cognitive flows</span>
+                        </a>
+                        <a href="technical-seo.html" class="nav-dropdown-item">
+                            <span class="item-title">Technical SEO</span>
+                            <span class="item-desc">Core Web Vitals &amp; entity search architecture</span>
+                        </a>
+                        <a href="social-media-marketing.html" class="nav-dropdown-item">
+                            <span class="item-title">Social Media Marketing</span>
+                            <span class="item-desc">Audience acquisition &amp; organic distribution loops</span>
+                        </a>
+                        <a href="law-compliance.html" class="nav-dropdown-item">
+                            <span class="item-title">Law &amp; Tech Compliance</span>
+                            <span class="item-desc">GDPR audits, enterprise MSAs &amp; IP protection</span>
+                        </a>
+                        <a href="corporate-finance.html" class="nav-dropdown-item">
+                            <span class="item-title">Corporate Finance</span>
+                            <span class="item-desc">Dynamic financial models, valuations &amp; runways</span>
+                        </a>
+                        <div class="nav-dropdown-divider"></div>
+                        <a href="services.html" class="nav-dropdown-footer">
+                            <span>Overview: All Capabilities</span>
+                            <span class="text-primary font-bold">&rarr;</span>
+                        </a>
+                    </div>
+                </div>
+                <a href="blog.html" class="nav-item-link" id="nav-blog">Blog</a>
+                <a href="contact.html" class="nav-item-link" id="nav-contact">Contact</a>
+            </div>
+
+            <!-- Desktop Auth -->
+            <div class="hidden md:flex space-x-4 items-center" id="desktop-auth-container">
+                <a href="auth.html?mode=signin" class="text-sm font-medium text-ink-mute hover:text-ink transition-colors" id="btn-signin">Sign In</a>
+                <div class="magnetic-wrap">
+                    <a href="auth.html?mode=signup" class="btn-primary" id="btn-signup">Get Started</a>
+                </div>
+            </div>
+
+            <div class="flex md:hidden items-center space-x-3">
+                <button id="hamburger-btn" class="p-2 text-ink focus:outline-none" aria-label="Toggle Menu">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Drawer -->
+    <div id="mobile-menu" class="fixed inset-0 z-40 bg-canvas transform translate-x-full transition-transform duration-300 ease-in-out md:hidden flex flex-col justify-between p-8 pt-24 overflow-y-auto">
+        <div class="flex flex-col space-y-4 text-xl font-medium" style="letter-spacing: -0.02em;">
+            <a href="./" class="mobile-nav-link hover:text-ink-mute transition-colors">Home</a>
+            
+            <div class="mobile-services-accordion">
+                <button type="button" id="mobile-services-toggle" class="w-full flex items-center justify-between text-xl font-medium hover:text-ink-mute transition-colors py-1 text-left" aria-expanded="false">
+                    <span>Our Services</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-200" id="mobile-services-chevron"></i>
+                </button>
+                <div id="mobile-services-list" class="hidden pl-4 pr-1 py-3 flex-col space-y-3 text-sm text-ink-mute border-l border-hairline mt-2">
+                    <a href="web-engineering.html" class="hover:text-ink transition-colors block">Web Engineering</a>
+                    <a href="ui-ux-design.html" class="hover:text-ink transition-colors block">UI/UX Product Design</a>
+                    <a href="technical-seo.html" class="hover:text-ink transition-colors block">Technical SEO</a>
+                    <a href="social-media-marketing.html" class="hover:text-ink transition-colors block font-semibold text-primary">Social Media Marketing</a>
+                    <a href="law-compliance.html" class="hover:text-ink transition-colors block">Law &amp; Tech Compliance</a>
+                    <a href="corporate-finance.html" class="hover:text-ink transition-colors block">Corporate Finance</a>
+                    <a href="services.html" class="text-xs font-semibold text-primary pt-1 block">All Capabilities &rarr;</a>
+                </div>
+            </div>
+
+            <a href="blog.html" class="mobile-nav-link hover:text-ink-mute transition-colors">Blog</a>
+            <a href="contact.html" class="mobile-nav-link hover:text-ink-mute transition-colors">Contact</a>
+        </div>
+        <div class="flex flex-col space-y-4 pt-6" id="mobile-auth-container">
+            <a href="auth.html?mode=signin" class="w-full text-center py-4 border border-hairline rounded-md font-medium hover:bg-canvas-soft transition-colors text-sm" id="mobile-btn-signin">Sign In</a>
+            <a href="auth.html?mode=signup" class="btn-primary w-full text-center py-4 text-sm" id="mobile-btn-signup">Get Started</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="pt-32 pb-0">
+        <div class="container-main">
+            <!-- Breadcrumbs -->
+            <nav class="mb-8 flex items-center space-x-2 text-xs font-medium text-ink-mute uppercase tracking-widest" aria-label="Breadcrumb">
+                <a href="./" class="hover:text-ink transition-colors">Home</a>
+                <span>/</span>
+                <a href="services.html" class="hover:text-ink transition-colors">Our Services</a>
+                <span>/</span>
+                <span class="text-ink font-medium">Social Media Marketing</span>
+            </nav>
+
+            <!-- Hero Section -->
+            <div class="max-w-4xl mb-16 gsap-fade-up">
+                <p class="text-xs font-semibold tracking-widest text-primary uppercase mb-3">Organic Growth &amp; Content Architecture</p>
+                <h1 class="display-xxl mb-6">Data-Driven Social Media Marketing &amp; Organic Growth Strategy</h1>
+                <p class="body-lg text-ink-mute max-w-3xl leading-relaxed mb-8">
+                    Random posting and superficial engagement metrics do not build sustainable enterprise value. We engineer structured, platform-specific content systems that translate your technical subject-matter expertise into market authority, audience trust, and qualified inbound inquiries.
+                </p>
+                <div class="flex flex-wrap items-center gap-4">
+                    <div class="magnetic-wrap">
+                        <a href="contact.html?service=social-media-marketing" class="btn-primary btn-primary-lg">Initiate Growth Consultation</a>
+                    </div>
+                    <div class="magnetic-wrap">
+                        <a href="#capabilities" class="btn-secondary btn-secondary-lg">Explore Deliverables</a>
+                    </div>
+                </div>
+
+                <!-- Proof Badges -->
+                <div class="pt-8 flex flex-wrap items-center gap-x-8 gap-y-3 text-xs text-ink-mute font-medium border-t border-hairline mt-10">
+                    <span class="inline-flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span> Commercial Pipeline Over Vanity Metrics</span>
+                    <span class="inline-flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span> Multi-Platform Editorial Content Calendars</span>
+                    <span class="inline-flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span> Closed-Loop GA4 Conversion Attribution</span>
+                </div>
+            </div>
+
+            <!-- Hero Media & Quick Specs -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-24 gsap-fade-up">
+                <div class="lg:col-span-8 bg-canvas-soft border border-hairline rounded-2xl p-6 md:p-10 flex items-center justify-center">
+                    <img src="images/social_media_marketing.webp" alt="Social media marketing analytics dashboard, content calendar and audience growth illustration" class="w-full max-w-lg h-auto object-contain" width="600" height="420" loading="eager">
+                </div>
+                <div class="lg:col-span-4 p-6 md:p-8 bg-canvas rounded-2xl border border-hairline shadow-1 space-y-4 text-xs">
+                    <div class="font-mono text-[11px] font-semibold uppercase tracking-wider text-primary">Marketing Operating Standards</div>
+                    <div class="flex justify-between py-2 border-b border-hairline text-ink-mute"><span>Channel Focus</span><span class="font-mono text-ink">LinkedIn, X (Twitter), Meta, YouTube</span></div>
+                    <div class="flex justify-between py-2 border-b border-hairline text-ink-mute"><span>Planning Cadence</span><span class="font-mono text-ink">Bi-Weekly Sprints &amp; Approved Calendars</span></div>
+                    <div class="flex justify-between py-2 border-b border-hairline text-ink-mute"><span>Attribution Standard</span><span class="font-mono text-primary font-semibold">Custom UTMs &amp; GA4 Event Telemetry</span></div>
+                    <div class="flex justify-between py-2 border-b border-hairline text-ink-mute"><span>Content Integrity</span><span class="font-mono text-ink">Subject-Matter Expert Human Copy</span></div>
+                    <div class="flex justify-between pt-2 text-ink-mute"><span>Reporting Loop</span><span class="font-mono text-ink">Monthly Pipeline &amp; Engagement Reviews</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section: The Marketing Challenge -->
+        <section class="section-padding bg-canvas-soft border-t border-hairline">
+            <div class="container-main">
+                <div class="max-w-2xl mb-16 gsap-fade-up">
+                    <p class="text-xs font-semibold tracking-widest text-ink-mute uppercase mb-2">The Real Challenge</p>
+                    <h2 class="display-xl mb-4">Why Most Social Media Campaigns Fail</h2>
+                    <p class="body-md text-ink-mute">Without structured commercial alignment, social media efforts turn into time-consuming cost centers with zero verifiable revenue impact.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 gsap-fade-up">
+                    <div class="p-8 bg-canvas rounded-2xl border border-hairline space-y-4">
+                        <div class="w-10 h-10 rounded-lg bg-canvas-soft border border-hairline flex items-center justify-center font-mono text-sm font-semibold text-primary">01</div>
+                        <h3 class="heading-lg text-ink">Superficial Vanity Metrics</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Focusing on passive likes and bot followers creates an illusion of progress while failing to generate qualified customer inquiries or brand recall among decision-makers.</p>
+                    </div>
+
+                    <div class="p-8 bg-canvas rounded-2xl border border-hairline space-y-4">
+                        <div class="w-10 h-10 rounded-lg bg-canvas-soft border border-hairline flex items-center justify-center font-mono text-sm font-semibold text-primary">02</div>
+                        <h3 class="heading-lg text-ink">Generic, Clichéd AI Copy</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Spamming generic AI-generated platitudes degrades executive credibility and repels sophisticated buyers who seek nuanced industry insight.</p>
+                    </div>
+
+                    <div class="p-8 bg-canvas rounded-2xl border border-hairline space-y-4">
+                        <div class="w-10 h-10 rounded-lg bg-canvas-soft border border-hairline flex items-center justify-center font-mono text-sm font-semibold text-primary">03</div>
+                        <h3 class="heading-lg text-ink">Unmeasured Attribution Gaps</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Publishing without systematic UTM parameters or analytics conversion tracking makes it impossible to know which posts generate real opportunities.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Core Capabilities & Deliverables -->
+        <section id="capabilities" class="section-padding border-t border-hairline">
+            <div class="container-main">
+                <div class="max-w-2xl mb-16 gsap-fade-up">
+                    <p class="text-xs font-semibold tracking-widest text-primary uppercase mb-2">Capabilities</p>
+                    <h2 class="display-xl mb-4">Strategic Social Media Deliverables</h2>
+                    <p class="body-md text-ink-mute">We engineer content systems designed to build category leadership and channel qualified attention into conversion funnels.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 gsap-fade-up">
+                    <!-- Item 1 -->
+                    <div class="p-8 bg-canvas rounded-2xl border border-hairline space-y-3 hover:border-hairline-strong transition-colors">
+                        <h3 class="font-semibold text-base text-ink">Platform Content Architecture</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Tailored editorial frameworks for LinkedIn, X (Twitter), Meta, and YouTube that leverage platform-native distribution algorithms without awkward cross-posting.</p>
+                        <div class="pt-2 text-[11px] font-mono text-primary">Native Formats &bull; Algorithmic Alignment</div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="p-8 bg-canvas rounded-2xl border border-hairline space-y-3 hover:border-hairline-strong transition-colors">
+                        <h3 class="font-semibold text-base text-ink">Editorial Calendars &amp; Asset Creation</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Bi-weekly content sprints featuring high-value thought leadership, technical teardowns, carousels, and product releases with dedicated brand visual templates.</p>
+                        <div class="pt-2 text-[11px] font-mono text-primary">Pre-Approved Sprints &bull; Custom Branded Creatives</div>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="p-8 bg-canvas rounded-2xl border border-hairline space-y-3 hover:border-hairline-strong transition-colors">
+                        <h3 class="font-semibold text-base text-ink">Audience Engagement Loops</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Proactive comment management, industry discussion participation, and executive outreach that embeds your brand into relevant peer networks.</p>
+                        <div class="pt-2 text-[11px] font-mono text-primary">Community Management &bull; Peer Discussion Seeding</div>
+                    </div>
+
+                    <!-- Item 4 -->
+                    <div class="p-8 bg-canvas rounded-2xl border border-hairline space-y-3 hover:border-hairline-strong transition-colors">
+                        <h3 class="font-semibold text-base text-ink">Executive &amp; Founder Ghostwriting</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Transforming the lived experience and strategic perspectives of founders and CTOs into influential personal brand platforms that attract talent and deals.</p>
+                        <div class="pt-2 text-[11px] font-mono text-primary">Leadership Authority &bull; Authentic Voice Mapping</div>
+                    </div>
+
+                    <!-- Item 5 -->
+                    <div class="p-8 bg-canvas rounded-2xl border border-hairline space-y-3 hover:border-hairline-strong transition-colors">
+                        <h3 class="font-semibold text-base text-ink">Closed-Loop Conversion Tracking</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Comprehensive UTM tagging hygiene, Google Analytics 4 event mapping, and multi-touch referral reporting to track lead progression from social click to signed contract.</p>
+                        <div class="pt-2 text-[11px] font-mono text-primary">UTM Taxonomy &bull; GA4 Funnel Telemetry</div>
+                    </div>
+
+                    <!-- Item 6 -->
+                    <div class="p-8 bg-canvas rounded-2xl border border-hairline space-y-3 hover:border-hairline-strong transition-colors">
+                        <h3 class="font-semibold text-base text-ink">Strategic Campaign Amplification</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Deploying targeted sponsored post boosts on verified high-engagement organic posts to maximize reach against specific target account lists.</p>
+                        <div class="pt-2 text-[11px] font-mono text-primary">Audience Retargeting &bull; Account-Based Amplification</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Sprint Methodology -->
+        <section class="section-padding bg-canvas-soft border-t border-hairline">
+            <div class="container-main">
+                <div class="max-w-2xl mb-16 gsap-fade-up">
+                    <p class="text-xs font-semibold tracking-widest text-ink-mute uppercase mb-2">Our Process</p>
+                    <h2 class="display-xl mb-4">Structured Social Growth Lifecycle</h2>
+                    <p class="body-md text-ink-mute">We replace erratic posting with a disciplined publishing engine centered on business value and verified market resonance.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 gsap-fade-up">
+                    <div class="p-6 bg-canvas rounded-xl border border-hairline space-y-3">
+                        <div class="font-mono text-xs text-primary font-bold">STAGE 01</div>
+                        <h4 class="font-semibold text-sm text-ink">Audience &amp; Voice Audit</h4>
+                        <p class="text-xs text-ink-mute leading-relaxed">Analyzing competitor positioning, defining core ICP personas, and extracting your brand's unique narrative angles and voice guidelines.</p>
+                    </div>
+
+                    <div class="p-6 bg-canvas rounded-xl border border-hairline space-y-3">
+                        <div class="font-mono text-xs text-primary font-bold">STAGE 02</div>
+                        <h4 class="font-semibold text-sm text-ink">Content Calendar Production</h4>
+                        <p class="text-xs text-ink-mute leading-relaxed">Drafting bi-weekly content sprints across educational, analytical, and product pillars, accompanied by custom branded visual assets.</p>
+                    </div>
+
+                    <div class="p-6 bg-canvas rounded-xl border border-hairline space-y-3">
+                        <div class="font-mono text-xs text-primary font-bold">STAGE 03</div>
+                        <h4 class="font-semibold text-sm text-ink">Distribution &amp; Engagement</h4>
+                        <p class="text-xs text-ink-mute leading-relaxed">Executing publishing schedules, actively participating in comment discussions, and nurturing warm inquiries into conversion funnels.</p>
+                    </div>
+
+                    <div class="p-6 bg-canvas rounded-xl border border-hairline space-y-3">
+                        <div class="font-mono text-xs text-primary font-bold">STAGE 04</div>
+                        <h4 class="font-semibold text-sm text-ink">Attribution &amp; Iteration</h4>
+                        <p class="text-xs text-ink-mute leading-relaxed">Reviewing referral traffic and pipeline metrics monthly, doubling down on top-performing topics, and refining editorial priorities.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Real-World Use Cases -->
+        <section class="section-padding border-t border-hairline">
+            <div class="container-main">
+                <div class="max-w-2xl mb-16 gsap-fade-up">
+                    <p class="text-xs font-semibold tracking-widest text-primary uppercase mb-2">Proven Applications</p>
+                    <h2 class="display-xl mb-4">Strategic Applications Across Business Models</h2>
+                    <p class="body-md text-ink-mute">We tailor our social architecture to the commercial goals of technical companies.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 gsap-fade-up">
+                    <div class="p-8 bg-canvas-soft rounded-2xl border border-hairline space-y-3">
+                        <div class="text-xs font-mono font-semibold text-ink uppercase tracking-wider">B2B SaaS Enterprises</div>
+                        <h3 class="font-semibold text-base text-ink">Founder &amp; Executive Authority</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Positioning your leadership as insightful industry commentators on LinkedIn, driving enterprise partnership inquiries and inbound talent.</p>
+                    </div>
+
+                    <div class="p-8 bg-canvas-soft rounded-2xl border border-hairline space-y-3">
+                        <div class="text-xs font-mono font-semibold text-ink uppercase tracking-wider">Product Releases</div>
+                        <h3 class="font-semibold text-base text-ink">Feature Launch Amplification</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Coordinating synchronized multi-platform announcements that drive immediate product signups and community discussions.</p>
+                    </div>
+
+                    <div class="p-8 bg-canvas-soft rounded-2xl border border-hairline space-y-3">
+                        <div class="text-xs font-mono font-semibold text-ink uppercase tracking-wider">Technical Consultancies</div>
+                        <h3 class="font-semibold text-base text-ink">Case Teardowns &amp; Proof Points</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Deconstructing complex client challenges into engaging visual breakdown carousels that prove engineering competence before sales calls begin.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: FAQs -->
+        <section class="section-padding bg-canvas-soft border-t border-hairline">
+            <div class="container-main max-w-4xl">
+                <div class="mb-14 text-center gsap-fade-up">
+                    <p class="text-xs font-semibold tracking-widest text-primary uppercase mb-2">Common Inquiries</p>
+                    <h2 class="display-xl mb-3">Frequently Asked Questions</h2>
+                    <p class="body-md text-ink-mute">Transparent answers regarding our social media methodologies, workflows, and commercial expectations.</p>
+                </div>
+
+                <div class="space-y-4 gsap-fade-up">
+                    <details class="article-accordion p-6 bg-canvas rounded-xl border border-hairline group">
+                        <summary class="font-semibold text-sm cursor-pointer list-none flex justify-between items-center text-ink">
+                            <span>How do you measure ROI from social media marketing instead of vanity metrics?</span>
+                            <span class="text-primary transition-transform group-open:rotate-180">&darr;</span>
+                        </summary>
+                        <p class="text-xs text-ink-mute mt-4 leading-relaxed">We evaluate success using commercial indicators: inbound website referral traffic, qualified demo requests, email list signups, and UTM-tagged conversions in GA4, rather than prioritizing empty vanity follower counts.</p>
+                    </details>
+
+                    <details class="article-accordion p-6 bg-canvas rounded-xl border border-hairline group">
+                        <summary class="font-semibold text-sm cursor-pointer list-none flex justify-between items-center text-ink">
+                            <span>Which social platforms should our business prioritize?</span>
+                            <span class="text-primary transition-transform group-open:rotate-180">&darr;</span>
+                        </summary>
+                        <p class="text-xs text-ink-mute mt-4 leading-relaxed">Platform priority depends entirely on your buyer persona. For B2B software and advisory, LinkedIn and X (Twitter) drive the highest commercial leverage. For consumer brands, Meta (Instagram/Facebook) and visual storytelling deliver greater audience velocity.</p>
+                    </details>
+
+                    <details class="article-accordion p-6 bg-canvas rounded-xl border border-hairline group">
+                        <summary class="font-semibold text-sm cursor-pointer list-none flex justify-between items-center text-ink">
+                            <span>How do you ensure content maintains our authentic technical brand voice?</span>
+                            <span class="text-primary transition-transform group-open:rotate-180">&darr;</span>
+                        </summary>
+                        <p class="text-xs text-ink-mute mt-4 leading-relaxed">We conduct an intensive onboarding interview with your subject-matter experts to codify your technical terminology, tone of voice, and brand points. We avoid generic, unedited AI output and ensure every post delivers genuine insight.</p>
+                    </details>
+
+                    <details class="article-accordion p-6 bg-canvas rounded-xl border border-hairline group">
+                        <summary class="font-semibold text-sm cursor-pointer list-none flex justify-between items-center text-ink">
+                            <span>What is the content review and approval process before publishing?</span>
+                            <span class="text-primary transition-transform group-open:rotate-180">&darr;</span>
+                        </summary>
+                        <p class="text-xs text-ink-mute mt-4 leading-relaxed">We operate through bi-weekly content sprint batches. You receive a structured editorial calendar with copy, visual creatives, and scheduling dates for review and approval prior to distribution.</p>
+                    </details>
+
+                    <details class="article-accordion p-6 bg-canvas rounded-xl border border-hairline group">
+                        <summary class="font-semibold text-sm cursor-pointer list-none flex justify-between items-center text-ink">
+                            <span>Do you manage paid social advertising (PPC) or focus on organic growth?</span>
+                            <span class="text-primary transition-transform group-open:rotate-180">&darr;</span>
+                        </summary>
+                        <p class="text-xs text-ink-mute mt-4 leading-relaxed">Our core focus is organic authority, community loops, and high-converting editorial distribution. We also support targeted sponsored post amplifications to accelerate verified high-performing content.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Complementary Services -->
+        <section class="section-padding border-t border-hairline">
+            <div class="container-main">
+                <div class="max-w-2xl mb-12 gsap-fade-up">
+                    <p class="text-xs font-semibold tracking-widest text-primary uppercase mb-2">Integrated Solutions</p>
+                    <h2 class="display-lg mb-3">Frequently Paired Capabilities</h2>
+                    <p class="body-sm text-ink-mute">Pair social distribution with our design and search optimization services for cohesive brand reach.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 gsap-fade-up">
+                    <a href="ui-ux-design.html" class="p-8 bg-canvas-soft rounded-2xl border border-hairline block hover:border-hairline-strong transition-all group">
+                        <div class="text-xs font-mono text-primary font-semibold uppercase mb-2">02 &mdash; Design Systems</div>
+                        <h3 class="heading-lg text-ink group-hover:text-primary transition-colors mb-2">UI/UX Product Design &amp; Systems &rarr;</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Ensure landing pages and product funnels convert traffic originating from your social campaigns with high-converting, friction-free UX.</p>
+                    </a>
+
+                    <a href="technical-seo.html" class="p-8 bg-canvas-soft rounded-2xl border border-hairline block hover:border-hairline-strong transition-all group">
+                        <div class="text-xs font-mono text-primary font-semibold uppercase mb-2">03 &mdash; Search Architecture</div>
+                        <h3 class="heading-lg text-ink group-hover:text-primary transition-colors mb-2">Technical SEO &amp; Search Architecture &rarr;</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Capture organic search demand generated by social brand awareness with green-tier Core Web Vitals and Schema.org entity graphs.</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Final CTA -->
+        <section class="cta-section bg-canvas-soft border-t border-hairline gsap-fade-up">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="display-xxl mb-6">Ready to Build an Authentic Growth Engine?</h2>
+                <p class="body-lg max-w-xl mx-auto mb-10 text-ink-mute">Schedule a strategy session with our growth leads to audit your current channels and map your multi-platform distribution roadmap.</p>
+                <div class="magnetic-wrap">
+                    <a href="contact.html?service=social-media-marketing" class="btn-primary btn-primary-lg">Book Growth Consultation</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer-light">
+        <div class="max-w-[1280px] mx-auto flex flex-col md:flex-row justify-between items-center text-sm gap-y-4 md:gap-y-0">
+            <div class="font-medium" style="letter-spacing: -0.04em;">DIGINIXIT.</div>
+            <div class="flex flex-wrap justify-center gap-x-6 gap-y-2">
+                <a href="./">Home</a>
+                <a href="services.html">Services</a>
+                <a href="blog.html">Blog</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div>&copy; 2026 DiginixIT. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/ui-primitives.js" defer></script>
+    <script src="js/ui-components.js" defer></script>
+    <script src="js/common.js" defer></script>
+    <script src="js/script.js" defer></script>
+</body>
+
+</html>

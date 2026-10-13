@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        try {
+            if (JSON.parse(localStorage.getItem('settings') || '{}').maintenanceMode) {
+                document.documentElement.style.display = 'none';
+                window.location.replace('maintenance.html');
+            }
+        } catch (e) {}
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-3363493243397953">
+    <title>Technical SEO & Search Architecture Engineering | DiginixIT</title>
+    <meta name="description"
+        content="Infrastructure-level search engine optimization: sub-second Core Web Vitals, nested Schema.org entity graphs, crawl budget auditing, and topical authority architecture.">
+    <meta name="keywords"
+        content="technical SEO services, Core Web Vitals optimization, Schema org JSON LD audit, crawl budget optimization, JavaScript SEO agency, topical authority clustering, search engine architecture Pakistan">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://diginixit.com/technical-seo.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://diginixit.com/technical-seo.html">
+    <meta property="og:title" content="Technical SEO & Search Architecture Engineering | DiginixIT">
+    <meta property="og:description"
+        content="Infrastructure-level search engine optimization: sub-second Core Web Vitals, nested Schema.org entity graphs, crawl budget auditing, and topical authority architecture.">
+    <meta property="og:image" content="https://diginixit.com/images/og-home.jpg">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://diginixit.com/technical-seo.html">
+    <meta name="twitter:title" content="Technical SEO & Search Architecture Engineering | DiginixIT">
+    <meta name="twitter:description"
+        content="Infrastructure-level search engine optimization: sub-second Core Web Vitals, nested Schema.org entity graphs, crawl budget auditing, and topical authority architecture.">
+    <meta name="twitter:image" content="https://diginixit.com/images/og-home.jpg">
+
+    <!-- DNS Prefetch & Preconnect -->
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://unpkg.com">
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <meta name="color-scheme" content="light">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Tailwind Configuration -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        canvas: '#ffffff',
+                        'canvas-soft': '#fafafa',
+                        'canvas-night': '#1c1c1c',
+                        ink: '#171717',
+                        'ink-mute': '#707070',
+                        'ink-faint': '#b2b2b2',
+                        primary: '#3ecf8e',
+                        'primary-deep': '#24b47e',
+                        hairline: '#dfdfdf',
+                        'hairline-strong': '#c7c7c7',
+                        'hairline-cool': '#ededed'
+                    },
+                    letterSpacing: { tighter: '-0.04em', tight: '-0.02em' }
+                }
+            }
+        };
+    </script>
+
+    <!-- Core Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://diginixit.com/" },
+                    { "@type": "ListItem", "position": 2, "name": "Our Services", "item": "https://diginixit.com/services.html" },
+                    { "@type": "ListItem", "position": 3, "name": "Technical SEO", "item": "https://diginixit.com/technical-seo.html" }
+                ]
+            },
+            {
+                "@type": "Service",
+                "name": "Technical SEO & Search Architecture Engineering",
+                "serviceType": "Search Engine Optimization",
+                "provider": {
+                    "@type": "Organization",
+                    "name": "DiginixIT",
+                    "url": "https://diginixit.com/"
+                },
+                "description": "Enterprise technical SEO architecture, sub-second Core Web Vitals optimization, and nested Schema.org knowledge graph implementations.",
+                "areaServed": "Global",
+                "hasOfferCatalog": {
+                    "@type": "OfferCatalog",
+                    "name": "Technical SEO Deliverables",
+                    "itemListElement": [
+                        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Core Web Vitals Performance Optimization" } },
+                        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Nested Schema.org JSON-LD Knowledge Graph Design" } },
+                        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Crawl Budget & Server Indexation Audits" } },
+                        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "JavaScript SPA Rendering & Edge Hydration" } }
+                    ]
+                }
+            },
+            {
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "How does technical SEO differ from content marketing and link building?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Technical SEO addresses the foundation: rendering speed, server headers, crawl budget allocation, indexability, structured data schemas, and Core Web Vitals. Without sound technical architecture, high-quality content remains invisible to search engine crawlers."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Can you fix indexation and crawling issues on Single-Page Apps (React/Next.js/Vue)?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes. We implement edge-side rendering (SSR), incremental static regeneration (ISR), and dynamic pre-rendering so search bots receive fully populated, crawlable HTML within milliseconds while preserving fast clientside interactivity."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Do you simply provide an audit report or do you implement the code changes?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "We are engineers first. While we provide detailed audit findings, our primary delivery model is direct code execution—we write the server configs, inlined CSS, JSON-LD schemas, and asset optimizations directly in your repository."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "How long does it take to see organic ranking improvements after technical remediation?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Technical indexation and Core Web Vitals improvements are typically recognized by Google Search Console within 14 to 28 days as search bots re-crawl your site. Compounding rank lifts across competitive keywords typically mature within 6 to 12 weeks."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "How do you protect sites against Google core algorithm update volatility?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "By aligning your site structure strictly with Google's Helpful Content System and technical quality guidelines: eliminating thin or orphan pages, establishing clear topical entity graphs, and delivering peerless page experience metrics."
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+    </script>
+</head>
+
+<body class="bg-canvas text-ink">
+
+    <div class="noise"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 py-4 px-6 md:px-12" aria-label="Main Navigation">
+        <div class="max-w-[1280px] mx-auto flex justify-between items-center">
+            <a href="./" class="text-xl font-medium tracking-tighter text-ink" style="letter-spacing: -0.04em;">DIGINIXIT.</a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-8 items-center text-sm font-medium">
+                <a href="./" class="nav-item-link" id="nav-home">Home</a>
+                <div class="nav-dropdown-wrapper relative group" id="nav-services-dropdown">
+                    <a href="services.html" class="nav-item-link inline-flex items-center gap-1.5 py-2 active-nav-link" id="nav-services" aria-haspopup="true" aria-expanded="false">
+                        <span>Our Services</span>
+                        <svg class="w-3.5 h-3.5 nav-dropdown-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+                    </a>
+                    <div class="nav-dropdown-menu">
+                        <a href="web-engineering.html" class="nav-dropdown-item">
+                            <span class="item-title">Web Engineering</span>
+                            <span class="item-desc">High-performance apps &amp; custom SaaS architecture</span>
+                        </a>
+                        <a href="ui-ux-design.html" class="nav-dropdown-item">
+                            <span class="item-title">UI/UX Product Design</span>
+                            <span class="item-desc">Bespoke design systems &amp; cognitive flows</span>
+                        </a>
+                        <a href="technical-seo.html" class="nav-dropdown-item">
+                            <span class="item-title">Technical SEO</span>
+                            <span class="item-desc">Core Web Vitals &amp; entity search architecture</span>
+                        </a>
+                        <a href="social-media-marketing.html" class="nav-dropdown-item">
+                            <span class="item-title">Social Media Marketing</span>
+                            <span class="item-desc">Audience acquisition &amp; organic distribution loops</span>
+                        </a>
+                        <a href="law-compliance.html" class="nav-dropdown-item">
+                            <span class="item-title">Law &amp; Tech Compliance</span>
+                            <span class="item-desc">GDPR audits, enterprise MSAs &amp; IP protection</span>
+                        </a>
+                        <a href="corporate-finance.html" class="nav-dropdown-item">
+                            <span class="item-title">Corporate Finance</span>
+                            <span class="item-desc">Dynamic financial models, valuations &amp; runways</span>
+                        </a>
+                        <div class="nav-dropdown-divider"></div>
+                        <a href="services.html" class="nav-dropdown-footer">
+                            <span>Overview: All Capabilities</span>
+                            <span class="text-primary font-bold">&rarr;</span>
+                        </a>
+                    </div>
+                </div>
+                <a href="blog.html" class="nav-item-link" id="nav-blog">Blog</a>
+                <a href="contact.html" class="nav-item-link" id="nav-contact">Contact</a>
+            </div>
+
+            <!-- Desktop Auth -->
+            <div class="hidden md:flex space-x-4 items-center" id="desktop-auth-container">
+                <a href="auth.html?mode=signin" class="text-sm font-medium text-ink-mute hover:text-ink transition-colors" id="btn-signin">Sign In</a>
+                <div class="magnetic-wrap">
+                    <a href="auth.html?mode=signup" class="btn-primary" id="btn-signup">Get Started</a>
+                </div>
+            </div>
+
+            <div class="flex md:hidden items-center space-x-3">
+                <button id="hamburger-btn" class="p-2 text-ink focus:outline-none" aria-label="Toggle Menu">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Drawer -->
+    <div id="mobile-menu" class="fixed inset-0 z-40 bg-canvas transform translate-x-full transition-transform duration-300 ease-in-out md:hidden flex flex-col justify-between p-8 pt-24 overflow-y-auto">
+        <div class="flex flex-col space-y-4 text-xl font-medium" style="letter-spacing: -0.02em;">
+            <a href="./" class="mobile-nav-link hover:text-ink-mute transition-colors">Home</a>
+            
+            <div class="mobile-services-accordion">
+                <button type="button" id="mobile-services-toggle" class="w-full flex items-center justify-between text-xl font-medium hover:text-ink-mute transition-colors py-1 text-left" aria-expanded="false">
+                    <span>Our Services</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-200" id="mobile-services-chevron"></i>
+                </button>
+                <div id="mobile-services-list" class="hidden pl-4 pr-1 py-3 flex-col space-y-3 text-sm text-ink-mute border-l border-hairline mt-2">
+                    <a href="web-engineering.html" class="hover:text-ink transition-colors block">Web Engineering</a>
+                    <a href="ui-ux-design.html" class="hover:text-ink transition-colors block">UI/UX Product Design</a>
+                    <a href="technical-seo.html" class="hover:text-ink transition-colors block font-semibold text-primary">Technical SEO</a>
+                    <a href="social-media-marketing.html" class="hover:text-ink transition-colors block">Social Media Marketing</a>
+                    <a href="law-compliance.html" class="hover:text-ink transition-colors block">Law &amp; Tech Compliance</a>
+                    <a href="corporate-finance.html" class="hover:text-ink transition-colors block">Corporate Finance</a>
+                    <a href="services.html" class="text-xs font-semibold text-primary pt-1 block">All Capabilities &rarr;</a>
+                </div>
+            </div>
+
+            <a href="blog.html" class="mobile-nav-link hover:text-ink-mute transition-colors">Blog</a>
+            <a href="contact.html" class="mobile-nav-link hover:text-ink-mute transition-colors">Contact</a>
+        </div>
+        <div class="flex flex-col space-y-4 pt-6" id="mobile-auth-container">
+            <a href="auth.html?mode=signin" class="w-full text-center py-4 border border-hairline rounded-md font-medium hover:bg-canvas-soft transition-colors text-sm" id="mobile-btn-signin">Sign In</a>
+            <a href="auth.html?mode=signup" class="btn-primary w-full text-center py-4 text-sm" id="mobile-btn-signup">Get Started</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="pt-32 pb-0">
+        <div class="container-main">
+            <!-- Breadcrumbs -->
+            <nav class="mb-8 flex items-center space-x-2 text-xs font-medium text-ink-mute uppercase tracking-widest" aria-label="Breadcrumb">
+                <a href="./" class="hover:text-ink transition-colors">Home</a>
+                <span>/</span>
+                <a href="services.html" class="hover:text-ink transition-colors">Our Services</a>
+                <span>/</span>
+                <span class="text-ink font-medium">Technical SEO</span>
+            </nav>
+
+            <!-- Hero Section -->
+            <div class="max-w-4xl mb-16 gsap-fade-up">
+                <p class="text-xs font-semibold tracking-widest text-primary uppercase mb-3">Search Architecture Engineering</p>
+                <h1 class="display-xxl mb-6">Technical SEO &amp; Search Architecture Engineering</h1>
+                <p class="body-lg text-ink-mute max-w-3xl leading-relaxed mb-8">
+                    Search engine dominance is an infrastructure problem. Google rewards platforms that excel in crawl efficiency, sub-second rendering, comprehensive Schema.org knowledge graphs, and verifiable topical authority. We engineer your digital properties to eliminate indexation bottlenecks and outrank entrenched competitors across high-intent queries.
+                </p>
+                <div class="flex flex-wrap items-center gap-4">
+                    <div class="magnetic-wrap">
+                        <a href="contact.html?service=technical-seo" class="btn-primary btn-primary-lg">Schedule Technical SEO Audit</a>
+                    </div>
+                    <div class="magnetic-wrap">
+                        <a href="#capabilities" class="btn-secondary btn-secondary-lg">Explore Deliverables</a>
+                    </div>
+                </div>
+
+                <!-- Proof Badges -->
+                <div class="pt-8 flex flex-wrap items-center gap-x-8 gap-y-3 text-xs text-ink-mute font-medium border-t border-hairline mt-10">
+                    <span class="inline-flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span> 95+ Mobile &amp; Desktop PageSpeed Targets</span>
+                    <span class="inline-flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span> Nested JSON-LD Entity Knowledge Graphs</span>
+                    <span class="inline-flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span> Zero Crawl Budget Waste &amp; Clean 200s</span>
+                </div>
+            </div>
+
+            <!-- Hero Media & Quick Specs -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-24 gsap-fade-up">
+                <div class="lg:col-span-8 bg-canvas-soft border border-hairline rounded-2xl p-6 md:p-10 flex items-center justify-center">
+                    <img src="images/technical_seo.webp" alt="Technical SEO search architecture and Core Web Vitals optimization illustration" class="w-full max-w-lg h-auto object-contain" width="600" height="420" loading="eager">
+                </div>
+                <div class="lg:col-span-4 p-6 md:p-8 bg-canvas rounded-2xl border border-hairline shadow-1 space-y-4 text-xs">
+                    <div class="font-mono text-[11px] font-semibold uppercase tracking-wider text-primary">Technical Performance Targets</div>
+                    <div class="flex justify-between py-2 border-b border-hairline text-ink-mute"><span>Core Web Vitals</span><span class="font-mono text-primary font-semibold">Green Tier (LCP &lt; 1.2s, INP &lt; 50ms)</span></div>
+                    <div class="flex justify-between py-2 border-b border-hairline text-ink-mute"><span>Structured Data</span><span class="font-mono text-ink">Nested JSON-LD @graph</span></div>
+                    <div class="flex justify-between py-2 border-b border-hairline text-ink-mute"><span>Crawl Budget Health</span><span class="font-mono text-ink">Zero Orphan Pages / Clean Canonicals</span></div>
+                    <div class="flex justify-between py-2 border-b border-hairline text-ink-mute"><span>SPA Rendering</span><span class="font-mono text-ink">Edge SSR / Hydration Optimized</span></div>
+                    <div class="flex justify-between pt-2 text-ink-mute"><span>TTFB Response</span><span class="font-mono text-ink">&lt; 150ms Global Edge Delivery</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section: The SEO Challenge -->
+        <section class="section-padding bg-canvas-soft border-t border-hairline">
+            <div class="container-main">
+                <div class="max-w-2xl mb-16 gsap-fade-up">
+                    <p class="text-xs font-semibold tracking-widest text-ink-mute uppercase mb-2">The Real Challenge</p>
+                    <h2 class="display-xl mb-4">Why Great Content Remains Invisible</h2>
+                    <p class="body-md text-ink-mute">When search architecture is neglected, search bots exhaust crawl budgets on redirect loops, blank JavaScript screens, and bloated DOM trees.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 gsap-fade-up">
+                    <div class="p-8 bg-canvas rounded-2xl border border-hairline space-y-4">
+                        <div class="w-10 h-10 rounded-lg bg-canvas-soft border border-hairline flex items-center justify-center font-mono text-sm font-semibold text-primary">01</div>
+                        <h3 class="heading-lg text-ink">JavaScript Crawl Failures</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Search bots defer execution of complex client-side bundles. Dynamic routes render blank or delayed, preventing key commercial pages from entering the search index.</p>
+                    </div>
+
+                    <div class="p-8 bg-canvas rounded-2xl border border-hairline space-y-4">
+                        <div class="w-10 h-10 rounded-lg bg-canvas-soft border border-hairline flex items-center justify-center font-mono text-sm font-semibold text-primary">02</div>
+                        <h3 class="heading-lg text-ink">Core Web Vitals Penalties</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Layout shifts (CLS) and sluggish interaction response (INP) trigger negative page experience signals that suppress page 1 organic rankings against faster competitors.</p>
+                    </div>
+
+                    <div class="p-8 bg-canvas rounded-2xl border border-hairline space-y-4">
+                        <div class="w-10 h-10 rounded-lg bg-canvas-soft border border-hairline flex items-center justify-center font-mono text-sm font-semibold text-primary">03</div>
+                        <h3 class="heading-lg text-ink">Entity &amp; Schema Blindness</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Without disambiguated Schema.org knowledge graphs, search engines fail to understand organizational authority, author expertise, and service offerings.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Core Capabilities & Deliverables -->
+        <section id="capabilities" class="section-padding border-t border-hairline">
+            <div class="container-main">
+                <div class="max-w-2xl mb-16 gsap-fade-up">
+                    <p class="text-xs font-semibold tracking-widest text-primary uppercase mb-2">Capabilities</p>
+                    <h2 class="display-xl mb-4">Search Architecture Engineering Deliverables</h2>
+                    <p class="body-md text-ink-mute">We don't hand you an overwhelming PDF report and walk away. Our engineers directly implement the code, server headers, and structured data changes.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 gsap-fade-up">
+                    <!-- Item 1 -->
+                    <div class="p-8 bg-canvas rounded-2xl border border-hairline space-y-3 hover:border-hairline-strong transition-colors">
+                        <h3 class="font-semibold text-base text-ink">Core Web Vitals Remediation</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Systematic elimination of render-blocking JavaScript, critical CSS prioritization, font-display optimization, and layout stabilization to achieve 95+ Lighthouse scores.</p>
+                        <div class="pt-2 text-[11px] font-mono text-primary">LCP &bull; INP &bull; CLS Tuning</div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="p-8 bg-canvas rounded-2xl border border-hairline space-y-3 hover:border-hairline-strong transition-colors">
+                        <h3 class="font-semibold text-base text-ink">Schema.org Entity Graphs</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Custom nested JSON-LD structured data (@graph) interconnecting Organization, Service, Author, Article, and FAQ entities for rich search snippet eligibility.</p>
+                        <div class="pt-2 text-[11px] font-mono text-primary">Nested JSON-LD &bull; Entity Disambiguation</div>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="p-8 bg-canvas rounded-2xl border border-hairline space-y-3 hover:border-hairline-strong transition-colors">
+                        <h3 class="font-semibold text-base text-ink">Crawl Budget &amp; Indexation Audits</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Resolution of canonical conflicts, redirect chains, crawler trap loops, pagination anomalies, and server header directives to ensure search bots index high-value pages.</p>
+                        <div class="pt-2 text-[11px] font-mono text-primary">Log Analysis &bull; Canonical Fixes &bull; Sitemap Optimization</div>
+                    </div>
+
+                    <!-- Item 4 -->
+                    <div class="p-8 bg-canvas rounded-2xl border border-hairline space-y-3 hover:border-hairline-strong transition-colors">
+                        <h3 class="font-semibold text-base text-ink">Topical Authority Architecture</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Content pillar modeling and internal link clustering designed to demonstrate deep subject-matter expertise across competitive high-intent search topics.</p>
+                        <div class="pt-2 text-[11px] font-mono text-primary">Pillar &amp; Cluster Modeling &bull; Semantic Link Graphs</div>
+                    </div>
+
+                    <!-- Item 5 -->
+                    <div class="p-8 bg-canvas rounded-2xl border border-hairline space-y-3 hover:border-hairline-strong transition-colors">
+                        <h3 class="font-semibold text-base text-ink">JavaScript SPA Edge Rendering</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Implementing edge server-side rendering and dynamic HTML caching so search bots instantly receive fully hydrated content without client execution delays.</p>
+                        <div class="pt-2 text-[11px] font-mono text-primary">Edge SSR &bull; Cloudflare Workers &bull; Pre-rendering</div>
+                    </div>
+
+                    <!-- Item 6 -->
+                    <div class="p-8 bg-canvas rounded-2xl border border-hairline space-y-3 hover:border-hairline-strong transition-colors">
+                        <h3 class="font-semibold text-base text-ink">Search Telemetry &amp; Rank Tracking</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Real-time indexation monitoring, automated Google Search Console anomaly detection, and commercial keyword position tracking.</p>
+                        <div class="pt-2 text-[11px] font-mono text-primary">GSC Telemetry &bull; Index Monitoring &bull; Competitor Tracking</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Sprint Methodology -->
+        <section class="section-padding bg-canvas-soft border-t border-hairline">
+            <div class="container-main">
+                <div class="max-w-2xl mb-16 gsap-fade-up">
+                    <p class="text-xs font-semibold tracking-widest text-ink-mute uppercase mb-2">Our Process</p>
+                    <h2 class="display-xl mb-4">Structured Technical SEO Sprint</h2>
+                    <p class="body-md text-ink-mute">We approach organic growth with engineering precision—diagnosing root architectural friction before deploying targeted code fixes.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 gsap-fade-up">
+                    <div class="p-6 bg-canvas rounded-xl border border-hairline space-y-3">
+                        <div class="font-mono text-xs text-primary font-bold">STAGE 01</div>
+                        <h4 class="font-semibold text-sm text-ink">Comprehensive Crawl Audit</h4>
+                        <p class="text-xs text-ink-mute leading-relaxed">Executing deep headless crawls and server log analysis to pinpoint 4xx errors, redirect chains, orphan pages, and indexation blockers.</p>
+                    </div>
+
+                    <div class="p-6 bg-canvas rounded-xl border border-hairline space-y-3">
+                        <div class="font-mono text-xs text-primary font-bold">STAGE 02</div>
+                        <h4 class="font-semibold text-sm text-ink">Direct Code Implementation</h4>
+                        <p class="text-xs text-ink-mute leading-relaxed">Engineering inlined critical CSS, lazy loading, script deferrals, and deploying nested JSON-LD schema graphs directly to your codebase.</p>
+                    </div>
+
+                    <div class="p-6 bg-canvas rounded-xl border border-hairline space-y-3">
+                        <div class="font-mono text-xs text-primary font-bold">STAGE 03</div>
+                        <h4 class="font-semibold text-sm text-ink">Topical Link Clustering</h4>
+                        <p class="text-xs text-ink-mute leading-relaxed">Restructuring internal anchor text and contextual breadcrumbs to channel PageRank to core conversion-focused service URLs.</p>
+                    </div>
+
+                    <div class="p-6 bg-canvas rounded-xl border border-hairline space-y-3">
+                        <div class="font-mono text-xs text-primary font-bold">STAGE 04</div>
+                        <h4 class="font-semibold text-sm text-ink">Monitoring &amp; Compounding</h4>
+                        <p class="text-xs text-ink-mute leading-relaxed">Submitting updated XML indexes, monitoring GSC crawl velocity, tracking keyword rank climbs, and protecting against algorithmic drift.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Real-World Use Cases -->
+        <section class="section-padding border-t border-hairline">
+            <div class="container-main">
+                <div class="max-w-2xl mb-16 gsap-fade-up">
+                    <p class="text-xs font-semibold tracking-widest text-primary uppercase mb-2">Proven Applications</p>
+                    <h2 class="display-xl mb-4">Engineering for Every Organic Growth Challenge</h2>
+                    <p class="body-md text-ink-mute">We engineer search architecture for platforms where organic acquisition represents a primary revenue channel.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 gsap-fade-up">
+                    <div class="p-8 bg-canvas-soft rounded-2xl border border-hairline space-y-3">
+                        <div class="text-xs font-mono font-semibold text-ink uppercase tracking-wider">High-Volume SaaS</div>
+                        <h3 class="font-semibold text-base text-ink">High-Intent Keyword Dominance</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Capturing organic search volume across bottom-of-funnel comparison and solution queries, lowering overall blended CAC.</p>
+                    </div>
+
+                    <div class="p-8 bg-canvas-soft rounded-2xl border border-hairline space-y-3">
+                        <div class="text-xs font-mono font-semibold text-ink uppercase tracking-wider">Enterprise Platforms</div>
+                        <h3 class="font-semibold text-base text-ink">Crawl Budget Consolidation</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Resolving faceted navigation bloat and indexation leaks across 50,000+ programmatic URLs to focus search bots on high-converting inventory.</p>
+                    </div>
+
+                    <div class="p-8 bg-canvas-soft rounded-2xl border border-hairline space-y-3">
+                        <div class="text-xs font-mono font-semibold text-ink uppercase tracking-wider">Single-Page Applications</div>
+                        <h3 class="font-semibold text-base text-ink">Edge Pre-Rendering Fixes</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Transforming client-rendered React platforms into lightning-fast, fully crawlable server-hydrated pages without re-architecting the frontend stack.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: FAQs -->
+        <section class="section-padding bg-canvas-soft border-t border-hairline">
+            <div class="container-main max-w-4xl">
+                <div class="mb-14 text-center gsap-fade-up">
+                    <p class="text-xs font-semibold tracking-widest text-primary uppercase mb-2">Common Inquiries</p>
+                    <h2 class="display-xl mb-3">Frequently Asked Questions</h2>
+                    <p class="body-md text-ink-mute">Everything you need to know about our technical SEO engineering audits and implementations.</p>
+                </div>
+
+                <div class="space-y-4 gsap-fade-up">
+                    <details class="article-accordion p-6 bg-canvas rounded-xl border border-hairline group">
+                        <summary class="font-semibold text-sm cursor-pointer list-none flex justify-between items-center text-ink">
+                            <span>How does technical SEO differ from content marketing and link building?</span>
+                            <span class="text-primary transition-transform group-open:rotate-180">&darr;</span>
+                        </summary>
+                        <p class="text-xs text-ink-mute mt-4 leading-relaxed">Technical SEO addresses the foundation: rendering speed, server headers, crawl budget allocation, indexability, structured data schemas, and Core Web Vitals. Without sound technical architecture, high-quality content remains invisible to search engine crawlers.</p>
+                    </details>
+
+                    <details class="article-accordion p-6 bg-canvas rounded-xl border border-hairline group">
+                        <summary class="font-semibold text-sm cursor-pointer list-none flex justify-between items-center text-ink">
+                            <span>Can you fix indexation and crawling issues on Single-Page Apps (React/Next.js/Vue)?</span>
+                            <span class="text-primary transition-transform group-open:rotate-180">&darr;</span>
+                        </summary>
+                        <p class="text-xs text-ink-mute mt-4 leading-relaxed">Yes. We implement edge-side rendering (SSR), incremental static regeneration (ISR), and dynamic pre-rendering so search bots receive fully populated, crawlable HTML within milliseconds while preserving fast clientside interactivity.</p>
+                    </details>
+
+                    <details class="article-accordion p-6 bg-canvas rounded-xl border border-hairline group">
+                        <summary class="font-semibold text-sm cursor-pointer list-none flex justify-between items-center text-ink">
+                            <span>Do you simply provide an audit report or do you implement the code changes?</span>
+                            <span class="text-primary transition-transform group-open:rotate-180">&darr;</span>
+                        </summary>
+                        <p class="text-xs text-ink-mute mt-4 leading-relaxed">We are engineers first. While we provide detailed audit findings, our primary delivery model is direct code execution—we write the server configs, inlined CSS, JSON-LD schemas, and asset optimizations directly in your repository.</p>
+                    </details>
+
+                    <details class="article-accordion p-6 bg-canvas rounded-xl border border-hairline group">
+                        <summary class="font-semibold text-sm cursor-pointer list-none flex justify-between items-center text-ink">
+                            <span>How long does it take to see organic ranking improvements after technical remediation?</span>
+                            <span class="text-primary transition-transform group-open:rotate-180">&darr;</span>
+                        </summary>
+                        <p class="text-xs text-ink-mute mt-4 leading-relaxed">Technical indexation and Core Web Vitals improvements are typically recognized by Google Search Console within 14 to 28 days as search bots re-crawl your site. Compounding rank lifts across competitive keywords typically mature within 6 to 12 weeks.</p>
+                    </details>
+
+                    <details class="article-accordion p-6 bg-canvas rounded-xl border border-hairline group">
+                        <summary class="font-semibold text-sm cursor-pointer list-none flex justify-between items-center text-ink">
+                            <span>How do you protect sites against Google core algorithm update volatility?</span>
+                            <span class="text-primary transition-transform group-open:rotate-180">&darr;</span>
+                        </summary>
+                        <p class="text-xs text-ink-mute mt-4 leading-relaxed">By aligning your site structure strictly with Google's Helpful Content System and technical quality guidelines: eliminating thin or orphan pages, establishing clear topical entity graphs, and delivering peerless page experience metrics.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Complementary Services -->
+        <section class="section-padding border-t border-hairline">
+            <div class="container-main">
+                <div class="max-w-2xl mb-12 gsap-fade-up">
+                    <p class="text-xs font-semibold tracking-widest text-primary uppercase mb-2">Integrated Solutions</p>
+                    <h2 class="display-lg mb-3">Frequently Paired Capabilities</h2>
+                    <p class="body-sm text-ink-mute">Maximize your digital reach by connecting technical search architecture with our engineering and growth disciplines.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 gsap-fade-up">
+                    <a href="web-engineering.html" class="p-8 bg-canvas-soft rounded-2xl border border-hairline block hover:border-hairline-strong transition-all group">
+                        <div class="text-xs font-mono text-primary font-semibold uppercase mb-2">01 &mdash; Engineering</div>
+                        <h3 class="heading-lg text-ink group-hover:text-primary transition-colors mb-2">Web Engineering &amp; Platform Architecture &rarr;</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Implement clean code, sub-100ms TTFB edge caching, and automated deployment pipelines that guarantee top-tier Core Web Vitals.</p>
+                    </a>
+
+                    <a href="social-media-marketing.html" class="p-8 bg-canvas-soft rounded-2xl border border-hairline block hover:border-hairline-strong transition-all group">
+                        <div class="text-xs font-mono text-primary font-semibold uppercase mb-2">04 &mdash; Growth</div>
+                        <h3 class="heading-lg text-ink group-hover:text-primary transition-colors mb-2">Social Media Marketing &amp; Growth &rarr;</h3>
+                        <p class="text-xs text-ink-mute leading-relaxed">Amplify your organic search rankings with multi-platform social distribution that drives authoritative referral traffic and brand search volume.</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Final CTA -->
+        <section class="cta-section bg-canvas-soft border-t border-hairline gsap-fade-up">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="display-xxl mb-6">Ready to Eliminate Search Bottlenecks?</h2>
+                <p class="body-lg max-w-xl mx-auto mb-10 text-ink-mute">Schedule a technical SEO audit with our search architects to pinpoint your crawl inefficiencies, schema gaps, and ranking upside.</p>
+                <div class="magnetic-wrap">
+                    <a href="contact.html?service=technical-seo" class="btn-primary btn-primary-lg">Schedule Technical SEO Audit</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer-light">
+        <div class="max-w-[1280px] mx-auto flex flex-col md:flex-row justify-between items-center text-sm gap-y-4 md:gap-y-0">
+            <div class="font-medium" style="letter-spacing: -0.04em;">DIGINIXIT.</div>
+            <div class="flex flex-wrap justify-center gap-x-6 gap-y-2">
+                <a href="./">Home</a>
+                <a href="services.html">Services</a>
+                <a href="blog.html">Blog</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div>&copy; 2026 DiginixIT. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/ui-primitives.js" defer></script>
+    <script src="js/ui-components.js" defer></script>
+    <script src="js/common.js" defer></script>
+    <script src="js/script.js" defer></script>
+</body>
+
+</html>
