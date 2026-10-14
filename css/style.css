@@ -9,10 +9,10 @@
     color-scheme: light !important;
 
     /* Brand & Accent */
-    --color-primary: #2a7ee4;
-    --color-primary-deep: #2a7ee4;
-    --color-primary-soft: #2a7ee4;
-    --color-on-primary: #ffffff;
+    --color-primary: #3ecf8e;
+    --color-primary-deep: #24b47e;
+    --color-primary-soft: #4ade80;
+    --color-on-primary: #171717;
 
     /* Surface */
     --color-canvas: #ffffff;
