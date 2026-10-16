@@ -1,0 +1,13 @@
+{
+  "name": "diginixit-saas-platform",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js",
+    "build": "node -e \"console.log('Build completed successfully')\""
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

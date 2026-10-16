@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DiginixIT AI Chatbot | Powered by Grok (xAI)</title>
+    <meta name="description" content="Standalone DiginixIT AI Assistant powered by Grok AI, loaded with complete knowledge base regarding Dr. Nadeem Nazir, Web Engineering, UI/UX Design, SEO, Legal, and Corporate Finance.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --canvas: #ffffff;
+            --canvas-soft: #fafafa;
+            --ink: #171717;
+            --ink-secondary: #212121;
+            --ink-mute: #707070;
+            --primary: #3ecf8e;
+            --primary-deep: #24b47e;
+            --hairline: #dfdfdf;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--canvas-soft);
+            color: var(--ink);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 24px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto 20px auto;
+            width: 100%;
+        }
+
+        header {
+            margin-bottom: 32px;
+            border-bottom: 1px solid var(--hairline);
+            padding-bottom: 24px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #171717;
+            color: #3ecf8e;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .badge-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #3ecf8e;
+        }
+
+        h1 {
+            font-size: 38px;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            color: var(--ink);
+            line-height: 1.15;
+            margin-bottom: 12px;
+        }
+
+        p.lead {
+            font-size: 16px;
+            color: var(--ink-mute);
+            max-width: 700px;
+            letter-spacing: -0.01em;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            margin-top: 28px;
+        }
+
+        .info-card {
+            background: #ffffff;
+            border: 1px solid var(--hairline);
+            border-radius: 14px;
+            padding: 22px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .info-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.06);
+        }
+
+        .info-card h3 {
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 8px;
+            color: var(--ink);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .info-card p {
+            font-size: 13px;
+            color: var(--ink-mute);
+            line-height: 1.5;
+        }
+
+        .code-box {
+            background: #171717;
+            color: #e5e5e5;
+            padding: 18px 22px;
+            border-radius: 12px;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            font-size: 13px;
+            margin-top: 24px;
+            overflow-x: auto;
+            border: 1px solid rgba(255,255,255,0.08);
+            position: relative;
+        }
+
+        .code-label {
+            position: absolute;
+            top: 10px;
+            right: 14px;
+            font-size: 10px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.4);
+            letter-spacing: 0.08em;
+        }
+
+        .highlight-accent {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .action-banner {
+            background: #ffffff;
+            border: 1px solid var(--hairline);
+            border-left: 4px solid var(--primary);
+            border-radius: 12px;
+            padding: 18px 22px;
+            margin-top: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .btn-test {
+            background: var(--ink);
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 10px;
+            border: none;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .btn-test:hover {
+            background: var(--primary-deep);
+            color: #ffffff;
+        }
+
+        footer {
+            margin-top: 40px;
+            border-top: 1px solid var(--hairline);
+            padding-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: var(--ink-mute);
+        }
+
+        @media (max-width: 640px) {
+            h1 { font-size: 28px; }
+            .action-banner { flex-direction: column; align-items: flex-start; }
+            .btn-test { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <main class="container">
+        <header>
+            <div class="badge">
+                <span class="badge-dot"></span>
+                DiginixIT AI Engine • Powered by Grok (xAI)
+            </div>
+            <h1>DiginixIT AI Chatbot</h1>
+            <p class="lead">
+                A standalone, embeddable intelligent chatbot engine trained on DiginixIT's multidisciplinary portfolio, leadership profile of <strong>Dr. Nadeem Nazir</strong>, web engineering solutions, design systems, technical SEO, tech law, and corporate finance.
+            </p>
+        </header>
+
+        <section>
+            <div class="action-banner">
+                <div>
+                    <h3 style="font-size: 15px; font-weight: 700; color: var(--ink);">Interactive Widget Ready</h3>
+                    <p style="font-size: 13px; color: var(--ink-mute);">Look at the <strong>bottom-right corner</strong> to launch the floating chatbot button, or click the trigger below:</p>
+                </div>
+                <button class="btn-test" onclick="if(window.DiginixChatbot) window.DiginixChatbot.open();">Open Chatbot Popup</button>
+            </div>
+
+            <div class="card-grid">
+                <div class="info-card">
+                    <h3>
+                        <span class="highlight-accent">01.</span>
+                        Dr. Nadeem Nazir
+                    </h3>
+                    <p>
+                        Full strategic leadership bio, governance consulting, venture advisory domains, contact availability, and LinkedIn networking details.
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <h3>
+                        <span class="highlight-accent">02.</span>
+                        5 Core Capabilities
+                    </h3>
+                    <p>
+                        Web Engineering, UI/UX Design Systems, Technical SEO (<2.5s Core Web Vitals), Law &amp; Tech Compliance, and Corporate Finance Modeling.
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <h3>
+                        <span class="highlight-accent">03.</span>
+                        Secure Server Secrets
+                    </h3>
+                    <p>
+                        Grok API Key is stored safely in server environment variables (<code>GROK_API_KEY</code>) and proxied via <code>/api/chat</code>, never exposing your key to frontend users.
+                    </p>
+                </div>
+            </div>
+
+            <div class="code-box">
+                <span class="code-label">Standalone Integration</span>
+                <code>&lt;!-- To embed into any page or branch, simply include this single line: --&gt;<br>
+&lt;script src="chatbot.js"&gt;&lt;/script&gt;</code>
+            </div>
+        </section>
+
+        <footer>
+            &copy; 2026 DiginixIT. Built for isolated branch deployment. Powered by Grok AI.
+        </footer>
+    </main>
+
+    <!-- Standalone Chatbot Integration -->
+    <script src="chatbot.js"></script>
+
+</body>
+</html>
