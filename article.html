@@ -736,6 +736,12 @@
 
                     </div>
 
+                    <!-- Article Hero / Main Image -->
+                    <figure id="article-hero-image-wrap" class="hidden my-8 rounded-xl overflow-hidden border border-hairline bg-canvas-soft">
+                        <img id="article-hero-image" src="" alt="" class="w-full h-auto object-cover max-h-[580px]" loading="eager">
+                        <figcaption id="article-hero-caption" class="text-xs text-ink-mute py-2.5 px-4 text-center border-t border-hairline bg-canvas"></figcaption>
+                    </figure>
+
                     <!-- Article Body Content -->
                     <article id="article-content" class="space-y-6">
                         <!-- Content Paragraphs Populated Dynamically -->
@@ -783,6 +789,7 @@
     <!-- Scripts -->
     <script src="js/ui-primitives.js" defer></script>
     <script src="js/ui-components.js" defer></script>
+    <script src="js/articles-data.js" defer></script>
     <script src="js/common.js" defer></script>
     <script src="js/script.js" defer></script>
 
@@ -813,7 +820,7 @@
 
             await window.backendReady;
             const blogs = await window.apiCall('get_blogs') || [];
-            const post = blogs.find(b => String(b.id) === String(articleId));
+            const post = blogs.find(b => String(b.id) === String(articleId) || (b.slug && b.slug === articleId));
 
             if (!post) {
                 renderNotFound("The requested article could not be found.");
@@ -822,7 +829,9 @@
 
             // Set Title & Meta tags dynamically for SEO & Social Cards
             const currentUrl = `https://diginixit.com/article.html?id=${post.id}`;
-            const postImage = 'https://diginixit.com/images/og-home.jpg';
+            const postImage = post.image
+                ? (post.image.startsWith('http') ? post.image : `https://diginixit.com/${post.image.replace(/^\//, '')}`)
+                : 'https://diginixit.com/images/og-home.jpg';
 
             document.title = `${post.title} | DiginixIT`;
 
@@ -915,6 +924,22 @@
             const readingTime = Math.max(1, Math.ceil(words / 200));
             const readTimeEl = document.getElementById('article-readtime');
             if (readTimeEl) readTimeEl.innerText = `${readingTime} min read`;
+
+            // Main Article Hero Image
+            const heroWrap = document.getElementById('article-hero-image-wrap');
+            const heroImg = document.getElementById('article-hero-image');
+            const heroCaption = document.getElementById('article-hero-caption');
+            if (post.image && heroWrap && heroImg) {
+                heroImg.src = post.image;
+                heroImg.alt = post.title || 'Main article cover';
+                if (heroCaption) {
+                    heroCaption.innerText = post.image_caption || post.title;
+                    heroCaption.classList.remove('hidden');
+                }
+                heroWrap.classList.remove('hidden');
+            } else if (heroWrap) {
+                heroWrap.classList.add('hidden');
+            }
 
             // Render rich content or paragraphs
             const contentsContainer = document.getElementById('article-content');
@@ -1075,6 +1100,11 @@
                 relatedContainer.innerHTML = relatedBlogs.map(item => `
                     <a href="article.html?id=${item.id}" class="flex flex-col justify-between py-6 border-b border-hairline group">
                         <div>
+                            ${item.image ? `
+                            <div class="mb-4 rounded-xl overflow-hidden border border-hairline bg-canvas-soft aspect-[16/10]">
+                                <img src="${window.escapeHtml(item.image)}" alt="${window.escapeHtml(item.title)}" class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300" loading="lazy">
+                            </div>
+                            ` : ''}
                             <div class="flex justify-between items-center mb-4">
                                 <span class="bg-canvas-soft border border-hairline text-ink text-[10px] font-medium px-3 py-1 rounded-full uppercase tracking-wider">${window.escapeHtml(item.category)}</span>
                                 <div class="text-[10px] text-ink-mute font-medium">${window.escapeHtml(formatLocalShortDate(item.date))}</div>

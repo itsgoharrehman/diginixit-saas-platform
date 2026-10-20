@@ -251,6 +251,7 @@
     <!-- Scripts -->
     <script src="js/ui-primitives.js" defer></script>
     <script src="js/ui-components.js" defer></script>
+    <script src="js/articles-data.js" defer></script>
     <script src="js/common.js" defer></script>
     <script src="js/script.js" defer></script>
     
@@ -331,6 +332,11 @@
                 grid.innerHTML = filtered.map(post => `
                     <a href="article.html?id=${post.id}" class="flex flex-col justify-between py-6 border-b border-hairline group">
                         <div>
+                            ${post.image ? `
+                            <div class="mb-4 rounded-xl overflow-hidden border border-hairline bg-canvas-soft aspect-[16/10]">
+                                <img src="${window.escapeHtml(post.image)}" alt="${window.escapeHtml(post.title)}" class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300" loading="lazy">
+                            </div>
+                            ` : ''}
                             <div class="flex justify-between items-center mb-4">
                                 <span class="bg-canvas-soft border border-hairline text-ink text-[10px] font-medium px-3 py-1 rounded-full uppercase tracking-wider">${window.escapeHtml(post.category)}</span>
                                 <div class="text-[10px] text-ink-mute font-medium">${window.escapeHtml(formatLocalShortDate(post.date))}</div>

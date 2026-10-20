@@ -420,6 +420,9 @@ async function initSupabase() {
     try {
         // Load Supabase Client SDK locally
         await loadScript('js/supabase.js');
+        if (typeof window.builtInArticles === 'undefined') {
+            await loadScript('js/articles-data.js').catch(() => {});
+        }
 
         if (typeof supabase !== 'undefined') {
             window.supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
@@ -454,17 +457,59 @@ window.apiCall = async function (action, data = null) {
                 return { success: true, message: "Database active" };
 
             case 'get_blogs': {
-                const { data: blogs, error } = await window.supabase
-                    .rpc('get_public_blogs');
-                if (error) throw error;
-                return blogs || [];
+                let dbBlogs = [];
+                try {
+                    const { data: blogs, error } = await window.supabase
+                        .rpc('get_public_blogs');
+                    if (!error && Array.isArray(blogs)) {
+                        dbBlogs = blogs;
+                    }
+                } catch (e) {
+                    console.warn("Failed to fetch public blogs from Supabase:", e);
+                }
+
+                if (typeof window.builtInArticles === 'undefined') {
+                    await loadScript('js/articles-data.js').catch(() => {});
+                }
+
+                const existingIds = new Set(dbBlogs.map(b => String(b.id)));
+                const existingTitles = new Set(dbBlogs.map(b => (b.title || '').toLowerCase().trim()));
+                const merged = [...dbBlogs];
+                const builtIns = window.builtInArticles || [];
+                for (const article of builtIns) {
+                    if (!existingIds.has(String(article.id)) && !existingTitles.has((article.title || '').toLowerCase().trim())) {
+                        merged.push(article);
+                    }
+                }
+                return merged;
             }
 
             case 'get_admin_blogs': {
-                const { data: blogs, error } = await window.supabase
-                    .rpc('get_all_blogs_admin');
-                if (error) throw error;
-                return blogs || [];
+                let dbBlogs = [];
+                try {
+                    const { data: blogs, error } = await window.supabase
+                        .rpc('get_all_blogs_admin');
+                    if (!error && Array.isArray(blogs)) {
+                        dbBlogs = blogs;
+                    }
+                } catch (e) {
+                    console.warn("Failed to fetch admin blogs from Supabase:", e);
+                }
+
+                if (typeof window.builtInArticles === 'undefined') {
+                    await loadScript('js/articles-data.js').catch(() => {});
+                }
+
+                const existingIds = new Set(dbBlogs.map(b => String(b.id)));
+                const existingTitles = new Set(dbBlogs.map(b => (b.title || '').toLowerCase().trim()));
+                const merged = [...dbBlogs];
+                const builtIns = window.builtInArticles || [];
+                for (const article of builtIns) {
+                    if (!existingIds.has(String(article.id)) && !existingTitles.has((article.title || '').toLowerCase().trim())) {
+                        merged.push(article);
+                    }
+                }
+                return merged;
             }
 
             case 'save_blog': {
@@ -880,12 +925,32 @@ function apiCallLocalStorageFallback(action, data) {
             case 'ping':
                 resolve({ success: false, message: "Local storage only" });
                 break;
-            case 'get_blogs':
-                resolve(blogs.slice().reverse());
+            case 'get_blogs': {
+                const existingIds = new Set(blogs.map(b => String(b.id)));
+                const existingTitles = new Set(blogs.map(b => (b.title || '').toLowerCase().trim()));
+                const merged = [...blogs];
+                const builtIns = window.builtInArticles || [];
+                for (const article of builtIns) {
+                    if (!existingIds.has(String(article.id)) && !existingTitles.has((article.title || '').toLowerCase().trim())) {
+                        merged.push(article);
+                    }
+                }
+                resolve(merged.slice().reverse());
                 break;
-            case 'get_admin_blogs':
-                resolve(blogs.slice().reverse());
+            }
+            case 'get_admin_blogs': {
+                const existingIds = new Set(blogs.map(b => String(b.id)));
+                const existingTitles = new Set(blogs.map(b => (b.title || '').toLowerCase().trim()));
+                const merged = [...blogs];
+                const builtIns = window.builtInArticles || [];
+                for (const article of builtIns) {
+                    if (!existingIds.has(String(article.id)) && !existingTitles.has((article.title || '').toLowerCase().trim())) {
+                        merged.push(article);
+                    }
+                }
+                resolve(merged.slice().reverse());
                 break;
+            }
             case 'save_blog':
                 if (data.id) {
                     const idx = blogs.findIndex(b => b.id === data.id);
