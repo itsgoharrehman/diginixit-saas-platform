@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        // Instant check for maintenance mode to prevent page flash of content
+        try {
+            if (JSON.parse(localStorage.getItem('settings') || '{}').maintenanceMode) {
+                document.documentElement.style.display = 'none';
+                window.location.replace('/maintenance');
+            }
+        } catch (e) { }
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-3363493243397953">
+    <title>Core Web Vitals as a Business Metric (2026 Guide) | DiginixIT</title>
+    <meta name="description" content="What founders, CTOs and digital leaders should know about Core Web Vitals, mobile pass rates, conversion impacts, and engineering performance as a metric.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://diginixit.com/blog/core-web-vitals-business-metric">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://diginixit.com/blog/core-web-vitals-business-metric">
+    <meta property="og:title" content="Core Web Vitals as a Business Metric (2026 Guide) | DiginixIT">
+    <meta property="og:description" content="What founders, CTOs and digital leaders should know about Core Web Vitals, mobile pass rates, conversion impacts, and engineering performance as a metric.">
+    <meta property="og:image" content="https://diginixit.com/images/core_web_vitals_guide.webp">
+    <meta property="article:published_time" content="2026-10-20">
+    <meta property="article:modified_time" content="2026-10-22">
+    <meta property="article:author" content="Dr. Nadeem Nazir">
+    <meta property="article:section" content="SEO">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://diginixit.com/blog/core-web-vitals-business-metric">
+    <meta name="twitter:title" content="Core Web Vitals as a Business Metric (2026 Guide) | DiginixIT">
+    <meta name="twitter:description" content="What founders, CTOs and digital leaders should know about Core Web Vitals, mobile pass rates, conversion impacts, and engineering performance as a metric.">
+    <meta name="twitter:image" content="https://diginixit.com/images/core_web_vitals_guide.webp">
+
+    <!-- DNS Prefetch & Preconnect -->
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://unpkg.com">
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <meta name="color-scheme" content="light">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Tailwind Configuration Inline -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Lora', 'serif']
+                    },
+                    colors: {
+                        canvas: '#ffffff',
+                        'canvas-soft': '#fafafa',
+                        'canvas-night': '#1c1c1c',
+                        ink: '#171717',
+                        'ink-mute': '#707070',
+                        'ink-faint': '#b2b2b2',
+                        primary: '#3ecf8e',
+                        'primary-deep': '#24b47e',
+                        hairline: '#dfdfdf',
+                        'hairline-strong': '#c7c7c7',
+                        'hairline-cool': '#ededed'
+                    },
+                    letterSpacing: { tighter: '-0.04em', tight: '-0.02em' }
+                }
+            }
+        };
+    </script>
+
+    <!-- Core Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Structured Data: BreadcrumbList -->
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://diginixit.com/"
+        },
+        {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Blog",
+            "item": "https://diginixit.com/blog"
+        },
+        {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Core Web Vitals as a Business Metric",
+            "item": "https://diginixit.com/blog/core-web-vitals-business-metric"
+        }
+    ]
+}
+    </script>
+
+    <!-- Structured Data: BlogPosting -->
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Core Web Vitals as a Business Metric",
+    "description": "What founders, CTOs and digital leaders should know about Core Web Vitals, mobile pass rates, conversion impacts, and engineering performance as a metric.",
+    "image": [
+        "https://diginixit.com/images/core_web_vitals_guide.webp"
+    ],
+    "datePublished": "2026-10-20",
+    "dateModified": "2026-10-22",
+    "author": [
+        {
+            "@type": "Person",
+            "name": "Dr. Nadeem Nazir",
+            "url": "https://diginixit.com/blog"
+        }
+    ],
+    "publisher": {
+        "@type": "Organization",
+        "name": "DiginixIT",
+        "url": "https://diginixit.com/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://diginixit.com/favicon.svg"
+        }
+    },
+    "url": "https://diginixit.com/blog/core-web-vitals-business-metric",
+    "mainEntityOfPage": "https://diginixit.com/blog/core-web-vitals-business-metric",
+    "inLanguage": "en-US"
+}
+    </script>
+
+    <style>
+        html, body {
+            overflow-x: hidden;
+            max-width: 100%;
+        }
+        * { box-sizing: border-box; }
+        img, video, iframe, table { max-width: 100%; }
+
+        #article-content {
+            font-family: 'Lora', Georgia, Cambria, serif;
+            color: var(--color-ink, #171717);
+            font-size: 1.125rem;
+            line-height: 1.8;
+            letter-spacing: -0.003em;
+            word-break: break-word;
+            overflow-wrap: break-word;
+        }
+        @media (min-width: 640px) {
+            #article-content { font-size: 1.25rem; }
+        }
+        #article-content p {
+            font-family: 'Lora', Georgia, Cambria, serif !important;
+            font-size: 1.125rem;
+            line-height: 1.8;
+            font-weight: 400;
+            color: #171717;
+            margin-bottom: 2rem;
+        }
+        @media (min-width: 640px) {
+            #article-content p { font-size: 1.25rem; }
+        }
+        #article-content > p:first-of-type,
+        #article-content p.lead {
+            font-size: 1.2rem;
+            line-height: 1.75;
+            color: #242424;
+        }
+        @media (min-width: 640px) {
+            #article-content > p:first-of-type,
+            #article-content p.lead { font-size: 1.35rem; }
+        }
+        #article-content h1,
+        #article-content h2,
+        #article-content h3,
+        #article-content h4,
+        #article-content h5,
+        #article-content h6 {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+            color: var(--color-ink, #171717);
+            font-weight: 700 !important;
+            line-height: 1.3;
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+            word-break: break-word;
+        }
+        #article-content h1 { font-size: clamp(1.75rem, 4vw, 2.35rem); }
+        #article-content h2 { font-size: clamp(1.4rem, 3.5vw, 1.85rem); }
+        #article-content h3 { font-size: clamp(1.2rem, 3vw, 1.5rem); }
+
+        #article-content ul,
+        #article-content ol {
+            font-family: 'Lora', Georgia, serif !important;
+            font-size: 1.125rem;
+            line-height: 1.75;
+            margin-bottom: 1.75rem;
+        }
+        @media (min-width: 640px) {
+            #article-content ul,
+            #article-content ol { font-size: 1.25rem; }
+        }
+        #article-content li {
+            font-family: 'Lora', Georgia, serif !important;
+            margin-bottom: 0.5rem;
+        }
+        #article-content a {
+            color: var(--color-ink);
+            text-decoration: underline;
+            font-weight: 500;
+            transition: opacity 0.2s ease;
+            word-break: break-word;
+        }
+        #article-content a:hover { opacity: 0.8; }
+
+        #article-content ul {
+            list-style-type: disc !important;
+            padding-left: 1.75rem !important;
+            margin-bottom: 1.25rem !important;
+        }
+        #article-content ol {
+            list-style-type: decimal !important;
+            padding-left: 1.75rem !important;
+            margin-bottom: 1.25rem !important;
+        }
+        #article-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+        #article-content th,
+        #article-content td {
+            border: 1px solid var(--color-hairline, #e5e5e5);
+            padding: 0.65rem 0.85rem;
+            text-align: left;
+        }
+        #article-content th {
+            background-color: var(--color-canvas-soft, #f9f9f9);
+            font-weight: 600;
+        }
+        #article-content blockquote {
+            border-left: 3px solid var(--color-primary);
+            padding-left: 1.5rem;
+            font-style: italic;
+            color: var(--color-ink-mute);
+            margin: 2rem 0;
+        }
+        #article-content code {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            background-color: var(--color-canvas-soft);
+            padding: 0.2em 0.4em;
+            border-radius: var(--radius-xs);
+            font-size: 0.85em;
+        }
+        #article-content pre {
+            padding: 1rem;
+            overflow-x: auto;
+            margin-bottom: 1.75rem;
+            background-color: var(--color-canvas-night);
+            color: var(--color-on-dark);
+            border-radius: var(--radius-sm);
+            max-width: 100%;
+            white-space: pre-wrap;
+        }
+        @media (max-width: 640px) {
+            main {
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+                padding-top: 5.5rem !important;
+            }
+            #article-content { font-size: 1rem !important; }
+        }
+    </style>
+</head>
+
+<body class="bg-canvas text-ink antialiased selection:bg-neutral-200">
+    <!-- Navbar -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-canvas/80 backdrop-blur-md border-b border-hairline transition-all duration-300">
+        <div class="max-w-[1280px] mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="/" class="flex items-center gap-2 group">
+                <span class="font-bold text-xl tracking-tight text-ink group-hover:opacity-80 transition-opacity">DIGINIXIT<span class="text-primary">.</span></span>
+            </a>
+
+            <!-- Desktop Nav Items -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-ink-mute" aria-label="Main Navigation">
+                <a href="/" class="hover:text-ink transition-colors">Home</a>
+                <div class="nav-dropdown-wrapper relative group" id="nav-services-dropdown">
+                    <a href="/services" class="nav-item-link inline-flex items-center gap-1.5 py-2 hover:text-ink transition-colors" id="nav-services" aria-haspopup="true" aria-expanded="false">
+                        <span>Our Services</span>
+                        <svg class="w-3.5 h-3.5 nav-dropdown-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+                    </a>
+                    <div class="nav-dropdown-menu">
+                        <a href="/web-engineering" class="nav-dropdown-item">
+                            <span class="item-title">Web Engineering</span>
+                            <span class="item-desc">High-performance apps &amp; custom SaaS architecture</span>
+                        </a>
+                        <a href="/ui-ux-design" class="nav-dropdown-item">
+                            <span class="item-title">UI/UX Product Design</span>
+                            <span class="item-desc">Bespoke design systems &amp; cognitive flows</span>
+                        </a>
+                        <a href="/technical-seo" class="nav-dropdown-item">
+                            <span class="item-title">Technical SEO</span>
+                            <span class="item-desc">Core Web Vitals &amp; entity search architecture</span>
+                        </a>
+                        <a href="/social-media-marketing" class="nav-dropdown-item">
+                            <span class="item-title">Social Media Marketing</span>
+                            <span class="item-desc">Audience acquisition &amp; organic distribution loops</span>
+                        </a>
+                        <a href="/law-compliance" class="nav-dropdown-item">
+                            <span class="item-title">Law &amp; Tech Compliance</span>
+                            <span class="item-desc">GDPR audits, enterprise MSAs &amp; IP protection</span>
+                        </a>
+                        <a href="/corporate-finance" class="nav-dropdown-item">
+                            <span class="item-title">Corporate Finance</span>
+                            <span class="item-desc">Dynamic financial models, valuations &amp; runways</span>
+                        </a>
+                        <div class="nav-dropdown-divider"></div>
+                        <a href="/services" class="nav-dropdown-footer">
+                            <span>Overview: All Capabilities</span>
+                            <span class="text-primary font-bold">&rarr;</span>
+                        </a>
+                    </div>
+                </div>
+                <a href="/blog" class="text-ink font-semibold transition-colors">Blog</a>
+                <a href="/contact" class="hover:text-ink transition-colors">Contact</a>
+            </nav>
+
+            <div class="flex items-center gap-4">
+                <a href="/auth" class="text-xs uppercase tracking-wider font-semibold text-ink px-4 py-2 border border-hairline rounded hover:bg-canvas-soft transition-colors">Portal</a>
+                <button id="mobile-menu-btn" class="md:hidden p-2 text-ink hover:text-primary transition-colors" aria-label="Toggle Navigation Menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-drawer" class="fixed inset-0 z-40 bg-canvas transform translate-x-full transition-transform duration-300 md:hidden pt-20 px-6">
+        <nav class="flex flex-col gap-6 text-lg font-medium text-ink">
+            <a href="/" class="border-b border-hairline pb-3">Home</a>
+            <a href="/services" class="border-b border-hairline pb-3">Services</a>
+            <a href="/blog" class="border-b border-hairline pb-3 font-semibold text-primary">Blog</a>
+            <a href="/contact" class="border-b border-hairline pb-3">Contact</a>
+            <a href="/auth" class="btn-primary mt-4 text-center">Client Portal</a>
+        </nav>
+    </div>
+
+    <!-- Main Article Content Container -->
+    <main class="pt-32 pb-24 max-w-[820px] mx-auto px-6">
+        <!-- Breadcrumb Navigation -->
+        <nav class="flex items-center gap-2 text-xs text-ink-mute mb-8 uppercase tracking-widest font-mono" aria-label="Breadcrumb">
+            <a href="/" class="hover:text-ink transition-colors">Home</a>
+            <span>/</span>
+            <a href="/blog" class="hover:text-ink transition-colors">Blog</a>
+            <span>/</span>
+            <span class="text-ink font-semibold">SEO</span>
+        </nav>
+
+        <!-- Article Header -->
+        <header class="mb-10">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-medium bg-canvas-soft border border-hairline text-primary mb-4">
+                <span>SEO</span>
+                <span>&bull;</span>
+                <span>12 min read</span>
+            </div>
+            <h1 class="text-3xl md:text-5xl font-bold tracking-tight text-ink mb-6 leading-[1.15]" style="letter-spacing: -0.02em;">
+                Core Web Vitals as a Business Metric
+            </h1>
+
+            <!-- Author & Metadata Bar -->
+            <div class="flex items-center justify-between py-4 border-y border-hairline text-sm text-ink-mute">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-canvas-soft border border-hairline flex items-center justify-center font-bold text-xs text-ink">
+                        DN
+                    </div>
+                    <div>
+                        <div class="font-semibold text-ink text-sm">Dr. Nadeem Nazir</div>
+                        <time datetime="2026-10-20" class="text-xs text-ink-mute">2026-10-20</time>
+                    </div>
+                </div>
+
+                <!-- Share Actions -->
+                <div class="flex items-center gap-2">
+                    <a href="https://twitter.com/intent/tweet?text=Core Web Vitals as a Business Metric&url=https://diginixit.com/blog/core-web-vitals-business-metric" target="_blank" rel="noopener" class="p-2 text-ink-mute hover:text-ink rounded border border-hairline hover:bg-canvas-soft transition-colors" aria-label="Share on X">
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://diginixit.com/blog/core-web-vitals-business-metric" target="_blank" rel="noopener" class="p-2 text-ink-mute hover:text-ink rounded border border-hairline hover:bg-canvas-soft transition-colors" aria-label="Share on LinkedIn">
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero Image -->
+        <figure class="my-8 rounded-xl overflow-hidden border border-hairline bg-canvas-soft">
+            <img src="/images/core_web_vitals_guide.webp" alt="Core Web Vitals as a Business Metric: Overview for founders, CTOs and digital leaders in the USA, UK and Europe" width="1200" height="630" class="w-full h-auto object-cover max-h-[580px]" fetchpriority="high">
+            <figcaption class="text-xs text-ink-mute py-2.5 px-4 text-center border-t border-hairline bg-canvas">Core Web Vitals as a Business Metric: Overview for founders, CTOs and digital leaders in the USA, UK and Europe.</figcaption>
+        </figure>
+
+        <!-- Article Body Content -->
+        <article id="article-content" class="space-y-6">
+<p class="lead text-lg font-medium text-ink leading-relaxed mb-6">What Founders, CTOs, and Digital Leaders Should Know About Website Performance in 2026. A measured, evidence-based operational analysis for commercial decision-makers in the USA, UK, and Europe.</p>
+
+<div class="my-8 p-6 bg-canvas-soft border border-hairline rounded-xl space-y-3">
+    <div class="flex items-center gap-2 text-primary font-semibold text-xs uppercase tracking-wider">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+        <span>Executive Key Takeaways</span>
+    </div>
+    <ul class="space-y-2 text-sm text-ink-mute">
+        <li class="flex items-start gap-2"><strong class="text-ink font-medium">&bull;</strong> <span><strong>Real Visitor Experience:</strong> Core Web Vitals measure three critical user experience factors: loading speed (LCP), interaction responsiveness (INP), and visual layout stability (CLS).</span></li>
+        <li class="flex items-start gap-2"><strong class="text-ink font-medium">&bull;</strong> <span><strong>The Competitive Gap:</strong> The HTTP Archive's Web Almanac 2025 found that only 48% of mobile websites and 56% of desktop websites pass all three metrics, leaving substantial room for competitive advantage.</span></li>
+        <li class="flex items-start gap-2"><strong class="text-ink font-medium">&bull;</strong> <span><strong>Proven Commercial Impact:</strong> Documented case studies (Vodafone Italy +8% sales, Rakuten 24 +53% revenue per visitor) tie performance directly to conversion, though results vary by audience and offer.</span></li>
+        <li class="flex items-start gap-2"><strong class="text-ink font-medium">&bull;</strong> <span><strong>Search Visibility Realities:</strong> Google uses Core Web Vitals in its ranking algorithms, yet good scores do not guarantee top rankings—relevance, depth, and content quality remain paramount. Discover our dedicated <a href="/technical-seo" class="text-primary hover:underline font-medium">Technical SEO & Search Architecture</a> services.</span></li>
+    </ul>
+</div>
+
+<hr>
+
+<h2>1. Introduction</h2>
+
+<p>A website is often the first and sometimes the only place where a customer meets a business. For a software-as-a-service company it is the product's front door. For an online retailer it is the shop. For a professional services firm it is the sales team that never sleeps. Yet website performance is still treated by many leadership teams as a technical detail that engineers will deal with eventually. Our <a href="/web-engineering" class="text-primary hover:underline font-medium">custom web engineering services</a> demonstrate that performance is a core product discipline.</p>
+
+<p>Core Web Vitals are one of the clearest attempts to turn that technical detail into something measurable. Introduced by Google, they are a small set of user-centred metrics that describe loading speed, responsiveness and visual stability, measured on real visitors rather than in a laboratory. Because Google publishes the definitions, the thresholds and the underlying public dataset, they have become a common language between engineers, marketers and executives.</p>
+
+<p>The topic deserves attention for three reasons. First, the data suggests that performance is far from a solved problem: according to the HTTP Archive's Web Almanac 2025, fewer than half of mobile websites passed all three metrics. Second, Google states that Core Web Vitals are used by its ranking systems, which links performance to search visibility. Third, a small number of well-documented experiments connect faster pages with commercial outcomes such as sales and lead generation.</p>
+
+<p>At the same time, the subject attracts exaggeration. Claims that a specific score will double revenue or secure first-page rankings are not supported by the evidence. Google itself cautions that good scores do not guarantee good rankings, and published business results come from specific companies in specific circumstances. Also explore our foundational guide on <a href="/blog/affordable-seo-services-small-business" class="text-primary hover:underline font-medium">Affordable SEO Services for Small Business</a> for localized search strategy.</p>
+
+<p>This paper takes a measured view for decision-makers in the United States, the United Kingdom and Europe. It explains what the metrics mean, sets out the business opportunities and the limitations, describes how performance is engineered in practice, presents dated statistics from primary or clearly identified sources, and closes with practical recommendations. It does not promise outcomes, and forecasts, estimates and opinions are kept distinct from reported facts.</p>
+
+<hr>
+
+<h2>2. Understanding Core Web Vitals</h2>
+
+<p>Core Web Vitals are three metrics defined by Google and documented on web.dev. Each captures a different part of the visitor's experience:</p>
+
+<ul>
+    <li><strong>Largest Contentful Paint (LCP):</strong> Measures how long it takes for the largest visible element—usually a hero image or primary block of text—to render on screen. It is a reliable proxy for the moment a visitor feels that the page has loaded. A good LCP threshold is <strong>2.5 seconds or less</strong>.</li>
+    <li><strong>Interaction to Next Paint (INP):</strong> Measures how quickly the page responds when a visitor clicks, taps, or types. A good INP threshold is <strong>200 milliseconds or less</strong>. INP officially replaced First Input Delay (FID) as a Core Web Vital on <strong>12 March 2024</strong>, evaluating responsiveness across the entire session lifecycle rather than only the initial interaction.</li>
+    <li><strong>Cumulative Layout Shift (CLS):</strong> Measures how much the visible content shifts unexpectedly during the page lifecycle (e.g. an un-sized banner shifting a button just as someone attempts to click it). A good CLS threshold is <strong>0.1 or less</strong>.</li>
+</ul>
+
+<p>Google also defines poor ranges: an LCP above 4 seconds, an INP above 500 milliseconds, and a CLS above 0.25. Values in between are classified as needing improvement.</p>
+
+<h3>Key Performance Concepts</h3>
+
+<ul>
+    <li><strong>Field data vs. Lab data:</strong> Field data captures real-world user experiences stored in the Chrome User Experience Report (CrUX). Lab data comes from synthetic tools like Google Lighthouse. While lab simulations are helpful for debugging, field telemetry is the sole basis for Core Web Vitals assessments.</li>
+    <li><strong>The 75th Percentile Rule:</strong> A page passes an assessment only when at least 75% of real-world visits meet the good threshold. A website with a fast mean can still fail if the slowest quarter of its traffic experiences severe latency.</li>
+    <li><strong>Origin vs. URL-level:</strong> In CrUX, an origin represents the complete domain, whereas URL-level metrics evaluate distinct landing templates.</li>
+    <li><strong>Third-party Script Tax:</strong> Scripts loaded from external vendors—advertising trackers, tag managers, analytics, and consent banners—frequently introduce latency outside the control of the internal engineering team.</li>
+    <li><strong>Edge Delivery:</strong> Distributing content via edge compute and CDNs close to the client to drastically reduce Time to First Byte (TTFB). Explore how our <a href="/services" class="text-primary hover:underline font-medium">end-to-end technical capabilities</a> optimize modern web architectures.</li>
+</ul>
+
+<blockquote><strong>Critical Device Nuance:</strong> Core Web Vitals are evaluated independently for mobile and desktop. An executive testing a landing page on an ultra-fast corporate laptop will frequently observe flawless metrics that fail completely on mid-tier mobile hardware over cellular connections.</blockquote>
+
+<hr>
+
+<h2>3. The Business Case: Opportunities</h2>
+
+<p>The strategic justification for investing in performance rests on five concrete opportunities. None is automatic, and each must be evaluated against a company's proprietary business metrics:</p>
+
+<h3>1. Conversion and Revenue Impact</h3>
+<p>The most compelling evidence emerges from controlled A/B experiments. Google's web.dev published a documented case study of <strong>Vodafone Italy</strong>, which ran an A/B test on a key landing page. The version optimised for Web Vitals delivered a <strong>31% improvement in LCP</strong>, generating <strong>8% more sales</strong>, a <strong>15% increase in lead-to-visit rate</strong>, and an <strong>11% boost in cart-to-visit rate</strong>.</p>
+<p>Similarly, an enterprise study on Japanese e-commerce platform <strong>Rakuten 24</strong> revealed that comprehensive Core Web Vitals engineering was associated with a <strong>53.37% increase in revenue per visitor</strong> and a <strong>33.13% higher conversion rate</strong>. While individual outcomes reflect unique product offerings and starting baselines, they demonstrate what is achievable.</p>
+
+<h3>2. Organic Search Visibility Support</h3>
+<p>Google explicitly confirms that page experience signals and Core Web Vitals are evaluated by its automated ranking systems. However, Google's engineering guidelines emphasize clear boundaries: strong Core Web Vitals do not guarantee page-one rankings, nor will high performance rescue irrelevant or thin content. Speed functions as a decisive tiebreaker among similarly authoritative resources. Check our specialized <a href="/technical-seo" class="text-primary hover:underline font-medium">search architecture engineering</a>.</p>
+
+<h3>3. A Substantial, Unclosed Competitive Gap</h3>
+<p>Because fewer than 48% of mobile websites currently satisfy all three Core Web Vitals thresholds, achieving consistent compliance elevates a brand into the top tier of user experience in almost every competitive vertical.</p>
+
+<h3>4. Unified Operational Benchmarks</h3>
+<p>Core Web Vitals eliminate subjective debates between designers, marketers, and engineers regarding whether an interface is "fast enough." The thresholds establish clear, quantifiable service-level agreements across teams.</p>
+
+<h3>5. Infrastructure & Cloud Cost Efficiencies</h3>
+<p>Streamlined scripts, aggressive asset caching, and modern image formats substantially reduce bandwidth egress costs and edge server load during traffic surges.</p>
+
+<hr>
+
+<h2>4. Risks, Nuances, and Real-World Limitations</h2>
+
+<p>A disciplined technical strategy requires confronting what the metrics do not solve:</p>
+
+<ul>
+    <li><strong>Case Studies Are Not Guarantees:</strong> Vodafone's double-digit lift cannot be assumed for every product. A website with poor product-market fit, confusing value propositions, or exorbitant pricing cannot be saved by sub-second page loads.</li>
+    <li><strong>Search Benefits Are Modest:</strong> Optimizing purely for search ranking algorithms yields diminishing returns once thresholds are comfortably passed.</li>
+    <li><strong>Gaming Lab Metrics vs. Real Users:</strong> Artificially deferring scripts can yield high Lighthouse lab scores while worsening real-world INP delays during user interaction.</li>
+    <li><strong>Third-Party Scripts & Compliance Tensions:</strong> Cookie consent banners, marketing pixels, and customer support widgets directly degrade LCP and INP. In the UK and EU, legally mandated GDPR/ePrivacy consent cannot simply be removed. Teams must implement rigorous tag governance.</li>
+    <li><strong>Regression Vulnerability:</strong> Performance decays rapidly without continuous regression testing. A single uncompressed marketing hero image or tracking pixel can push a compliant URL into failing status.</li>
+    <li><strong>Cost and Opportunity Cost:</strong> Engineering time allocated to micro-optimizations is time taken from core feature development. Leaders must verify that page speed is indeed a conversion bottleneck before allocating extensive budgets.</li>
+    <li><strong>Moving Standards:</strong> Measurement frameworks evolve—as demonstrated by INP replacing FID in 2024. Long-term performance requires continuous operational agility.</li>
+</ul>
+
+<hr>
+
+<h2>5. How Performance Is Engineered in Practice</h2>
+
+<p>Enterprise performance is built through systemic technical governance across the development lifecycle:</p>
+
+<ol>
+    <li><strong>Establish Real-User Baselines:</strong> Extract field performance telemetry via Google Search Console and CrUX dashboards, segmenting mobile versus desktop cohorts and isolating high-intent revenue templates.</li>
+    <li><strong>Engineer Sub-2.5s LCP:</strong>
+        <ul>
+            <li>Implement edge delivery and HTTP/3 protocol prioritization.</li>
+            <li>Serve modern WebP and AVIF image formats tailored to display viewports.</li>
+            <li>Eliminate render-blocking stylesheets and prioritize the Largest Contentful element via <code>fetchpriority="high"</code>.</li>
+            <li>Avoid lazy-loading above-the-fold hero imagery.</li>
+        </ul>
+    </li>
+    <li><strong>Optimize Sub-200ms INP:</strong>
+        <ul>
+            <li>Break up monolithic JavaScript bundles using route-based dynamic code-splitting.</li>
+            <li>Offload heavy computations from the browser's main execution thread.</li>
+            <li>Yield to the main thread during extensive DOM updates using <code>requestAnimationFrame</code> or <code>scheduler.yield()</code>.</li>
+        </ul>
+    </li>
+    <li><strong>Eliminate Layout Shifts (Sub-0.1 CLS):</strong>
+        <ul>
+            <li>Declare explicit <code>width</code> and <code>height</code> aspect-ratio dimensions on all media, embeds, and advert slots.</li>
+            <li>Preload critical webfonts with <code>font-display: swap</code> and matching fallback metrics.</li>
+            <li>Never inject dynamic content above existing viewed layout without direct user interaction.</li>
+        </ul>
+    </li>
+    <li><strong>Enforce Automated Performance Budgets:</strong> Integrate automated bundle size and synthetic metric thresholds directly into CI/CD deployment pipelines to block regressions before production releases.</li>
+    <li><strong>Cross-Functional Performance Ownership:</strong> Unify engineering, design, marketing, and legal stakeholders under single accountable ownership to prevent tag sprawl from eroding code-level optimizations.</li>
+</ol>
+
+<hr>
+
+<h2>6. Key Benchmark Data &amp; Research Findings</h2>
+
+<h3>6.1 Performance Statistics Summary</h3>
+<p>The following verified data points synthesize primary empirical research from Google web.dev and the HTTP Archive's Web Almanac:</p>
+
+<div class="overflow-x-auto my-6">
+    <table class="w-full text-left border-collapse border border-hairline text-sm bg-canvas">
+        <thead>
+            <tr class="bg-canvas-soft border-b border-hairline text-ink font-semibold">
+                <th class="p-3 border-r border-hairline">Metric / Dimension</th>
+                <th class="p-3 border-r border-hairline">Target / Value</th>
+                <th class="p-3 border-r border-hairline">Source</th>
+                <th class="p-3 border-r border-hairline">Period</th>
+                <th class="p-3">Type</th>
+            </tr>
+        </thead>
+        <tbody class="divide-y divide-hairline text-ink-mute">
+            <tr>
+                <td class="p-3 border-r border-hairline font-medium text-ink">Good LCP Threshold</td>
+                <td class="p-3 border-r border-hairline font-mono text-primary font-semibold">&le; 2.5s</td>
+                <td class="p-3 border-r border-hairline">Google (web.dev)</td>
+                <td class="p-3 border-r border-hairline">Current Guidance</td>
+                <td class="p-3"><span class="text-[10px] font-medium bg-canvas-soft px-2 py-0.5 rounded border border-hairline">Fact</span></td>
+            </tr>
+            <tr>
+                <td class="p-3 border-r border-hairline font-medium text-ink">Good INP Threshold</td>
+                <td class="p-3 border-r border-hairline font-mono text-primary font-semibold">&le; 200ms</td>
+                <td class="p-3 border-r border-hairline">Google (web.dev)</td>
+                <td class="p-3 border-r border-hairline">Current Guidance</td>
+                <td class="p-3"><span class="text-[10px] font-medium bg-canvas-soft px-2 py-0.5 rounded border border-hairline">Fact</span></td>
+            </tr>
+            <tr>
+                <td class="p-3 border-r border-hairline font-medium text-ink">Good CLS Threshold</td>
+                <td class="p-3 border-r border-hairline font-mono text-primary font-semibold">&le; 0.10</td>
+                <td class="p-3 border-r border-hairline">Google (web.dev)</td>
+                <td class="p-3 border-r border-hairline">Current Guidance</td>
+                <td class="p-3"><span class="text-[10px] font-medium bg-canvas-soft px-2 py-0.5 rounded border border-hairline">Fact</span></td>
+            </tr>
+            <tr>
+                <td class="p-3 border-r border-hairline font-medium text-ink">INP Replaces FID</td>
+                <td class="p-3 border-r border-hairline">12 March 2024</td>
+                <td class="p-3 border-r border-hairline">Google (web.dev)</td>
+                <td class="p-3 border-r border-hairline">2024</td>
+                <td class="p-3"><span class="text-[10px] font-medium bg-canvas-soft px-2 py-0.5 rounded border border-hairline">Fact</span></td>
+            </tr>
+            <tr>
+                <td class="p-3 border-r border-hairline font-medium text-ink">Mobile Sites Passing All 3</td>
+                <td class="p-3 border-r border-hairline font-mono font-semibold text-ink">48%</td>
+                <td class="p-3 border-r border-hairline">HTTP Archive Web Almanac</td>
+                <td class="p-3 border-r border-hairline">CrUX July 2025</td>
+                <td class="p-3"><span class="text-[10px] font-medium bg-canvas-soft px-2 py-0.5 rounded border border-hairline">Fact</span></td>
+            </tr>
+            <tr>
+                <td class="p-3 border-r border-hairline font-medium text-ink">Desktop Sites Passing All 3</td>
+                <td class="p-3 border-r border-hairline font-mono font-semibold text-ink">56%</td>
+                <td class="p-3 border-r border-hairline">HTTP Archive Web Almanac</td>
+                <td class="p-3 border-r border-hairline">CrUX July 2025</td>
+                <td class="p-3"><span class="text-[10px] font-medium bg-canvas-soft px-2 py-0.5 rounded border border-hairline">Fact</span></td>
+            </tr>
+            <tr>
+                <td class="p-3 border-r border-hairline font-medium text-ink">Mobile Good LCP / INP / CLS</td>
+                <td class="p-3 border-r border-hairline font-mono">62% / 77% / 81%</td>
+                <td class="p-3 border-r border-hairline">HTTP Archive Web Almanac</td>
+                <td class="p-3 border-r border-hairline">CrUX July 2025</td>
+                <td class="p-3"><span class="text-[10px] font-medium bg-canvas-soft px-2 py-0.5 rounded border border-hairline">Fact</span></td>
+            </tr>
+            <tr>
+                <td class="p-3 border-r border-hairline font-medium text-ink">Homepages vs Secondary Pages</td>
+                <td class="p-3 border-r border-hairline font-mono">45% vs 56%</td>
+                <td class="p-3 border-r border-hairline">Web Almanac Industry Data</td>
+                <td class="p-3 border-r border-hairline">CrUX July 2025</td>
+                <td class="p-3"><span class="text-[10px] font-medium bg-canvas-soft px-2 py-0.5 rounded border border-hairline">Fact</span></td>
+            </tr>
+            <tr>
+                <td class="p-3 border-r border-hairline font-medium text-ink">Vodafone Italy Impact</td>
+                <td class="p-3 border-r border-hairline">+31% LCP, +8% Sales, +15% Leads</td>
+                <td class="p-3 border-r border-hairline">Google (web.dev case study)</td>
+                <td class="p-3 border-r border-hairline">2021</td>
+                <td class="p-3"><span class="text-[10px] font-medium bg-primary/10 text-primary-deep px-2 py-0.5 rounded border border-primary/20">Case Study</span></td>
+            </tr>
+            <tr>
+                <td class="p-3 border-r border-hairline font-medium text-ink">Rakuten 24 Impact</td>
+                <td class="p-3 border-r border-hairline">+53.4% Rev/Visitor, +33.1% Conv</td>
+                <td class="p-3 border-r border-hairline">Google (web.dev case study)</td>
+                <td class="p-3 border-r border-hairline">2023</td>
+                <td class="p-3"><span class="text-[10px] font-medium bg-primary/10 text-primary-deep px-2 py-0.5 rounded border border-primary/20">Case Study</span></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<h3>6.2 Critical Data Observations</h3>
+<p>Several nuances must guide strategic decisions. First, pass rates reflect a temporal snapshot of the July 2025 CrUX dataset. Second, domain metrics count high-traffic enterprises and boutique sites equally. Third, the persistent gap between mobile (48%) and desktop (56%) compliance highlights that CPU throttling on mobile devices exposes computational latency that desktop tests mask.</p>
+
+<hr>
+
+<h2>7. Conclusion</h2>
+
+<p>The evidence supports a measured conclusion. Core Web Vitals provide modern businesses with a rigorous, standardized vocabulary to evaluate digital performance. With less than half of mobile websites passing all three standards, technical excellence remains an open competitive differentiator.</p>
+
+<p>Performance must be approached not as a sporadic, one-time engineering cleanup, but as a recurring business discipline. That requires observing real visitors, governing external scripts, safeguarding revenue templates, and establishing shared executive ownership.</p>
+
+<p>For founders, CTOs, and digital leaders, the fundamental question is not whether to pursue a vanity 100/100 score—it is whether avoidable digital friction is costing the business qualified customers it has already paid to acquire. Contact us to schedule an <a href="/contact" class="text-primary hover:underline font-medium">engineering architecture review</a>.</p>
+
+<hr>
+
+<h2>8. Action Plan for Leadership Teams</h2>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+    <div class="p-4 border border-hairline rounded-lg bg-canvas-soft">
+        <div class="text-xs font-semibold text-primary uppercase tracking-wider mb-1">Step 01</div>
+        <h4 class="text-sm font-semibold text-ink mb-1">Audit Field Data First</h4>
+        <p class="text-xs text-ink-mute">Rely on CrUX and Google Search Console field telemetry rather than synthetic office laptop tests.</p>
+    </div>
+    <div class="p-4 border border-hairline rounded-lg bg-canvas-soft">
+        <div class="text-xs font-semibold text-primary uppercase tracking-wider mb-1">Step 02</div>
+        <h4 class="text-sm font-semibold text-ink mb-1">Prioritize High-Intent Templates</h4>
+        <p class="text-xs text-ink-mute">Focus optimization resources directly on signup funnels, product checkouts, and primary landing pages.</p>
+    </div>
+    <div class="p-4 border border-hairline rounded-lg bg-canvas-soft">
+        <div class="text-xs font-semibold text-primary uppercase tracking-wider mb-1">Step 03</div>
+        <h4 class="text-sm font-semibold text-ink mb-1">Audit Third-Party Tags</h4>
+        <p class="text-xs text-ink-mute">Maintain an external script inventory with documented business owners, performance costs, and deferral rules.</p>
+    </div>
+    <div class="p-4 border border-hairline rounded-lg bg-canvas-soft">
+        <div class="text-xs font-semibold text-primary uppercase tracking-wider mb-1">Step 04</div>
+        <h4 class="text-sm font-semibold text-ink mb-1">Enforce CI/CD Budgets</h4>
+        <p class="text-xs text-ink-mute">Automate performance budgets in build pipelines to catch bundle bloat and layout shifts before launch.</p>
+    </div>
+</div>
+
+<hr>
+
+<div class="p-4 bg-canvas-soft border-l-4 border-hairline-strong text-xs text-ink-mute rounded-r-lg my-6">
+    <strong class="text-ink block mb-1">General Information &amp; Regulatory Notice:</strong>
+    This paper is published for general strategic informational purposes. It does not constitute legal, financial, or engineering warranty, nor does it guarantee specific search engine rankings or business conversions. Primary data points reflect published research attributed directly to their cited sources.
+</div>
+
+<h3>References &amp; Authoritative Sources</h3>
+<ul class="space-y-2 text-xs text-ink-mute">
+    <li>&bull; Google. <em>Web Vitals and Core Web Vitals thresholds</em>. <a href="https://web.dev/articles/vitals" target="_blank" rel="noopener" class="text-primary hover:underline">web.dev/articles/vitals</a></li>
+    <li>&bull; Google. <em>Interaction to Next Paint becomes a Core Web Vital</em> (March 2024). <a href="https://web.dev/articles/inp" target="_blank" rel="noopener" class="text-primary hover:underline">web.dev/articles/inp</a></li>
+    <li>&bull; HTTP Archive. <em>Web Almanac 2025, Performance Chapter</em> (CrUX Data, July 2025; published 2026). <a href="https://almanac.httparchive.org/en/2025/performance" target="_blank" rel="noopener" class="text-primary hover:underline">almanac.httparchive.org</a></li>
+    <li>&bull; Google Case Study. <em>Vodafone: A 31% improvement in LCP increased sales by 8%</em>. <a href="https://web.dev/case-studies/vodafone" target="_blank" rel="noopener" class="text-primary hover:underline">web.dev/case-studies/vodafone</a></li>
+    <li>&bull; Google Case Study. <em>The business impact of Core Web Vitals</em>. <a href="https://web.dev/case-studies/vitals-business-impact" target="_blank" rel="noopener" class="text-primary hover:underline">web.dev/case-studies/vitals-business-impact</a></li>
+    <li>&bull; Google Search Central. <em>The role of page experience in creating helpful content</em> (2023–2024). <a href="https://developers.google.com/search/blog/2023/04/page-experience-in-search" target="_blank" rel="noopener" class="text-primary hover:underline">developers.google.com/search</a></li>
+</ul>
+        </article>
+
+        <!-- Author Bio Section -->
+        <section class="my-16 p-6 rounded-xl border border-hairline bg-canvas-soft flex flex-col sm:flex-row items-center sm:items-start gap-4">
+            <div class="w-14 h-14 rounded-full bg-canvas border border-hairline flex items-center justify-center font-bold text-base text-ink shrink-0">
+                DN
+            </div>
+            <div>
+                <h3 class="text-base font-bold text-ink mb-1">Dr. Nadeem Nazir</h3>
+                <p class="text-xs text-ink-mute leading-relaxed mb-3">
+                    Senior Technical SEO Strategist &amp; Principal Systems Architect at DiginixIT. Specializing in search engine entity architectures, sub-second Core Web Vitals optimization, and enterprise digital scalability frameworks.
+                </p>
+                <div class="flex items-center gap-3 text-xs font-mono text-primary">
+                    <a href="/technical-seo" class="hover:underline">Technical SEO Services &rarr;</a>
+                    <a href="/blog" class="hover:underline">All Publications &rarr;</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Related Insights & Pillar Navigation -->
+        <section class="border-t border-hairline pt-12" aria-label="Related Insights">
+            <h2 class="text-2xl font-bold tracking-tight text-ink mb-6" style="letter-spacing: -0.02em;">Related Insights &amp; Capabilities</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Companion Article Card -->
+                <div class="p-5 border border-hairline rounded-xl hover:border-hairline-strong transition-all bg-canvas group">
+                    <span class="text-[10px] font-mono uppercase tracking-wider text-primary font-semibold block mb-2">SEO &bull; Research Paper</span>
+                    <h3 class="text-base font-bold text-ink mb-2 group-hover:text-primary transition-colors">
+                        <a href="/blog/affordable-seo-services-small-business">Affordable SEO Services for Small Business</a>
+                    </h3>
+                    <p class="text-xs text-ink-mute line-clamp-3 mb-4 leading-relaxed">Learn how small businesses can drive compounding organic traffic and attract qualified local customers on a budget using targeted SEO and local map packs.</p>
+                    <a href="/blog/affordable-seo-services-small-business" class="text-xs font-semibold text-ink inline-flex items-center gap-1 group-hover:text-primary">
+                        <span>Read Full Insight</span> &rarr;
+                    </a>
+                </div>
+
+                <!-- Pillar Service Card -->
+                <div class="p-5 border border-hairline rounded-xl hover:border-hairline-strong transition-all bg-canvas group">
+                    <span class="text-[10px] font-mono uppercase tracking-wider text-primary font-semibold block mb-2">Core Service Capability</span>
+                    <h3 class="text-base font-bold text-ink mb-2 group-hover:text-primary transition-colors">
+                        <a href="/technical-seo">Technical SEO &amp; Search Architecture</a>
+                    </h3>
+                    <p class="text-xs text-ink-mute line-clamp-3 mb-4 leading-relaxed">Infrastructure-level search engine optimization: sub-second Core Web Vitals, nested Schema.org entity graphs, and topical authority architecture.</p>
+                    <a href="/technical-seo" class="text-xs font-semibold text-ink inline-flex items-center gap-1 group-hover:text-primary">
+                        <span>Explore Capabilities</span> &rarr;
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer-light border-t border-hairline bg-canvas-soft py-12">
+        <div class="max-w-[1280px] mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-sm gap-y-4 md:gap-y-0 text-ink-mute">
+            <div class="font-bold text-ink" style="letter-spacing: -0.04em;">DIGINIXIT<span class="text-primary">.</span></div>
+            <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs">
+                <a href="/" class="hover:text-ink">Home</a>
+                <a href="/services" class="hover:text-ink">Services</a>
+                <a href="/blog" class="hover:text-ink">Blog</a>
+                <a href="/contact" class="hover:text-ink">Contact</a>
+                <a href="/technical-seo" class="hover:text-ink">Technical SEO</a>
+                <a href="/web-engineering" class="hover:text-ink">Web Engineering</a>
+            </div>
+            <div class="text-xs">&copy; 2026 DiginixIT. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/js/ui-primitives.js" defer></script>
+    <script src="/js/ui-components.js" defer></script>
+    <script src="/js/articles-data.js" defer></script>
+    <script src="/js/common.js" defer></script>
+    <script src="/js/script.js" defer></script>
+</body>
+</html>

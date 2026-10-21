@@ -17,18 +17,18 @@
     <meta name="description" content="Read DiginixIT Insights Blog. Our engineers share technical audits, web development insights, design guidelines, and Core Web Vitals optimization guides.">
     <meta name="keywords" content="web development blog, Core Web Vitals guide, SEO audit tutorial, UI design tips, tech law insights, engineering articles Pakistan">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://diginixit.com/blog.html">
+    <link rel="canonical" href="https://diginixit.com/blog">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://diginixit.com/blog.html">
+    <meta property="og:url" content="https://diginixit.com/blog">
     <meta property="og:title" content="DiginixIT | Insights Blog">
     <meta property="og:description" content="Read the DiginixIT Insights Blog. Our senior engineers share bespoke technical audits, WebGL interactive designs, and Core Web Vitals optimization guidelines.">
     <meta property="og:image" content="https://diginixit.com/images/og-home.jpg">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://diginixit.com/blog.html">
+    <meta name="twitter:url" content="https://diginixit.com/blog">
     <meta name="twitter:title" content="DiginixIT | Insights Blog">
     <meta name="twitter:description" content="Read the DiginixIT Insights Blog. Our senior engineers share bespoke technical audits, WebGL interactive designs, and Core Web Vitals optimization guidelines.">
     <meta name="twitter:image" content="https://diginixit.com/images/og-home.jpg">
@@ -91,13 +91,13 @@
         "@graph": [
             {
                 "@type": "BreadcrumbList",
-                "itemListElement": [{"@type": "ListItem","position": 1,"name": "Home","item": "https://diginixit.com/"},{"@type": "ListItem","position": 2,"name": "Blog","item": "https://diginixit.com/blog.html"}]
+                "itemListElement": [{"@type": "ListItem","position": 1,"name": "Home","item": "https://diginixit.com/"},{"@type": "ListItem","position": 2,"name": "Blog","item": "https://diginixit.com/blog"}]
             },
             {
                 "@type": "Blog",
-                "@id": "https://diginixit.com/blog.html#blog",
+                "@id": "https://diginixit.com/blog#blog",
                 "name": "DiginixIT Insights Blog",
-                "url": "https://diginixit.com/blog.html",
+                "url": "https://diginixit.com/blog",
                 "description": "Read DiginixIT Insights Blog. Our engineers share technical audits, web development insights, design guidelines, and Core Web Vitals optimization guides.",
                 "publisher": {"@type": "Organization","name": "DiginixIT","logo": {"@type": "ImageObject","url": "https://diginixit.com/favicon.svg"}}
             }
@@ -228,7 +228,46 @@
 
                 <!-- Blog Grid (Typographical cardless listing) -->
                 <section id="blog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10" aria-label="Insights Blog Articles Grid">
-                    <!-- Populated dynamically -->
+                    <!-- Pre-rendered Static Article Cards for SEO & Non-JS Crawlers -->
+                    <a href="/blog/core-web-vitals-business-metric" class="flex flex-col justify-between py-6 border-b border-hairline group">
+                        <div>
+                            <div class="mb-4 rounded-xl overflow-hidden border border-hairline bg-canvas-soft aspect-[16/10]">
+                                <img src="/images/core_web_vitals_guide.webp" alt="Core Web Vitals as a Business Metric" width="480" height="300" class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300" loading="lazy">
+                            </div>
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="bg-canvas-soft border border-hairline text-ink text-[10px] font-medium px-3 py-1 rounded-full uppercase tracking-wider">SEO</span>
+                                <time datetime="2026-10-20" class="text-[10px] text-ink-mute font-medium">2026-10-20</time>
+                            </div>
+                            <div class="space-y-2 mb-4">
+                                <h3 class="display-md group-hover:text-ink-mute transition-colors">Core Web Vitals as a Business Metric</h3>
+                                <p class="text-sm text-ink-mute leading-relaxed line-clamp-3">What founders, CTOs and digital leaders should know about website performance, mobile pass rates, conversion impacts, and engineering performance as a business discipline in 2026.</p>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center text-xs mt-2 text-ink-mute">
+                            <span>By Dr. Nadeem Nazir</span>
+                            <span class="font-medium text-ink group-hover:underline">Read Article &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="/blog/affordable-seo-services-small-business" class="flex flex-col justify-between py-6 border-b border-hairline group">
+                        <div>
+                            <div class="mb-4 rounded-xl overflow-hidden border border-hairline bg-canvas-soft aspect-[16/10]">
+                                <img src="/images/growth_illustration.webp" alt="Affordable SEO Services for Small Business" width="480" height="300" class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300" loading="lazy">
+                            </div>
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="bg-canvas-soft border border-hairline text-ink text-[10px] font-medium px-3 py-1 rounded-full uppercase tracking-wider">SEO</span>
+                                <time datetime="2026-06-20" class="text-[10px] text-ink-mute font-medium">2026-06-20</time>
+                            </div>
+                            <div class="space-y-2 mb-4">
+                                <h3 class="display-md group-hover:text-ink-mute transition-colors">Affordable SEO Services for Small Business</h3>
+                                <p class="text-sm text-ink-mute leading-relaxed line-clamp-3">How small businesses can drive sustainable organic traffic and attract qualified local customers on a budget using targeted SEO, keyword research, and localized content.</p>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center text-xs mt-2 text-ink-mute">
+                            <span>By Dr. Nadeem Nazir</span>
+                            <span class="font-medium text-ink group-hover:underline">Read Article &rarr;</span>
+                        </div>
+                    </a>
                 </section>
             </div>
         </div>
@@ -329,8 +368,10 @@
                     </div>
                 `;
             } else {
-                grid.innerHTML = filtered.map(post => `
-                    <a href="article.html?id=${post.id}" class="flex flex-col justify-between py-6 border-b border-hairline group">
+                grid.innerHTML = filtered.map(post => {
+                    const articleUrl = post.slug ? `/blog/${post.slug}` : `article.html?id=${post.id}`;
+                    return `
+                    <a href="${articleUrl}" class="flex flex-col justify-between py-6 border-b border-hairline group">
                         <div>
                             ${post.image ? `
                             <div class="mb-4 rounded-xl overflow-hidden border border-hairline bg-canvas-soft aspect-[16/10]">
@@ -351,7 +392,8 @@
                             <span class="font-medium text-ink group-hover:underline">Read Article &rarr;</span>
                         </div>
                     </a>
-                `).join('');
+                    `;
+                }).join('');
             }
 
             if (typeof lucide !== 'undefined') {

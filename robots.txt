@@ -1,8 +1,15 @@
 User-agent: *
 Allow: /
+Disallow: /admin
 Disallow: /admin.html
+Disallow: /admin_login
 Disallow: /admin_login.html
+Disallow: /profile
 Disallow: /profile.html
+Disallow: /auth
 Disallow: /auth.html
+Disallow: /maintenance
+Disallow: /maintenance.html
 
 Sitemap: https://diginixit.com/sitemap.xml
+

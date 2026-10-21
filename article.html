@@ -7,7 +7,15 @@
         try {
             if (JSON.parse(localStorage.getItem('settings') || '{}').maintenanceMode) {
                 document.documentElement.style.display = 'none';
-                window.location.replace('maintenance.html');
+                window.location.replace('/maintenance');
+            }
+            // SEO Slug Canonical Forwarding
+            const urlParams = new URLSearchParams(window.location.search);
+            const reqId = urlParams.get('id') || urlParams.get('slug');
+            if (reqId === '1' || reqId === 'affordable-seo-services-small-business') {
+                window.location.replace('/blog/affordable-seo-services-small-business');
+            } else if (reqId === '2' || reqId === 'core-web-vitals-business-metric') {
+                window.location.replace('/blog/core-web-vitals-business-metric');
             }
         } catch (e) { }
     </script>
@@ -18,11 +26,11 @@
     <meta name="description" id="meta-desc-tag"
         content="Read developer audits, technical web development insights, design guidelines, and Core Web Vitals optimization guides on DiginixIT Insights Blog.">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" id="canonical-link" href="https://diginixit.com/article.html">
+    <link rel="canonical" id="canonical-link" href="https://diginixit.com/article">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="article">
-    <meta property="og:url" id="og-url-tag" content="https://diginixit.com/blog.html">
+    <meta property="og:url" id="og-url-tag" content="https://diginixit.com/blog">
     <meta property="og:title" id="og-title-tag" content="DiginixIT | Read Insight">
     <meta property="og:description" id="og-desc-tag"
         content="Read bespoke technical audits, WebGL animations development, and Core Web Vitals optimization guidelines on the DiginixIT Insights Blog.">
@@ -30,7 +38,7 @@
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" id="twitter-url-tag" content="https://diginixit.com/blog.html">
+    <meta name="twitter:url" id="twitter-url-tag" content="https://diginixit.com/blog">
     <meta name="twitter:title" id="twitter-title-tag" content="DiginixIT | Read Insight">
     <meta name="twitter:description" id="twitter-desc-tag"
         content="Read bespoke technical audits, WebGL animations development, and Core Web Vitals optimization guidelines on the DiginixIT Insights Blog.">
@@ -538,12 +546,12 @@
             "@type": "ListItem",
             "position": 2,
             "name": "Blog",
-            "item": "https://diginixit.com/blog.html"
+            "item": "https://diginixit.com/blog"
         },{
             "@type": "ListItem",
             "position": 3,
             "name": "Article",
-            "item": "https://diginixit.com/article.html"
+            "item": "https://diginixit.com/article"
         }]
     }
     </script>
@@ -738,7 +746,7 @@
 
                     <!-- Article Hero / Main Image -->
                     <figure id="article-hero-image-wrap" class="hidden my-8 rounded-xl overflow-hidden border border-hairline bg-canvas-soft">
-                        <img id="article-hero-image" src="" alt="" class="w-full h-auto object-cover max-h-[580px]" loading="eager">
+                        <img id="article-hero-image" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 630'%3E%3C/svg%3E" alt="Article cover illustration" width="1200" height="630" class="w-full h-auto object-cover max-h-[580px]" loading="eager">
                         <figcaption id="article-hero-caption" class="text-xs text-ink-mute py-2.5 px-4 text-center border-t border-hairline bg-canvas"></figcaption>
                     </figure>
 
@@ -811,7 +819,7 @@
 
         async function loadArticleDetail() {
             const params = new URLSearchParams(window.location.search);
-            const articleId = params.get('id');
+            const articleId = params.get('id') || params.get('slug');
 
             if (!articleId) {
                 renderNotFound("No article ID was provided.");
@@ -828,7 +836,8 @@
             }
 
             // Set Title & Meta tags dynamically for SEO & Social Cards
-            const currentUrl = `https://diginixit.com/article.html?id=${post.id}`;
+            const canonicalUrl = post.slug ? `https://diginixit.com/blog/${post.slug}` : `https://diginixit.com/article?id=${post.id}`;
+            const currentUrl = canonicalUrl;
             const postImage = post.image
                 ? (post.image.startsWith('http') ? post.image : `https://diginixit.com/${post.image.replace(/^\//, '')}`)
                 : 'https://diginixit.com/images/og-home.jpg';
@@ -842,7 +851,7 @@
             if (metaDesc) metaDesc.content = post.summary;
 
             const canonical = document.getElementById('canonical-link');
-            if (canonical) canonical.href = currentUrl;
+            if (canonical) canonical.href = canonicalUrl;
 
             // Open Graph Override
             const ogUrl = document.getElementById('og-url-tag');
@@ -877,7 +886,7 @@
                     "author": [{
                         "@type": "Person",
                         "name": post.author || "DiginixIT Staff",
-                        "url": "https://diginixit.com/blog.html"
+                        "url": "https://diginixit.com/blog"
                     }],
                     "publisher": {
                         "@type": "Organization",
