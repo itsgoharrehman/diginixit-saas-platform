@@ -476,11 +476,31 @@ window.apiCall = async function (action, data = null) {
                 const existingTitles = new Set(dbBlogs.map(b => (b.title || '').toLowerCase().trim()));
                 const merged = [...dbBlogs];
                 const builtIns = window.builtInArticles || [];
-                for (const article of builtIns) {
-                    if (!existingIds.has(String(article.id)) && !existingTitles.has((article.title || '').toLowerCase().trim())) {
-                        merged.push(article);
+                const SLUG_ID_MAP = {
+                    '22': 'artificial-intelligence-in-management',
+                    '21': 'gaming-guide-tips-trends-gear',
+                    '20': 'ai-business-automation-agents',
+                    '19': 'seo-guide-ranking-in-ai-search',
+                    '18': 'cybersecurity-for-businesses-threats-protection',
+                    '17': 'ai-powered-design-ui-ux-workflows',
+                    '15': 'uae-vat-taxation-guide-rates-compliance',
+                    '14': 'uae-tax-registration-process',
+                    '12': 'uae-corporate-tax-law',
+                    '9': 'web-development-roadmap-for-beginners',
+                    '8': 'ui-ux-design-roadmap-for-beginners',
+                    '7': 'best-digital-products-to-sell',
+                    '6': 'new-taxation-law-pakistan',
+                    '5': 'punjab-protection-of-ownership-immovable-property',
+                    '4': 'inheritance-laws-pakistan-daughters-property-rights',
+                    '3': 'multi-agent-systems-enterprise-scale',
+                    '2': 'create-sell-notion-templates-using-ai',
+                    '1': 'affordable-seo-services-small-business'
+                };
+                merged.forEach(b => {
+                    if (!b.slug) {
+                        b.slug = SLUG_ID_MAP[String(b.id)] || (b.title ? b.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '') : String(b.id));
                     }
-                }
+                });
                 return merged;
             }
 

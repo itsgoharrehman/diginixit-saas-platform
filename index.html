@@ -893,19 +893,46 @@
 
             let html = '';
             
+            function getPostSlug(p) {
+                if (p.slug) return p.slug;
+                const SLUG_ID_MAP = {
+                    '22': 'artificial-intelligence-in-management',
+                    '21': 'gaming-guide-tips-trends-gear',
+                    '20': 'ai-business-automation-agents',
+                    '19': 'seo-guide-ranking-in-ai-search',
+                    '18': 'cybersecurity-for-businesses-threats-protection',
+                    '17': 'ai-powered-design-ui-ux-workflows',
+                    '15': 'uae-vat-taxation-guide-rates-compliance',
+                    '14': 'uae-tax-registration-process',
+                    '12': 'uae-corporate-tax-law',
+                    '9': 'web-development-roadmap-for-beginners',
+                    '8': 'ui-ux-design-roadmap-for-beginners',
+                    '7': 'best-digital-products-to-sell',
+                    '6': 'new-taxation-law-pakistan',
+                    '5': 'punjab-protection-of-ownership-immovable-property',
+                    '4': 'inheritance-laws-pakistan-daughters-property-rights',
+                    '3': 'multi-agent-systems-enterprise-scale',
+                    '2': 'create-sell-notion-templates-using-ai',
+                    '1': 'affordable-seo-services-small-business'
+                };
+                if (SLUG_ID_MAP[String(p.id)]) return SLUG_ID_MAP[String(p.id)];
+                return p.title ? p.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '') : p.id;
+            }
+
             // First (Featured - 2/3 width)
             if (latest[0]) {
                 const p = latest[0];
+                const postUrl = `/blog/${getPostSlug(p)}`;
                 html += `
                     <div class="col-span-1 md:col-span-2 flex flex-col justify-between py-4 border-b border-hairline pb-8">
                         <div class="space-y-4">
                             <span class="bg-canvas-soft border border-hairline text-ink text-[10px] font-medium px-3 py-1 rounded-full uppercase tracking-wider">${window.escapeHtml(p.category)}</span>
-                            <h3 class="display-md"><a href="article.html?id=${p.id}" class="hover:text-ink-mute transition-colors">${window.escapeHtml(p.title)}</a></h3>
+                            <h3 class="display-md"><a href="${postUrl}" class="hover:text-ink-mute transition-colors">${window.escapeHtml(p.title)}</a></h3>
                             <p class="text-sm text-ink-mute leading-relaxed max-w-lg">${window.escapeHtml(p.summary)}</p>
                         </div>
                         <div class="flex items-center justify-between mt-6 text-xs text-ink-mute">
                             <span>By ${window.escapeHtml(p.author)} &bull; ${formatLocalShortDate(p.date)}</span>
-                            <a href="article.html?id=${p.id}" class="font-medium text-ink hover:underline">Read Article</a>
+                            <a href="${postUrl}" class="font-medium text-ink hover:underline">Read Article</a>
                         </div>
                     </div>
                 `;
@@ -914,16 +941,17 @@
             // Second (Normal - 1/3 width)
             if (latest[1]) {
                 const p = latest[1];
+                const postUrl = `/blog/${getPostSlug(p)}`;
                 html += `
                     <div class="flex flex-col justify-between py-4 border-b border-hairline pb-8">
                         <div class="space-y-4">
                             <span class="bg-canvas-soft border border-hairline text-ink text-[10px] font-medium px-3 py-1 rounded-full uppercase tracking-wider">${window.escapeHtml(p.category)}</span>
-                            <h3 class="heading-lg"><a href="article.html?id=${p.id}" class="hover:text-ink-mute transition-colors">${window.escapeHtml(p.title)}</a></h3>
+                            <h3 class="heading-lg"><a href="${postUrl}" class="hover:text-ink-mute transition-colors">${window.escapeHtml(p.title)}</a></h3>
                             <p class="text-sm text-ink-mute leading-relaxed">${window.escapeHtml(p.summary)}</p>
                         </div>
                         <div class="flex items-center justify-between mt-6 text-xs text-ink-mute">
                             <span>By ${window.escapeHtml(p.author)} &bull; ${formatLocalShortDate(p.date)}</span>
-                            <a href="article.html?id=${p.id}" class="font-medium text-ink hover:underline">Read Article</a>
+                            <a href="${postUrl}" class="font-medium text-ink hover:underline">Read Article</a>
                         </div>
                     </div>
                 `;

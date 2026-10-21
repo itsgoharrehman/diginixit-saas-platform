@@ -1,45 +1,128 @@
-import os, json
+import os
+import json
+import re
+from bs4 import BeautifulSoup
 
-def build_page(art, other_art, content_html):
+WORKSPACE = '/Users/user/Downloads/diginixit-saas-platform'
+JSON_PATH = '/Users/user/.gemini/antigravity-ide/brain/ed438988-c45e-4023-b242-82622a9ae3ec/scratch/supabase_articles.json'
+
+with open(JSON_PATH, 'r', encoding='utf-8') as f:
+    supabase_articles = json.load(f)
+
+# Built-in Core Web Vitals article
+cwv_article = {
+    "id": 100,
+    "title": "Core Web Vitals as a Business Metric",
+    "summary": "What founders, CTOs and digital leaders should know about website performance, mobile pass rates, conversion impacts, and engineering performance as a business discipline in 2026.",
+    "author": "Dr. Nadeem Nazir",
+    "date": "2026-10-20",
+    "category": "SEO",
+    "status": "published",
+    "image": "/images/core_web_vitals_guide.webp",
+    "image_caption": "Core Web Vitals as a Business Metric: Overview for founders, CTOs and digital leaders in the USA, UK and Europe."
+}
+
+# Load CWV content from js/articles-data.js
+with open(os.path.join(WORKSPACE, 'js/articles-data.js'), 'r', encoding='utf-8') as f:
+    js_content = f.read()
+
+m = re.search(r'"id":\s*"2"[\s\S]*?"content":\s*"(<[\s\S]*?>)"\s*\n\s*\}', js_content)
+if m:
+    cwv_article['content'] = m.group(1).encode('utf-8').decode('unicode_escape')
+else:
+    # Read from existing blog/core-web-vitals-business-metric.html
+    with open(os.path.join(WORKSPACE, 'blog/core-web-vitals-business-metric.html'), 'r', encoding='utf-8') as f:
+        soup = BeautifulSoup(f.read(), 'html.parser')
+        art_elem = soup.find('article', id='article-content')
+        cwv_article['content'] = art_elem.decode_contents() if art_elem else ""
+
+# Defined clean slugs map
+SLUG_MAP = {
+    22: "artificial-intelligence-in-management",
+    21: "gaming-guide-tips-trends-gear",
+    20: "ai-business-automation-agents",
+    19: "seo-guide-ranking-in-ai-search",
+    18: "cybersecurity-for-businesses-threats-protection",
+    17: "ai-powered-design-ui-ux-workflows",
+    15: "uae-vat-taxation-guide-rates-compliance",
+    14: "uae-tax-registration-process",
+    12: "uae-corporate-tax-law",
+    9: "web-development-roadmap-for-beginners",
+    8: "ui-ux-design-roadmap-for-beginners",
+    7: "best-digital-products-to-sell",
+    6: "new-taxation-law-pakistan",
+    5: "punjab-protection-of-ownership-immovable-property",
+    4: "inheritance-laws-pakistan-daughters-property-rights",
+    3: "multi-agent-systems-enterprise-scale",
+    2: "create-sell-notion-templates-using-ai",
+    1: "affordable-seo-services-small-business",
+    100: "core-web-vitals-business-metric"
+}
+
+CATEGORY_IMAGES = {
+    "SEO": "/images/growth_illustration.webp",
+    "Tech": "/images/structure_foundation_illustration.webp",
+    "AI": "/images/engineering_cartoon.webp",
+    "Web": "/images/web_engineering.webp",
+    "Design": "/images/ui_ux_design.webp",
+    "Law & Tax": "/images/law_compliance.webp",
+    "Business": "/images/corporate_finance.webp"
+}
+
+all_articles = [cwv_article] + [a for a in supabase_articles if a['id'] != 1]
+# Add slug to all
+for a in all_articles:
+    aid = a['id']
+    a['slug'] = SLUG_MAP.get(aid, re.sub(r'[^a-z0-9]+', '-', a['title'].lower()).strip('-'))
+    if not a.get('image'):
+        cat = a.get('category', 'Tech')
+        a['image'] = CATEGORY_IMAGES.get(cat, "/images/growth_illustration.webp")
+    if not a.get('image_caption'):
+        a['image_caption'] = f"{a['title']} — Insights by DiginixIT."
+
+# Build pages
+def build_article_html(art, other_articles):
     canonical_url = f"https://diginixit.com/blog/{art['slug']}"
     og_image = f"https://diginixit.com{art['image']}"
+    initials = ''.join([part[0] for part in (art.get('author') or 'DN').split()[:2]]).upper()
     
+    # Meta description (max 155 chars)
+    desc = art.get('summary', '').strip()
+    if len(desc) > 155:
+        desc = desc[:152].rsplit(' ', 1)[0] + '...'
+    if not desc:
+        desc = f"Read {art['title']} on DiginixIT Insights Blog. Comprehensive analysis, guidelines, and strategic insights."
+        
+    # Title (max 60 chars)
+    page_title = art['title']
+    if len(f"{page_title} | DiginixIT") <= 60:
+        meta_title = f"{page_title} | DiginixIT"
+    elif len(page_title) <= 60:
+        meta_title = page_title
+    else:
+        meta_title = page_title[:57].rsplit(' ', 1)[0] + '...'
+
     schema_breadcrumb = {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
         "itemListElement": [
-            {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Home",
-                "item": "https://diginixit.com/"
-            },
-            {
-                "@type": "ListItem",
-                "position": 2,
-                "name": "Blog",
-                "item": "https://diginixit.com/blog"
-            },
-            {
-                "@type": "ListItem",
-                "position": 3,
-                "name": art['title'],
-                "item": canonical_url
-            }
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://diginixit.com/" },
+            { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://diginixit.com/blog" },
+            { "@type": "ListItem", "position": 3, "name": art['title'], "item": canonical_url }
         ]
     }
-    
+
     schema_article = {
         "@context": "https://schema.org",
         "@type": "BlogPosting",
         "headline": art['title'],
-        "description": art['meta_desc'],
+        "description": desc,
         "image": [og_image],
-        "datePublished": art['date'],
-        "dateModified": art['date_modified'],
+        "datePublished": art.get('date') or '2026-10-22',
+        "dateModified": '2026-10-22',
         "author": [{
             "@type": "Person",
-            "name": art['author'],
+            "name": art.get('author') or 'Dr. Nadeem Nazir',
             "url": "https://diginixit.com/blog"
         }],
         "publisher": {
@@ -56,7 +139,36 @@ def build_page(art, other_art, content_html):
         "inLanguage": "en-US"
     }
 
-    initials = ''.join([part[0] for part in art['author'].split()[:2]]).upper()
+    # Related items (pick 2 other articles)
+    rel_html = ""
+    for r in other_articles[:2]:
+        r_url = f"/blog/{r['slug']}"
+        rel_html += f"""
+        <div class="p-6 rounded-xl border border-hairline bg-canvas-soft flex flex-col justify-between group hover:border-hairline-strong transition-colors">
+            <div>
+                <span class="text-[10px] font-mono text-primary uppercase tracking-widest">{r.get('category','Insights')}</span>
+                <h4 class="font-bold text-base text-ink mt-2 group-hover:text-ink-mute transition-colors leading-snug">
+                    <a href="{r_url}">{r['title']}</a>
+                </h4>
+                <p class="text-xs text-ink-mute mt-2 line-clamp-2 leading-relaxed">{r.get('summary','')}</p>
+            </div>
+            <div class="mt-4 pt-4 border-t border-hairline flex items-center justify-between text-xs font-medium">
+                <span class="text-ink-mute font-mono">{r.get('date','2026')}</span>
+                <a href="{r_url}" class="text-ink hover:underline">Read &rarr;</a>
+            </div>
+        </div>
+        """
+
+    # Demote any h1 in article body to h2 so the page has exactly 1 h1 (the main headline)
+    content_body = re.sub(r'<h1(\s*[^>]*)>', r'<h2\1>', art['content'], flags=re.IGNORECASE)
+    content_body = re.sub(r'</h1>', r'</h2>', content_body, flags=re.IGNORECASE)
+    
+    # Ensure any images in content_body have alt attribute
+    soup_body = BeautifulSoup(content_body, 'html.parser')
+    for img in soup_body.find_all('img'):
+        if not img.get('alt'):
+            img['alt'] = f"{art['title']} — illustration"
+    content_body = str(soup_body)
 
     html = f"""<!DOCTYPE html>
 <html lang="en">
@@ -74,27 +186,27 @@ def build_page(art, other_art, content_html):
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-adsense-account" content="ca-pub-3363493243397953">
-    <title>{art['meta_title']}</title>
-    <meta name="description" content="{art['meta_desc']}">
+    <title>{meta_title}</title>
+    <meta name="description" content="{desc}">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="{canonical_url}">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="article">
     <meta property="og:url" content="{canonical_url}">
-    <meta property="og:title" content="{art['meta_title']}">
-    <meta property="og:description" content="{art['meta_desc']}">
+    <meta property="og:title" content="{meta_title}">
+    <meta property="og:description" content="{desc}">
     <meta property="og:image" content="{og_image}">
-    <meta property="article:published_time" content="{art['date']}">
-    <meta property="article:modified_time" content="{art['date_modified']}">
-    <meta property="article:author" content="{art['author']}">
-    <meta property="article:section" content="{art['category']}">
+    <meta property="article:published_time" content="{art.get('date', '2026-10-22')}">
+    <meta property="article:modified_time" content="2026-10-22">
+    <meta property="article:author" content="{art.get('author', 'Dr. Nadeem Nazir')}">
+    <meta property="article:section" content="{art.get('category', 'Technology')}">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="{canonical_url}">
-    <meta name="twitter:title" content="{art['meta_title']}">
-    <meta name="twitter:description" content="{art['meta_desc']}">
+    <meta name="twitter:title" content="{meta_title}">
+    <meta name="twitter:description" content="{desc}">
     <meta name="twitter:image" content="{og_image}">
 
     <!-- DNS Prefetch & Preconnect -->
@@ -259,94 +371,91 @@ def build_page(art, other_art, content_html):
         }}
         #article-content th,
         #article-content td {{
-            border: 1px solid var(--color-hairline, #e5e5e5);
-            padding: 0.65rem 0.85rem;
-            text-align: left;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--color-hairline, #dfdfdf);
         }}
         #article-content th {{
-            background-color: var(--color-canvas-soft, #f9f9f9);
+            background: var(--color-canvas-soft, #fafafa);
+            font-family: 'Inter', sans-serif !important;
             font-weight: 600;
+            font-size: 0.875rem;
         }}
         #article-content blockquote {{
-            border-left: 3px solid var(--color-primary);
-            padding-left: 1.5rem;
-            font-style: italic;
-            color: var(--color-ink-mute);
             margin: 2rem 0;
+            padding: 1.25rem 1.5rem;
+            background: var(--color-canvas-soft, #fafafa);
+            border-left: 3px solid var(--color-primary, #3ecf8e);
+            border-radius: 0 0.5rem 0.5rem 0;
+            font-style: italic;
         }}
-        #article-content code {{
-            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-            background-color: var(--color-canvas-soft);
-            padding: 0.2em 0.4em;
-            border-radius: var(--radius-xs);
-            font-size: 0.85em;
-        }}
-        #article-content pre {{
-            padding: 1rem;
-            overflow-x: auto;
-            margin-bottom: 1.75rem;
-            background-color: var(--color-canvas-night);
-            color: var(--color-on-dark);
-            border-radius: var(--radius-sm);
-            max-width: 100%;
-            white-space: pre-wrap;
-        }}
-        @media (max-width: 640px) {{
-            main {{
-                padding-left: 1rem !important;
-                padding-right: 1rem !important;
-                padding-top: 5.5rem !important;
-            }}
-            #article-content {{ font-size: 1rem !important; }}
+        #article-content blockquote strong {{
+            font-style: normal;
         }}
     </style>
 </head>
 
-<body class="bg-canvas text-ink antialiased selection:bg-neutral-200">
-    <!-- Navbar -->
-    <header class="fixed top-0 left-0 right-0 z-50 bg-canvas/80 backdrop-blur-md border-b border-hairline transition-all duration-300">
-        <div class="max-w-[1280px] mx-auto px-6 h-16 flex items-center justify-between">
-            <a href="/" class="flex items-center gap-2 group">
-                <span class="font-bold text-xl tracking-tight text-ink group-hover:opacity-80 transition-opacity">DIGINIXIT<span class="text-primary">.</span></span>
+<body class="bg-canvas text-ink">
+    <div class="noise"></div>
+
+    <!-- Reading Progress Pinned to Top -->
+    <div id="read-progress" class="fixed top-0 left-0 h-1 bg-primary z-[60] transition-all duration-75" style="width: 0%;"></div>
+
+    <!-- Universal Navigation -->
+    <header id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 py-4 px-6 md:px-12 bg-canvas/90 backdrop-blur-md border-b border-hairline">
+        <div class="max-w-[1280px] mx-auto flex justify-between items-center">
+            <a href="/" class="flex items-center gap-2 group cursor-pointer" aria-label="DiginixIT Home">
+                <span class="font-bold text-xl tracking-tighter text-ink group-hover:text-primary transition-colors">DIGINIXIT</span>
             </a>
 
-            <!-- Desktop Nav Items -->
             <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-ink-mute" aria-label="Main Navigation">
                 <a href="/" class="hover:text-ink transition-colors">Home</a>
-                <div class="nav-dropdown-wrapper relative group" id="nav-services-dropdown">
-                    <a href="/services" class="nav-item-link inline-flex items-center gap-1.5 py-2 hover:text-ink transition-colors" id="nav-services" aria-haspopup="true" aria-expanded="false">
+                <div class="relative group" id="services-nav-group">
+                    <a href="/services" class="hover:text-ink transition-colors flex items-center gap-1 py-2">
                         <span>Our Services</span>
-                        <svg class="w-3.5 h-3.5 nav-dropdown-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+                        <svg class="w-3.5 h-3.5 opacity-60 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </a>
-                    <div class="nav-dropdown-menu">
-                        <a href="/web-engineering" class="nav-dropdown-item">
-                            <span class="item-title">Web Engineering</span>
-                            <span class="item-desc">High-performance apps &amp; custom SaaS architecture</span>
+                    <div class="services-dropdown" id="services-dropdown">
+                        <a href="/web-engineering" class="service-dropdown-item">
+                            <span class="service-dropdown-dot"></span>
+                            <div>
+                                <div class="service-dropdown-title">Web Engineering</div>
+                                <div class="service-dropdown-desc">High-performance web apps, SaaS &amp; APIs</div>
+                            </div>
                         </a>
-                        <a href="/ui-ux-design" class="nav-dropdown-item">
-                            <span class="item-title">UI/UX Product Design</span>
-                            <span class="item-desc">Bespoke design systems &amp; cognitive flows</span>
+                        <a href="/ui-ux-design" class="service-dropdown-item">
+                            <span class="service-dropdown-dot"></span>
+                            <div>
+                                <div class="service-dropdown-title">UI/UX Design</div>
+                                <div class="service-dropdown-desc">Design systems, Figma &amp; product UX</div>
+                            </div>
                         </a>
-                        <a href="/technical-seo" class="nav-dropdown-item">
-                            <span class="item-title">Technical SEO</span>
-                            <span class="item-desc">Core Web Vitals &amp; entity search architecture</span>
+                        <a href="/technical-seo" class="service-dropdown-item">
+                            <span class="service-dropdown-dot"></span>
+                            <div>
+                                <div class="service-dropdown-title">Technical SEO</div>
+                                <div class="service-dropdown-desc">Core Web Vitals &amp; crawl architecture</div>
+                            </div>
                         </a>
-                        <a href="/social-media-marketing" class="nav-dropdown-item">
-                            <span class="item-title">Social Media Marketing</span>
-                            <span class="item-desc">Audience acquisition &amp; organic distribution loops</span>
+                        <a href="/social-media-marketing" class="service-dropdown-item">
+                            <span class="service-dropdown-dot"></span>
+                            <div>
+                                <div class="service-dropdown-title">Social Media Marketing</div>
+                                <div class="service-dropdown-desc">Multi-channel growth &amp; content systems</div>
+                            </div>
                         </a>
-                        <a href="/law-compliance" class="nav-dropdown-item">
-                            <span class="item-title">Law &amp; Tech Compliance</span>
-                            <span class="item-desc">GDPR audits, enterprise MSAs &amp; IP protection</span>
+                        <a href="/law-compliance" class="service-dropdown-item">
+                            <span class="service-dropdown-dot"></span>
+                            <div>
+                                <div class="service-dropdown-title">Law &amp; Compliance</div>
+                                <div class="service-dropdown-desc">Tech contracts, GDPR, IP &amp; data privacy</div>
+                            </div>
                         </a>
-                        <a href="/corporate-finance" class="nav-dropdown-item">
-                            <span class="item-title">Corporate Finance</span>
-                            <span class="item-desc">Dynamic financial models, valuations &amp; runways</span>
-                        </a>
-                        <div class="nav-dropdown-divider"></div>
-                        <a href="/services" class="nav-dropdown-footer">
-                            <span>Overview: All Capabilities</span>
-                            <span class="text-primary font-bold">&rarr;</span>
+                        <a href="/corporate-finance" class="service-dropdown-item">
+                            <span class="service-dropdown-dot"></span>
+                            <div>
+                                <div class="service-dropdown-title">Corporate Finance</div>
+                                <div class="service-dropdown-desc">Valuation, cap table &amp; financial models</div>
+                            </div>
                         </a>
                     </div>
                 </div>
@@ -382,15 +491,15 @@ def build_page(art, other_art, content_html):
             <span>/</span>
             <a href="/blog" class="hover:text-ink transition-colors">Blog</a>
             <span>/</span>
-            <span class="text-ink font-semibold">{art['category']}</span>
+            <span class="text-ink font-semibold">{art.get('category','Insights')}</span>
         </nav>
 
         <!-- Article Header -->
         <header class="mb-10">
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-medium bg-canvas-soft border border-hairline text-primary mb-4">
-                <span>{art['category']}</span>
+                <span>{art.get('category','Insights')}</span>
                 <span>&bull;</span>
-                <span>{art['read_time']}</span>
+                <span>{art.get('date', '2026-10-22')}</span>
             </div>
             <h1 class="text-3xl md:text-5xl font-bold tracking-tight text-ink mb-6 leading-[1.15]" style="letter-spacing: -0.02em;">
                 {art['title']}
@@ -403,8 +512,8 @@ def build_page(art, other_art, content_html):
                         {initials}
                     </div>
                     <div>
-                        <div class="font-semibold text-ink text-sm">{art['author']}</div>
-                        <time datetime="{art['date']}" class="text-xs text-ink-mute">{art['date']}</time>
+                        <div class="font-semibold text-ink text-sm">{art.get('author','Dr. Nadeem Nazir')}</div>
+                        <time datetime="{art.get('date','2026-10-22')}" class="text-xs text-ink-mute">{art.get('date','2026-10-22')}</time>
                     </div>
                 </div>
 
@@ -422,13 +531,13 @@ def build_page(art, other_art, content_html):
 
         <!-- Hero Image -->
         <figure class="my-8 rounded-xl overflow-hidden border border-hairline bg-canvas-soft">
-            <img src="{art['image']}" alt="{art['image_alt']}" width="1200" height="630" class="w-full h-auto object-cover max-h-[580px]" fetchpriority="high">
-            <figcaption class="text-xs text-ink-mute py-2.5 px-4 text-center border-t border-hairline bg-canvas">{art['caption']}</figcaption>
+            <img src="{art['image']}" alt="{art['title']}" width="1200" height="630" class="w-full h-auto object-cover max-h-[580px]" fetchpriority="high">
+            <figcaption class="text-xs text-ink-mute py-2.5 px-4 text-center border-t border-hairline bg-canvas">{art['image_caption']}</figcaption>
         </figure>
 
         <!-- Article Body Content -->
         <article id="article-content" class="space-y-6">
-{content_html}
+{content_body}
         </article>
 
         <!-- Author Bio Section -->
@@ -437,7 +546,7 @@ def build_page(art, other_art, content_html):
                 {initials}
             </div>
             <div>
-                <h3 class="text-base font-bold text-ink mb-1">{art['author']}</h3>
+                <h3 class="text-base font-bold text-ink mb-1">{art.get('author','Dr. Nadeem Nazir')}</h3>
                 <p class="text-xs text-ink-mute leading-relaxed mb-3">
                     Senior Technical SEO Strategist &amp; Principal Systems Architect at DiginixIT. Specializing in search engine entity architectures, sub-second Core Web Vitals optimization, and enterprise digital scalability frameworks.
                 </p>
@@ -448,55 +557,54 @@ def build_page(art, other_art, content_html):
             </div>
         </section>
 
-        <!-- Related Insights & Pillar Navigation -->
-        <section class="border-t border-hairline pt-12" aria-label="Related Insights">
-            <h2 class="text-2xl font-bold tracking-tight text-ink mb-6" style="letter-spacing: -0.02em;">Related Insights &amp; Capabilities</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Companion Article Card -->
-                <div class="p-5 border border-hairline rounded-xl hover:border-hairline-strong transition-all bg-canvas group">
-                    <span class="text-[10px] font-mono uppercase tracking-wider text-primary font-semibold block mb-2">{other_art['category']} &bull; Research Paper</span>
-                    <h3 class="text-base font-bold text-ink mb-2 group-hover:text-primary transition-colors">
-                        <a href="/blog/{other_art['slug']}">{other_art['title']}</a>
-                    </h3>
-                    <p class="text-xs text-ink-mute line-clamp-3 mb-4 leading-relaxed">{other_art['meta_desc']}</p>
-                    <a href="/blog/{other_art['slug']}" class="text-xs font-semibold text-ink inline-flex items-center gap-1 group-hover:text-primary">
-                        <span>Read Full Insight</span> &rarr;
-                    </a>
-                </div>
-
-                <!-- Pillar Service Card -->
-                <div class="p-5 border border-hairline rounded-xl hover:border-hairline-strong transition-all bg-canvas group">
-                    <span class="text-[10px] font-mono uppercase tracking-wider text-primary font-semibold block mb-2">Core Service Capability</span>
-                    <h3 class="text-base font-bold text-ink mb-2 group-hover:text-primary transition-colors">
-                        <a href="/technical-seo">Technical SEO &amp; Search Architecture</a>
-                    </h3>
-                    <p class="text-xs text-ink-mute line-clamp-3 mb-4 leading-relaxed">Infrastructure-level search engine optimization: sub-second Core Web Vitals, nested Schema.org entity graphs, and topical authority architecture.</p>
-                    <a href="/technical-seo" class="text-xs font-semibold text-ink inline-flex items-center gap-1 group-hover:text-primary">
-                        <span>Explore Capabilities</span> &rarr;
-                    </a>
-                </div>
+        <!-- Related Insights -->
+        <section class="my-16 border-t border-hairline pt-12">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-xl font-bold tracking-tight text-ink">Recommended Reading</h3>
+                <a href="/blog" class="text-xs font-mono text-primary hover:underline">All Articles &rarr;</a>
             </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {rel_html}
+            </div>
+        </section>
+
+        <!-- Newsletter / Consultation Callout -->
+        <section class="my-12 p-8 rounded-2xl border border-hairline bg-canvas-soft text-center">
+            <h3 class="text-xl font-bold text-ink mb-2">Build Resilient Systems With DiginixIT</h3>
+            <p class="text-sm text-ink-mute max-w-md mx-auto mb-6">
+                Need enterprise-grade web engineering, product design, or technical SEO architecture? Connect with our senior consultants.
+            </p>
+            <a href="/contact" class="btn-primary inline-block">Schedule Architecture Review</a>
         </section>
     </main>
 
     <!-- Footer -->
-    <footer class="footer-light border-t border-hairline bg-canvas-soft py-12">
-        <div class="max-w-[1280px] mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-sm gap-y-4 md:gap-y-0 text-ink-mute">
-            <div class="font-bold text-ink" style="letter-spacing: -0.04em;">DIGINIXIT<span class="text-primary">.</span></div>
-            <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs">
-                <a href="/" class="hover:text-ink">Home</a>
-                <a href="/services" class="hover:text-ink">Services</a>
-                <a href="/blog" class="hover:text-ink">Blog</a>
-                <a href="/contact" class="hover:text-ink">Contact</a>
-                <a href="/technical-seo" class="hover:text-ink">Technical SEO</a>
-                <a href="/web-engineering" class="hover:text-ink">Web Engineering</a>
+    <footer class="bg-canvas border-t border-hairline py-12 px-6 md:px-12">
+        <div class="max-w-[1280px] mx-auto flex flex-col md:flex-row justify-between items-center gap-6 text-xs text-ink-mute">
+            <div class="flex items-center gap-2">
+                <span class="font-bold tracking-tight text-ink">DIGINIXIT</span>
+                <span>&bull;</span>
+                <span>&copy; 2026 DiginixIT. All rights reserved.</span>
             </div>
-            <div class="text-xs">&copy; 2026 DiginixIT. All rights reserved.</div>
+            <div class="flex gap-6">
+                <a href="/" class="hover:text-ink transition-colors">Home</a>
+                <a href="/services" class="hover:text-ink transition-colors">Services</a>
+                <a href="/blog" class="hover:text-ink transition-colors">Blog</a>
+                <a href="/contact" class="hover:text-ink transition-colors">Contact</a>
+            </div>
         </div>
     </footer>
 
-    <!-- Scripts -->
-    <script src="/js/ui-primitives.js" defer></script>
+    <!-- Reading Progress JS -->
+    <script>
+        window.addEventListener('scroll', () => {{
+            const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            const bar = document.getElementById('read-progress');
+            if (bar) bar.style.width = scrolled + '%';
+        }});
+    </script>
     <script src="/js/ui-components.js" defer></script>
     <script src="/js/articles-data.js" defer></script>
     <script src="/js/common.js" defer></script>
@@ -506,58 +614,17 @@ def build_page(art, other_art, content_html):
 """
     return html
 
-# Load articles from articles-data.js
-with open('js/articles-data.js', 'r', encoding='utf-8') as f:
-    code = f.read()
+# Generate all pages
+os.makedirs(os.path.join(WORKSPACE, 'blog'), exist_ok=True)
+generated_count = 0
 
-# Execute JS in Python or extract JSON
-import re
-match = re.search(r'window\.builtInArticles\s*=\s*(\[[\s\S]*?\]);\s*$', code)
-if match:
-    articles = json.loads(match.group(1))
-    art1 = next(a for a in articles if a['id'] == '1')
-    art2 = next(a for a in articles if a['id'] == '2')
+for i, art in enumerate(all_articles):
+    others = [o for o in all_articles if o['slug'] != art['slug']]
+    page_html = build_article_html(art, others)
+    out_path = os.path.join(WORKSPACE, 'blog', f"{art['slug']}.html")
+    with open(out_path, 'w', encoding='utf-8') as f:
+        f.write(page_html)
+    generated_count += 1
+    print(f"[{generated_count}] Generated blog/{art['slug']}.html (ID {art['id']})")
 
-    art1_meta = {
-        'slug': art1['slug'],
-        'title': art1['title'],
-        'meta_title': f"{art1['title']} | DiginixIT Insights",
-        'meta_desc': "Learn how small businesses can drive compounding organic traffic and attract qualified local customers on a budget using targeted SEO and local map packs.",
-        'author': art1['author'],
-        'date': art1['date'],
-        'date_modified': '2026-10-22',
-        'read_time': '7 min read',
-        'category': art1['category'],
-        'image': '/' + art1['image'].lstrip('/'),
-        'image_alt': 'Affordable SEO strategies, keyword research, and organic traffic growth diagnostics for small businesses',
-        'caption': art1.get('image_caption', 'Affordable SEO strategies and local visibility framework for small business owners.')
-    }
-
-    art2_meta = {
-        'slug': art2['slug'],
-        'title': art2['title'],
-        'meta_title': f"{art2['title']} (2026 Guide) | DiginixIT",
-        'meta_desc': "What founders, CTOs and digital leaders should know about Core Web Vitals, mobile pass rates, conversion impacts, and engineering performance as a metric.",
-        'author': art2['author'],
-        'date': art2['date'],
-        'date_modified': '2026-10-22',
-        'read_time': '12 min read',
-        'category': art2['category'],
-        'image': '/' + art2['image'].lstrip('/'),
-        'image_alt': 'Core Web Vitals as a Business Metric: Overview for founders, CTOs and digital leaders in the USA, UK and Europe',
-        'caption': art2.get('image_caption', 'Core Web Vitals as a Business Metric: Overview for founders, CTOs and digital leaders in the USA, UK and Europe.')
-    }
-
-    # Generate page 1
-    page1_html = build_page(art1_meta, art2_meta, art1['content'])
-    with open('blog/affordable-seo-services-small-business.html', 'w', encoding='utf-8') as f:
-        f.write(page1_html)
-    print("Created blog/affordable-seo-services-small-business.html successfully.")
-
-    # Generate page 2
-    page2_html = build_page(art2_meta, art1_meta, art2['content'])
-    with open('blog/core-web-vitals-business-metric.html', 'w', encoding='utf-8') as f:
-        f.write(page2_html)
-    print("Created blog/core-web-vitals-business-metric.html successfully.")
-else:
-    print("Error: Could not parse builtInArticles from js/articles-data.js")
+print(f"\nSuccessfully generated {generated_count} static blog pages!")

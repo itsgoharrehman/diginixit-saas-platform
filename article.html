@@ -12,10 +12,48 @@
             // SEO Slug Canonical Forwarding
             const urlParams = new URLSearchParams(window.location.search);
             const reqId = urlParams.get('id') || urlParams.get('slug');
-            if (reqId === '1' || reqId === 'affordable-seo-services-small-business') {
-                window.location.replace('/blog/affordable-seo-services-small-business');
-            } else if (reqId === '2' || reqId === 'core-web-vitals-business-metric') {
-                window.location.replace('/blog/core-web-vitals-business-metric');
+            const slugMap = {
+                '1': 'affordable-seo-services-small-business',
+                'affordable-seo-services-small-business': 'affordable-seo-services-small-business',
+                '2': 'create-sell-notion-templates-using-ai',
+                'create-sell-notion-templates-using-ai': 'create-sell-notion-templates-using-ai',
+                'core-web-vitals-business-metric': 'core-web-vitals-business-metric',
+                '3': 'multi-agent-systems-enterprise-scale',
+                'multi-agent-systems-enterprise-scale': 'multi-agent-systems-enterprise-scale',
+                '4': 'inheritance-laws-pakistan-daughters-property-rights',
+                'inheritance-laws-pakistan-daughters-property-rights': 'inheritance-laws-pakistan-daughters-property-rights',
+                '5': 'punjab-protection-of-ownership-immovable-property',
+                'punjab-protection-of-ownership-immovable-property': 'punjab-protection-of-ownership-immovable-property',
+                '6': 'new-taxation-law-pakistan',
+                'new-taxation-law-pakistan': 'new-taxation-law-pakistan',
+                '7': 'best-digital-products-to-sell',
+                'best-digital-products-to-sell': 'best-digital-products-to-sell',
+                '8': 'ui-ux-design-roadmap-for-beginners',
+                'ui-ux-design-roadmap-for-beginners': 'ui-ux-design-roadmap-for-beginners',
+                '9': 'web-development-roadmap-for-beginners',
+                'web-development-roadmap-for-beginners': 'web-development-roadmap-for-beginners',
+                '12': 'uae-corporate-tax-law',
+                'uae-corporate-tax-law': 'uae-corporate-tax-law',
+                '14': 'uae-tax-registration-process',
+                'uae-tax-registration-process': 'uae-tax-registration-process',
+                '15': 'uae-vat-taxation-guide-rates-compliance',
+                'uae-vat-taxation-guide-rates-compliance': 'uae-vat-taxation-guide-rates-compliance',
+                '17': 'ai-powered-design-ui-ux-workflows',
+                'ai-powered-design-ui-ux-workflows': 'ai-powered-design-ui-ux-workflows',
+                '18': 'cybersecurity-for-businesses-threats-protection',
+                'cybersecurity-for-businesses-threats-protection': 'cybersecurity-for-businesses-threats-protection',
+                '19': 'seo-guide-ranking-in-ai-search',
+                'seo-guide-ranking-in-ai-search': 'seo-guide-ranking-in-ai-search',
+                '20': 'ai-business-automation-agents',
+                'ai-business-automation-agents': 'ai-business-automation-agents',
+                '21': 'gaming-guide-tips-trends-gear',
+                'gaming-guide-tips-trends-gear': 'gaming-guide-tips-trends-gear',
+                '22': 'artificial-intelligence-in-management',
+                'artificial-intelligence-in-management': 'artificial-intelligence-in-management',
+                'artificial-intelligence-in-management-transforming-leadership-and-business-decision-making': 'artificial-intelligence-in-management'
+            };
+            if (reqId && slugMap[reqId]) {
+                window.location.replace('/blog/' + slugMap[reqId]);
             }
         } catch (e) { }
     </script>
@@ -835,6 +873,11 @@
                 return;
             }
 
+            if (post.slug) {
+                window.location.replace('/blog/' + post.slug);
+                return;
+            }
+
             // Set Title & Meta tags dynamically for SEO & Social Cards
             const canonicalUrl = post.slug ? `https://diginixit.com/blog/${post.slug}` : `https://diginixit.com/article?id=${post.id}`;
             const currentUrl = canonicalUrl;
@@ -1107,7 +1150,7 @@
                 `;
             } else {
                 relatedContainer.innerHTML = relatedBlogs.map(item => `
-                    <a href="article.html?id=${item.id}" class="flex flex-col justify-between py-6 border-b border-hairline group">
+                    <a href="/blog/${item.slug || ('article?id=' + item.id)}" class="flex flex-col justify-between py-6 border-b border-hairline group">
                         <div>
                             ${item.image ? `
                             <div class="mb-4 rounded-xl overflow-hidden border border-hairline bg-canvas-soft aspect-[16/10]">
