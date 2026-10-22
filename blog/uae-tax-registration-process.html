@@ -271,6 +271,91 @@
         #article-content blockquote strong {
             font-style: normal;
         }
+
+        /* Services Dropdown Styles */
+        .nav-dropdown-wrapper {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+        }
+        .nav-dropdown-arrow {
+            transition: transform 0.2s ease;
+        }
+        .nav-dropdown-wrapper:hover .nav-dropdown-arrow,
+        .nav-dropdown-wrapper.is-open .nav-dropdown-arrow {
+            transform: rotate(180deg);
+        }
+        .nav-dropdown-menu {
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 50%;
+            transform: translateX(-50%) translateY(4px);
+            width: 340px;
+            background: #ffffff;
+            border: 1px solid #dfdfdf;
+            border-radius: 12px;
+            padding: 8px;
+            box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.12), 0 4px 12px -2px rgba(0, 0, 0, 0.04);
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.2s;
+            z-index: 100;
+        }
+        .nav-dropdown-wrapper:hover .nav-dropdown-menu,
+        .nav-dropdown-wrapper:focus-within .nav-dropdown-menu,
+        .nav-dropdown-wrapper.is-open .nav-dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            transform: translateX(-50%) translateY(0);
+        }
+        .nav-dropdown-item {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: background 0.15s ease;
+            text-decoration: none !important;
+        }
+        .nav-dropdown-item:hover {
+            background: #fafafa;
+        }
+        .nav-dropdown-item .item-title {
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: #171717;
+            letter-spacing: -0.01em;
+        }
+        .nav-dropdown-item .item-desc {
+            font-size: 0.6875rem;
+            color: #707070;
+            line-height: 1.35;
+        }
+        .nav-dropdown-divider {
+            height: 1px;
+            background: #ededed;
+            margin: 6px 0;
+        }
+        .nav-dropdown-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 12px;
+            font-size: 0.6875rem;
+            font-weight: 600;
+            color: #171717;
+            border-radius: 8px;
+            text-decoration: none !important;
+            transition: background 0.15s ease;
+        }
+        .nav-dropdown-footer:hover {
+            background: #fafafa;
+        }
+        .services-dropdown {
+            display: none !important;
+        }
     </style>
 </head>
 
@@ -280,62 +365,50 @@
     <!-- Reading Progress Pinned to Top -->
     <div id="read-progress" class="fixed top-0 left-0 h-1 bg-primary z-[60] transition-all duration-75" style="width: 0%;"></div>
 
-    <!-- Universal Navigation -->
-    <header id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 py-4 px-6 md:px-12 bg-canvas/90 backdrop-blur-md border-b border-hairline">
-        <div class="max-w-[1280px] mx-auto flex justify-between items-center">
-            <a href="/" class="flex items-center gap-2 group cursor-pointer" aria-label="DiginixIT Home">
-                <span class="font-bold text-xl tracking-tighter text-ink group-hover:text-primary transition-colors">DIGINIXIT</span>
+    <!-- Header / Navbar -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-canvas/80 backdrop-blur-md border-b border-hairline transition-all duration-300" id="navbar">
+        <div class="max-w-[1280px] mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="/" class="flex items-center gap-2 group">
+                <span class="font-bold text-xl tracking-tight text-ink group-hover:opacity-80 transition-opacity">DIGINIXIT<span class="text-primary">.</span></span>
             </a>
 
+            <!-- Desktop Nav Items -->
             <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-ink-mute" aria-label="Main Navigation">
                 <a href="/" class="hover:text-ink transition-colors">Home</a>
-                <div class="relative group" id="services-nav-group">
-                    <a href="/services" class="hover:text-ink transition-colors flex items-center gap-1 py-2">
+                <div class="nav-dropdown-wrapper relative group" id="nav-services-dropdown">
+                    <a href="/services" class="nav-item-link inline-flex items-center gap-1.5 py-2 hover:text-ink transition-colors" id="nav-services" aria-haspopup="true" aria-expanded="false">
                         <span>Our Services</span>
-                        <svg class="w-3.5 h-3.5 opacity-60 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        <svg class="w-3.5 h-3.5 nav-dropdown-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
                     </a>
-                    <div class="services-dropdown" id="services-dropdown">
-                        <a href="/web-engineering" class="service-dropdown-item">
-                            <span class="service-dropdown-dot"></span>
-                            <div>
-                                <div class="service-dropdown-title">Web Engineering</div>
-                                <div class="service-dropdown-desc">High-performance web apps, SaaS &amp; APIs</div>
-                            </div>
+                    <div class="nav-dropdown-menu">
+                        <a href="/web-engineering" class="nav-dropdown-item">
+                            <span class="item-title">Web Engineering</span>
+                            <span class="item-desc">High-performance apps &amp; custom SaaS architecture</span>
                         </a>
-                        <a href="/ui-ux-design" class="service-dropdown-item">
-                            <span class="service-dropdown-dot"></span>
-                            <div>
-                                <div class="service-dropdown-title">UI/UX Design</div>
-                                <div class="service-dropdown-desc">Design systems, Figma &amp; product UX</div>
-                            </div>
+                        <a href="/ui-ux-design" class="nav-dropdown-item">
+                            <span class="item-title">UI/UX Product Design</span>
+                            <span class="item-desc">Bespoke design systems &amp; cognitive flows</span>
                         </a>
-                        <a href="/technical-seo" class="service-dropdown-item">
-                            <span class="service-dropdown-dot"></span>
-                            <div>
-                                <div class="service-dropdown-title">Technical SEO</div>
-                                <div class="service-dropdown-desc">Core Web Vitals &amp; crawl architecture</div>
-                            </div>
+                        <a href="/technical-seo" class="nav-dropdown-item">
+                            <span class="item-title">Technical SEO</span>
+                            <span class="item-desc">Core Web Vitals &amp; entity search architecture</span>
                         </a>
-                        <a href="/social-media-marketing" class="service-dropdown-item">
-                            <span class="service-dropdown-dot"></span>
-                            <div>
-                                <div class="service-dropdown-title">Social Media Marketing</div>
-                                <div class="service-dropdown-desc">Multi-channel growth &amp; content systems</div>
-                            </div>
+                        <a href="/social-media-marketing" class="nav-dropdown-item">
+                            <span class="item-title">Social Media Marketing</span>
+                            <span class="item-desc">Audience acquisition &amp; organic distribution loops</span>
                         </a>
-                        <a href="/law-compliance" class="service-dropdown-item">
-                            <span class="service-dropdown-dot"></span>
-                            <div>
-                                <div class="service-dropdown-title">Law &amp; Compliance</div>
-                                <div class="service-dropdown-desc">Tech contracts, GDPR, IP &amp; data privacy</div>
-                            </div>
+                        <a href="/law-compliance" class="nav-dropdown-item">
+                            <span class="item-title">Law &amp; Tech Compliance</span>
+                            <span class="item-desc">GDPR audits, enterprise MSAs &amp; IP protection</span>
                         </a>
-                        <a href="/corporate-finance" class="service-dropdown-item">
-                            <span class="service-dropdown-dot"></span>
-                            <div>
-                                <div class="service-dropdown-title">Corporate Finance</div>
-                                <div class="service-dropdown-desc">Valuation, cap table &amp; financial models</div>
-                            </div>
+                        <a href="/corporate-finance" class="nav-dropdown-item">
+                            <span class="item-title">Corporate Finance</span>
+                            <span class="item-desc">Dynamic financial models, valuations &amp; runways</span>
+                        </a>
+                        <div class="nav-dropdown-divider"></div>
+                        <a href="/services" class="nav-dropdown-footer">
+                            <span>Overview: All Capabilities</span>
+                            <span class="text-primary font-bold">&rarr;</span>
                         </a>
                     </div>
                 </div>
@@ -344,7 +417,8 @@
             </nav>
 
             <div class="flex items-center gap-4">
-                <a href="/auth" class="text-xs uppercase tracking-wider font-semibold text-ink px-4 py-2 border border-hairline rounded hover:bg-canvas-soft transition-colors">Portal</a>
+                <a href="/auth?mode=signin" class="text-sm font-medium text-ink-mute hover:text-ink transition-colors">Sign In</a>
+                <a href="/auth?mode=signup" class="btn-primary text-xs uppercase tracking-wider font-semibold py-2 px-4 rounded">Get Started</a>
                 <button id="mobile-menu-btn" class="md:hidden p-2 text-ink hover:text-primary transition-colors" aria-label="Toggle Navigation Menu">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                 </button>

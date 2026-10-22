@@ -359,6 +359,10 @@ html.lenis {
     color: var(--color-primary-deep);
 }
 
+.services-dropdown {
+    display: none !important;
+}
+
 /* --- Buttons (design.md spec) --- */
 
 /* Primary Green — emerald bg, near-black text, 6px radius */
