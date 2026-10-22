@@ -1453,6 +1453,25 @@ function initCustomRichEditor() {
         updateToolbarActiveStates();
     });
 
+    // Auto-detect HTML or Gutenberg blocks pasted into visual editor
+    editorArea.addEventListener('paste', (e) => {
+        const text = (e.clipboardData || window.clipboardData)?.getData('text') || '';
+        if (text && /^\s*(<!--\s*wp:|<p|<div|<h[1-6]|<table|<ul|<ol|<section|<article)/i.test(text.trim())) {
+            e.preventDefault();
+            // Strip WordPress Gutenberg block comments if pasted in custom editor
+            const cleanHtml = text.replace(/<!--\s*\/?wp:[^>]*-->/g, '').trim();
+            // If the editor currently just has placeholder or is empty, replace innerHTML directly
+            const currentText = editorArea.innerText.trim();
+            if (!currentText || currentText === 'Start writing your article here...') {
+                editorArea.innerHTML = cleanHtml;
+            } else {
+                document.execCommand('insertHTML', false, cleanHtml);
+            }
+            updateEditorWordCount();
+            updateToolbarActiveStates();
+        }
+    });
+
     editorArea.addEventListener('input', () => {
         updateEditorWordCount();
         updateToolbarActiveStates();
