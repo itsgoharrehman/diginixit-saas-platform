@@ -477,6 +477,7 @@ window.apiCall = async function (action, data = null) {
                 const merged = [...dbBlogs];
                 const builtIns = window.builtInArticles || [];
                 const SLUG_ID_MAP = {
+                    '24': 'abraham-quiros-villalba-ai-tool',
                     '22': 'artificial-intelligence-in-management',
                     '21': 'gaming-guide-tips-trends-gear',
                     '20': 'ai-business-automation-agents',
@@ -546,6 +547,7 @@ window.apiCall = async function (action, data = null) {
                     }
                 }
                 const SLUG_ID_MAP = {
+                    '24': 'abraham-quiros-villalba-ai-tool',
                     '22': 'artificial-intelligence-in-management',
                     '21': 'gaming-guide-tips-trends-gear',
                     '20': 'ai-business-automation-agents',

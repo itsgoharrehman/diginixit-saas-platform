@@ -2,6 +2,18 @@
 <html lang="en">
 <head>
     <script>
+        // Check if the 404 is an article/blog request that exists dynamically in database
+        try {
+            const pathname = window.location.pathname;
+            if (pathname.startsWith('/blog/')) {
+                const slug = pathname.replace(/^\/blog\//, '').replace(/\.html$/, '').replace(/\/$/, '');
+                if (slug && slug !== 'blog' && slug !== 'index') {
+                    document.documentElement.style.display = 'none';
+                    window.location.replace('/article.html?slug=' + encodeURIComponent(slug));
+                }
+            }
+        } catch (e) {}
+
         // Instant check for maintenance mode to prevent page flash of content
         try {
             if (JSON.parse(localStorage.getItem('settings') || '{}').maintenanceMode) {

@@ -11,7 +11,8 @@
             }
             // SEO Slug Canonical Forwarding
             const urlParams = new URLSearchParams(window.location.search);
-            const reqId = urlParams.get('id') || urlParams.get('slug');
+            const reqId = urlParams.get('id');
+            const hasSlugParam = urlParams.has('slug');
             const slugMap = {
                 '1': 'affordable-seo-services-small-business',
                 'affordable-seo-services-small-business': 'affordable-seo-services-small-business',
@@ -50,9 +51,11 @@
                 'gaming-guide-tips-trends-gear': 'gaming-guide-tips-trends-gear',
                 '22': 'artificial-intelligence-in-management',
                 'artificial-intelligence-in-management': 'artificial-intelligence-in-management',
-                'artificial-intelligence-in-management-transforming-leadership-and-business-decision-making': 'artificial-intelligence-in-management'
+                'artificial-intelligence-in-management-transforming-leadership-and-business-decision-making': 'artificial-intelligence-in-management',
+                '24': 'abraham-quiros-villalba-ai-tool',
+                'abraham-quiros-villalba-ai-tool': 'abraham-quiros-villalba-ai-tool'
             };
-            if (reqId && slugMap[reqId]) {
+            if (!hasSlugParam && reqId && slugMap[reqId]) {
                 window.location.replace('/blog/' + slugMap[reqId]);
             }
         } catch (e) { }
@@ -894,7 +897,7 @@
                 postContentClean = postContentClean.replace(/<!--\s*SEO_METADATA:\s*{[\s\S]*?}\s*-->\n?/, '').trim();
             }
 
-            if (post.slug && articleId !== post.slug) {
+            if (post.slug && articleId !== post.slug && !params.get('slug')) {
                 window.location.replace('/blog/' + post.slug);
                 return;
             }
