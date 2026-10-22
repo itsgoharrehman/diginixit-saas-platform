@@ -1143,3 +1143,11 @@
     outline: none;
     resize: vertical;
 }
+
+/* Featured image grid responsive layout */
+@media (max-width: 768px) {
+    .featured-image-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+

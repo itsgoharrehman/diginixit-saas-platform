@@ -1978,6 +1978,9 @@ function parseSeoMetadata(post) {
     let meta_description = post.meta_description || '';
     let slug = post.slug || '';
     let focus_keyword = post.focus_keyword || '';
+    let image = post.image || '';
+    let image_alt = post.image_alt || '';
+    let image_caption = post.image_caption || '';
 
     if (post.content && typeof post.content === 'string') {
         const match = post.content.match(/<!--\s*SEO_METADATA:\s*({[\s\S]*?})\s*-->/);
@@ -1988,11 +1991,137 @@ function parseSeoMetadata(post) {
                 if (!meta_description && parsed.meta_description) meta_description = parsed.meta_description;
                 if (!slug && parsed.slug) slug = parsed.slug;
                 if (!focus_keyword && parsed.focus_keyword) focus_keyword = parsed.focus_keyword;
+                if (!image && parsed.image) image = parsed.image;
+                if (!image_alt && parsed.image_alt) image_alt = parsed.image_alt;
+                if (!image_caption && parsed.image_caption) image_caption = parsed.image_caption;
             } catch (e) {}
         }
     }
-    return { meta_title, meta_description, slug, focus_keyword };
+    return { meta_title, meta_description, slug, focus_keyword, image, image_alt, image_caption };
 }
+
+window.handleFeaturedImageUpload = function (event) {
+    const file = event.target.files && event.target.files[0];
+    if (!file) return;
+
+    if (!file.type.startsWith('image/') && !/\.(webp|png|jpe?g|gif|svg|avif|bmp|ico)$/i.test(file.name)) {
+        window.showToast('Please upload a valid image file (WebP, PNG, JPG, SVG, AVIF, GIF).', 'error');
+        return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = function (e) {
+        const rawDataUrl = e.target.result;
+
+        // If SVG or GIF, preserve intact
+        if (file.type === 'image/svg+xml' || file.type === 'image/gif') {
+            window.setFeaturedImage(rawDataUrl, file.name);
+            return;
+        }
+
+        // For raster formats (PNG, JPG, WebP, AVIF, BMP), optimize via Canvas to WebP
+        const img = new Image();
+        img.onload = function () {
+            try {
+                const canvas = document.createElement('canvas');
+                let width = img.width;
+                let height = img.height;
+                const maxDim = 1600;
+                if (width > maxDim || height > maxDim) {
+                    if (width > height) {
+                        height = Math.round((height * maxDim) / width);
+                        width = maxDim;
+                    } else {
+                        width = Math.round((width * maxDim) / height);
+                        height = maxDim;
+                    }
+                }
+                canvas.width = width;
+                canvas.height = height;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0, width, height);
+
+                const webpDataUrl = canvas.toDataURL('image/webp', 0.88);
+                if (webpDataUrl && webpDataUrl.startsWith('data:image/webp')) {
+                    window.setFeaturedImage(webpDataUrl, file.name.replace(/\.[^.]+$/, '.webp'));
+                } else {
+                    window.setFeaturedImage(rawDataUrl, file.name);
+                }
+            } catch (err) {
+                window.setFeaturedImage(rawDataUrl, file.name);
+            }
+        };
+        img.onerror = function () {
+            window.setFeaturedImage(rawDataUrl, file.name);
+        };
+        img.src = rawDataUrl;
+    };
+    reader.readAsDataURL(file);
+};
+
+window.handleImageUrlInput = function (event) {
+    const url = (event.target.value || '').trim();
+    window.updateFeaturedImagePreview(url);
+};
+
+window.setFeaturedImage = function (url, filename = '') {
+    const urlInput = document.getElementById('blog-image-url');
+    if (urlInput) urlInput.value = url;
+    window.updateFeaturedImagePreview(url, filename);
+
+    // Auto-suggest Alt Text if empty and Title exists
+    const altInput = document.getElementById('blog-image-alt');
+    const titleInput = document.getElementById('blog-title');
+    if (altInput && !altInput.value.trim() && titleInput && titleInput.value.trim()) {
+        altInput.value = titleInput.value.trim() + ' cover illustration';
+    }
+    window.showToast('Featured image loaded successfully.', 'success');
+};
+
+window.updateFeaturedImagePreview = function (url, label = '') {
+    const previewEl = document.getElementById('image-preview-el');
+    const emptyEl = document.getElementById('image-preview-empty');
+    const removeBtn = document.getElementById('btn-remove-image');
+    const badge = document.getElementById('image-preview-badge');
+    if (!previewEl || !emptyEl) return;
+
+    if (url) {
+        previewEl.src = url;
+        previewEl.style.display = 'block';
+        emptyEl.style.display = 'none';
+        if (removeBtn) removeBtn.style.display = 'inline-flex';
+
+        if (badge) {
+            let formatText = 'IMAGE';
+            if (label) {
+                formatText = label.split('.').pop().toUpperCase();
+            } else if (url.startsWith('data:image/')) {
+                const match = url.match(/data:image\/([a-zA-Z0-9+]+);/);
+                formatText = match ? match[1].toUpperCase() : 'WEBP';
+            } else {
+                const ext = url.split('.').pop().split('?')[0].toUpperCase();
+                if (ext.length <= 4) formatText = ext;
+            }
+            badge.innerText = formatText;
+            badge.style.display = 'block';
+        }
+    } else {
+        previewEl.src = '';
+        previewEl.style.display = 'none';
+        emptyEl.style.display = 'block';
+        if (removeBtn) removeBtn.style.display = 'none';
+        if (badge) badge.style.display = 'none';
+    }
+};
+
+window.removeFeaturedImage = function () {
+    const urlInput = document.getElementById('blog-image-url');
+    const fileInput = document.getElementById('blog-image-file');
+    if (urlInput) urlInput.value = '';
+    if (fileInput) fileInput.value = '';
+    window.updateFeaturedImagePreview('');
+    window.showToast('Featured image removed.', 'info');
+};
 
 window.openArticleEditor = function (id = null) {
     const contents = document.querySelectorAll('.admin-tab-content');
@@ -2026,6 +2155,10 @@ window.openArticleEditor = function (id = null) {
             document.getElementById('blog-meta-description').value = seo.meta_description || '';
             document.getElementById('blog-slug').value = seo.slug || '';
             document.getElementById('blog-focus-keyword').value = seo.focus_keyword || '';
+            document.getElementById('blog-image-url').value = seo.image || '';
+            document.getElementById('blog-image-alt').value = seo.image_alt || '';
+            document.getElementById('blog-image-caption').value = seo.image_caption || '';
+            window.updateFeaturedImagePreview(seo.image || '');
             if (editorArea) editorArea.innerHTML = post.content || '<p></p>';
             if (pageTitle) pageTitle.innerText = 'Edit Article';
         }
@@ -2039,6 +2172,10 @@ window.openArticleEditor = function (id = null) {
         document.getElementById('blog-meta-description').value = '';
         document.getElementById('blog-slug').value = '';
         document.getElementById('blog-focus-keyword').value = '';
+        document.getElementById('blog-image-url').value = '';
+        document.getElementById('blog-image-alt').value = '';
+        document.getElementById('blog-image-caption').value = '';
+        window.updateFeaturedImagePreview('');
         if (editorArea) editorArea.innerHTML = '<p>Start writing your article here...</p>';
         if (pageTitle) pageTitle.innerText = 'Write New Article';
     }
@@ -2101,6 +2238,9 @@ function getBlogFormValues() {
         slug = generateSlugString(title);
     }
     const focusKeyword = (document.getElementById('blog-focus-keyword')?.value || '').trim();
+    const image = (document.getElementById('blog-image-url')?.value || '').trim();
+    const imageAlt = (document.getElementById('blog-image-alt')?.value || '').trim();
+    const imageCaption = (document.getElementById('blog-image-caption')?.value || '').trim();
 
     // Strip any existing SEO_METADATA comment from htmlContent
     let cleanContent = htmlContent.replace(/<!--\s*SEO_METADATA:\s*{[\s\S]*?}\s*-->\n?/, '').trim();
@@ -2109,7 +2249,10 @@ function getBlogFormValues() {
         meta_title: metaTitle,
         meta_description: metaDescription,
         slug: slug,
-        focus_keyword: focusKeyword
+        focus_keyword: focusKeyword,
+        image: image,
+        image_alt: imageAlt,
+        image_caption: imageCaption
     })} -->\n`;
     htmlContent = seoMetaHeader + cleanContent;
 
@@ -2119,6 +2262,9 @@ function getBlogFormValues() {
         category: document.getElementById('blog-category').value.trim(),
         author: document.getElementById('blog-author').value.trim(),
         summary: document.getElementById('blog-summary').value.trim(),
+        image: image,
+        image_alt: imageAlt,
+        image_caption: imageCaption,
         meta_title: metaTitle,
         meta_description: metaDescription,
         slug: slug,

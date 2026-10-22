@@ -886,6 +886,9 @@
                         if (parsed.meta_title && !post.meta_title) metaTitleText = parsed.meta_title;
                         if (parsed.meta_description && !post.meta_description) metaDescText = parsed.meta_description;
                         if (parsed.slug && !post.slug) post.slug = parsed.slug;
+                        if (parsed.image && !post.image) post.image = parsed.image;
+                        if (parsed.image_alt && !post.image_alt) post.image_alt = parsed.image_alt;
+                        if (parsed.image_caption && !post.image_caption) post.image_caption = parsed.image_caption;
                     } catch (e) {}
                 }
                 postContentClean = postContentClean.replace(/<!--\s*SEO_METADATA:\s*{[\s\S]*?}\s*-->\n?/, '').trim();
@@ -900,7 +903,7 @@
             const canonicalUrl = post.slug ? `https://diginixit.com/blog/${post.slug}` : `https://diginixit.com/article?id=${post.id}`;
             const currentUrl = canonicalUrl;
             const postImage = post.image
-                ? (post.image.startsWith('http') ? post.image : `https://diginixit.com/${post.image.replace(/^\//, '')}`)
+                ? (post.image.startsWith('http') || post.image.startsWith('data:') ? post.image : `https://diginixit.com/${post.image.replace(/^\//, '')}`)
                 : 'https://diginixit.com/images/og-home.jpg';
 
             const formattedPageTitle = metaTitleText.toLowerCase().includes('diginixit') ? metaTitleText : `${metaTitleText} | DiginixIT`;
@@ -1002,7 +1005,7 @@
             const heroCaption = document.getElementById('article-hero-caption');
             if (post.image && heroWrap && heroImg) {
                 heroImg.src = post.image;
-                heroImg.alt = post.title || 'Main article cover';
+                heroImg.alt = post.image_alt || post.title || 'Main article cover';
                 if (heroCaption) {
                     heroCaption.innerText = post.image_caption || post.title;
                     heroCaption.classList.remove('hidden');

@@ -506,6 +506,9 @@ window.apiCall = async function (action, data = null) {
                                 if (!b.meta_description && parsed.meta_description) b.meta_description = parsed.meta_description;
                                 if (!b.slug && parsed.slug) b.slug = parsed.slug;
                                 if (!b.focus_keyword && parsed.focus_keyword) b.focus_keyword = parsed.focus_keyword;
+                                if (!b.image && parsed.image) b.image = parsed.image;
+                                if (!b.image_alt && parsed.image_alt) b.image_alt = parsed.image_alt;
+                                if (!b.image_caption && parsed.image_caption) b.image_caption = parsed.image_caption;
                             } catch (e) {}
                         }
                     }
@@ -572,6 +575,9 @@ window.apiCall = async function (action, data = null) {
                                 if (!b.meta_description && parsed.meta_description) b.meta_description = parsed.meta_description;
                                 if (!b.slug && parsed.slug) b.slug = parsed.slug;
                                 if (!b.focus_keyword && parsed.focus_keyword) b.focus_keyword = parsed.focus_keyword;
+                                if (!b.image && parsed.image) b.image = parsed.image;
+                                if (!b.image_alt && parsed.image_alt) b.image_alt = parsed.image_alt;
+                                if (!b.image_caption && parsed.image_caption) b.image_caption = parsed.image_caption;
                             } catch (e) {}
                         }
                     }
