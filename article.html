@@ -873,7 +873,25 @@
                 return;
             }
 
-            if (post.slug) {
+            // Extract SEO metadata (from fields or embedded comment)
+            let metaTitleText = post.meta_title || post.title;
+            let metaDescText = post.meta_description || post.summary;
+            let postContentClean = post.content || '';
+
+            if (postContentClean && typeof postContentClean === 'string') {
+                const seoMatch = postContentClean.match(/<!--\s*SEO_METADATA:\s*({[\s\S]*?})\s*-->/);
+                if (seoMatch) {
+                    try {
+                        const parsed = JSON.parse(seoMatch[1]);
+                        if (parsed.meta_title && !post.meta_title) metaTitleText = parsed.meta_title;
+                        if (parsed.meta_description && !post.meta_description) metaDescText = parsed.meta_description;
+                        if (parsed.slug && !post.slug) post.slug = parsed.slug;
+                    } catch (e) {}
+                }
+                postContentClean = postContentClean.replace(/<!--\s*SEO_METADATA:\s*{[\s\S]*?}\s*-->\n?/, '').trim();
+            }
+
+            if (post.slug && articleId !== post.slug) {
                 window.location.replace('/blog/' + post.slug);
                 return;
             }
@@ -885,13 +903,14 @@
                 ? (post.image.startsWith('http') ? post.image : `https://diginixit.com/${post.image.replace(/^\//, '')}`)
                 : 'https://diginixit.com/images/og-home.jpg';
 
-            document.title = `${post.title} | DiginixIT`;
+            const formattedPageTitle = metaTitleText.toLowerCase().includes('diginixit') ? metaTitleText : `${metaTitleText} | DiginixIT`;
+            document.title = formattedPageTitle;
 
             const metaTitle = document.getElementById('meta-title-tag');
-            if (metaTitle) metaTitle.innerText = `${post.title} | DiginixIT`;
+            if (metaTitle) metaTitle.innerText = formattedPageTitle;
 
             const metaDesc = document.getElementById('meta-desc-tag');
-            if (metaDesc) metaDesc.content = post.summary;
+            if (metaDesc) metaDesc.content = metaDescText;
 
             const canonical = document.getElementById('canonical-link');
             if (canonical) canonical.href = canonicalUrl;
@@ -900,9 +919,9 @@
             const ogUrl = document.getElementById('og-url-tag');
             if (ogUrl) ogUrl.content = currentUrl;
             const ogTitle = document.getElementById('og-title-tag');
-            if (ogTitle) ogTitle.content = `${post.title} | DiginixIT`;
+            if (ogTitle) ogTitle.content = formattedPageTitle;
             const ogDesc = document.getElementById('og-desc-tag');
-            if (ogDesc) ogDesc.content = post.summary;
+            if (ogDesc) ogDesc.content = metaDescText;
             const ogImage = document.getElementById('og-image-tag');
             if (ogImage) ogImage.content = postImage;
 
@@ -910,9 +929,9 @@
             const twitterUrl = document.getElementById('twitter-url-tag');
             if (twitterUrl) twitterUrl.content = currentUrl;
             const twitterTitle = document.getElementById('twitter-title-tag');
-            if (twitterTitle) twitterTitle.content = `${post.title} | DiginixIT`;
+            if (twitterTitle) twitterTitle.content = formattedPageTitle;
             const twitterDesc = document.getElementById('twitter-desc-tag');
-            if (twitterDesc) twitterDesc.content = post.summary;
+            if (twitterDesc) twitterDesc.content = metaDescText;
             const twitterImage = document.getElementById('twitter-image-tag');
             if (twitterImage) twitterImage.content = postImage;
 
@@ -921,8 +940,8 @@
                 const schema = {
                     "@context": "https://schema.org",
                     "@type": "Article",
-                    "headline": post.title,
-                    "description": post.summary,
+                    "headline": metaTitleText,
+                    "description": metaDescText,
                     "image": [postImage],
                     "datePublished": post.date,
                     "dateModified": post.date,
@@ -995,18 +1014,18 @@
 
             // Render rich content or paragraphs
             const contentsContainer = document.getElementById('article-content');
-            if (post.content && contentsContainer) {
-                const hasHtml = /<[a-z][\s\S]*>/i.test(post.content);
+            if (postContentClean && contentsContainer) {
+                const hasHtml = /<[a-z][\s\S]*>/i.test(postContentClean);
                 const allowedTags = ['p', 'br', 'strong', 'em', 'u', 's', 'strike', 'sub', 'sup', 'h1', 'h2', 'h3', 'h4', 'ul', 'ol', 'li', 'a', 'code', 'pre', 'span', 'blockquote', 'img', 'table', 'thead', 'tbody', 'tr', 'th', 'td', 'div', 'hr', 'details', 'summary'];
                 const allowedAttr = ['href', 'target', 'rel', 'style', 'class', 'start', 'value', 'src', 'alt', 'width', 'align', 'colspan', 'rowspan', 'open'];
 
                 if (hasHtml) {
-                    contentsContainer.innerHTML = DOMPurify.sanitize(post.content, {
+                    contentsContainer.innerHTML = DOMPurify.sanitize(postContentClean, {
                         ALLOWED_TAGS: allowedTags,
                         ALLOWED_ATTR: allowedAttr
                     });
                 } else {
-                    const paragraphs = post.content.split('\n\n');
+                    const paragraphs = postContentClean.split('\n\n');
                     contentsContainer.innerHTML = paragraphs.map((p) => {
                         const cleanP = DOMPurify.sanitize(p, {
                             ALLOWED_TAGS: allowedTags,

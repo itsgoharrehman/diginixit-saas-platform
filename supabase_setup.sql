@@ -65,8 +65,17 @@ CREATE TABLE IF NOT EXISTS public.blogs (
     author TEXT NOT NULL,
     date DATE DEFAULT NULL,
     category TEXT NOT NULL DEFAULT 'Tech',
-    status TEXT NOT NULL DEFAULT 'published'
+    status TEXT NOT NULL DEFAULT 'published',
+    meta_title TEXT DEFAULT NULL,
+    meta_description TEXT DEFAULT NULL,
+    slug TEXT DEFAULT NULL,
+    focus_keyword TEXT DEFAULT NULL
 );
+
+ALTER TABLE public.blogs ADD COLUMN IF NOT EXISTS meta_title TEXT DEFAULT NULL;
+ALTER TABLE public.blogs ADD COLUMN IF NOT EXISTS meta_description TEXT DEFAULT NULL;
+ALTER TABLE public.blogs ADD COLUMN IF NOT EXISTS slug TEXT DEFAULT NULL;
+ALTER TABLE public.blogs ADD COLUMN IF NOT EXISTS focus_keyword TEXT DEFAULT NULL;
 
 -- Users Table (Custom Registered Users - Client profiles linked to Supabase Auth)
 CREATE TABLE IF NOT EXISTS public.users (

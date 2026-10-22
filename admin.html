@@ -443,6 +443,90 @@
                             </div>
                         </div>
 
+                        <!-- SEO & Metadata Optimization Fields -->
+                        <div class="admin-section" style="margin-bottom:16px; border: 1px solid var(--color-hairline, #e2e8f0); border-radius: 8px;">
+                            <div class="admin-section-header" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--color-hairline, #e2e8f0);">
+                                <div>
+                                    <h3 class="admin-section-title" style="display: flex; align-items: center; gap: 8px; color: #1e293b; font-size: 14px;">
+                                        <i data-lucide="search" class="w-4 h-4" style="color: #2563eb;"></i>
+                                        Search Engine Optimization (SEO & Metadata)
+                                    </h3>
+                                    <p class="admin-section-subtitle" style="font-size: 12px; margin-top: 2px;">
+                                        Configure dedicated meta tags for Google Search rankings, social share cards, and clean permalinks.
+                                    </p>
+                                </div>
+                                <span class="ui-badge" style="background: #eff6ff; color: #2563eb; border: 1px solid #bfdbfe; font-size: 11px; padding: 3px 10px; border-radius: 9999px; font-weight: 600;">
+                                    E-E-A-T Ready
+                                </span>
+                            </div>
+
+                            <div class="admin-form-row" style="margin-bottom:16px;">
+                                <div class="ui-form-field">
+                                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                                        <label for="blog-meta-title" class="ui-label">SEO Meta Title</label>
+                                        <span id="meta-title-counter" class="ui-field-help" style="font-size: 11px; font-weight: 500;">0 / 60 chars</span>
+                                    </div>
+                                    <input type="text" id="blog-meta-title" class="ui-input" maxlength="70"
+                                        placeholder="e.g. Abraham Quiros Villalba AI Tool: A Complete Analysis (2026)">
+                                    <span class="ui-field-help">Clickable headline on Google (recommended: 50–60 chars). Defaults to article title if left empty.</span>
+                                </div>
+
+                                <div class="ui-form-field">
+                                    <label for="blog-focus-keyword" class="ui-label">Focus Keyword / Target Entity</label>
+                                    <input type="text" id="blog-focus-keyword" class="ui-input"
+                                        placeholder="e.g. Abraham Quiros Villalba AI Tool">
+                                    <span class="ui-field-help">Target search query to optimize on-page density, headings, and schema.</span>
+                                </div>
+                            </div>
+
+                            <div class="admin-form-row" style="margin-bottom:16px;">
+                                <div class="ui-form-field" style="flex: 1;">
+                                    <label for="blog-slug" class="ui-label">Custom URL Slug (Permalink)</label>
+                                    <div style="display: flex; gap: 8px;">
+                                        <input type="text" id="blog-slug" class="ui-input"
+                                            placeholder="e.g. abraham-quiros-villalba-ai-tool">
+                                        <button type="button" id="btn-generate-slug" onclick="generateSlugFromTitle()" class="ui-btn ui-btn-outline ui-btn-sm" style="display: flex; align-items: center; gap: 4px; white-space: nowrap; height: 38px;">
+                                            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Auto Slug
+                                        </button>
+                                    </div>
+                                    <span class="ui-field-help">Canonical path: <code style="font-size: 11px; background: #f1f5f9; padding: 2px 4px; border-radius: 4px; color: #0f172a;">https://diginixit.com/blog/<span id="slug-live-preview">your-slug</span></code></span>
+                                </div>
+                            </div>
+
+                            <div class="ui-form-field" style="margin-bottom:16px;">
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <label for="blog-meta-description" class="ui-label">SEO Meta Description</label>
+                                    <span id="meta-desc-counter" class="ui-field-help" style="font-size: 11px; font-weight: 500;">0 / 160 chars</span>
+                                </div>
+                                <textarea id="blog-meta-description" class="ui-input ui-textarea" rows="3" maxlength="170"
+                                    placeholder="Enter concise search summary (140–160 characters) containing your focus keyword..."></textarea>
+                                <span class="ui-field-help">Recommended: 140–160 characters. Search engines show this snippet under your title link.</span>
+                            </div>
+
+                            <!-- Live Google Search Snippet Preview -->
+                            <div style="margin-top: 16px; padding: 14px 16px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px;">
+                                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+                                    <span style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: #64748b; display: flex; align-items: center; gap: 4px;">
+                                        <i data-lucide="eye" class="w-3.5 h-3.5"></i> Live Google SERP Preview
+                                    </span>
+                                    <span style="font-size: 11px; color: #94a3b8;">Google Search Snippet</span>
+                                </div>
+                                <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 12px 16px; font-family: arial, sans-serif;">
+                                    <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 4px;">
+                                        <div style="width: 16px; height: 16px; border-radius: 50%; background: #0f172a; display: inline-flex; align-items: center; justify-content: center; font-size: 9px; color: #fff; font-weight: bold;">D</div>
+                                        <span style="font-size: 12px; color: #202124;">diginixit.com</span>
+                                        <span style="font-size: 12px; color: #5f6368;">› blog › <span id="serp-preview-slug">...</span></span>
+                                    </div>
+                                    <h4 id="serp-preview-title" style="font-size: 18px; color: #1a0dab; line-height: 1.3; margin: 2px 0 4px 0; font-weight: 400; cursor: pointer; text-decoration: none;">
+                                        Title Preview | DiginixIT
+                                    </h4>
+                                    <p id="serp-preview-desc" style="font-size: 13px; color: #4d5156; line-height: 1.5; margin: 0; word-break: break-word;">
+                                        Meta description preview will appear here in real-time as you type...
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
                         <!-- Editor -->
                         <div class="admin-section admin-section--flush">
                             <!-- Toolbar -->

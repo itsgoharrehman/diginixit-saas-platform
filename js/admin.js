@@ -1865,6 +1865,135 @@ function initBlogFilterTabs() {
     });
 }
 
+function generateSlugString(str) {
+    if (!str) return '';
+    return str
+        .toLowerCase()
+        .trim()
+        .replace(/[^a-z0-9\s-]/g, '')
+        .replace(/\s+/g, '-')
+        .replace(/-+/g, '-')
+        .replace(/(^-|-$)+/g, '');
+}
+
+window.generateSlugFromTitle = function () {
+    const titleInput = document.getElementById('blog-title');
+    const slugInput = document.getElementById('blog-slug');
+    const focusKeywordInput = document.getElementById('blog-focus-keyword');
+    const baseText = slugInput.value.trim() || focusKeywordInput.value.trim() || titleInput.value.trim();
+    if (baseText) {
+        slugInput.value = generateSlugString(baseText);
+        window.updateSeoUiCountersAndPreview();
+    }
+};
+
+window.updateSeoUiCountersAndPreview = function () {
+    const titleVal = (document.getElementById('blog-title')?.value || '').trim();
+    const metaTitleVal = (document.getElementById('blog-meta-title')?.value || '').trim();
+    const summaryVal = (document.getElementById('blog-summary')?.value || '').trim();
+    const metaDescVal = (document.getElementById('blog-meta-description')?.value || '').trim();
+    const slugVal = (document.getElementById('blog-slug')?.value || '').trim();
+
+    // Title counter
+    const titleLen = metaTitleVal.length;
+    const titleCounter = document.getElementById('meta-title-counter');
+    if (titleCounter) {
+        titleCounter.innerText = `${titleLen} / 60 chars`;
+        if (titleLen === 0) {
+            titleCounter.style.color = 'var(--color-ink-faint, #64748b)';
+        } else if (titleLen >= 45 && titleLen <= 60) {
+            titleCounter.style.color = '#16a34a';
+        } else if (titleLen > 60) {
+            titleCounter.style.color = '#dc2626';
+        } else {
+            titleCounter.style.color = '#d97706';
+        }
+    }
+
+    // Description counter
+    const descLen = metaDescVal.length;
+    const descCounter = document.getElementById('meta-desc-counter');
+    if (descCounter) {
+        descCounter.innerText = `${descLen} / 160 chars`;
+        if (descLen === 0) {
+            descCounter.style.color = 'var(--color-ink-faint, #64748b)';
+        } else if (descLen >= 140 && descLen <= 160) {
+            descCounter.style.color = '#16a34a';
+        } else if (descLen > 160) {
+            descCounter.style.color = '#dc2626';
+        } else {
+            descCounter.style.color = '#d97706';
+        }
+    }
+
+    // Slug live preview
+    const effectiveSlug = slugVal || generateSlugString(titleVal) || 'your-slug';
+    const slugLivePreview = document.getElementById('slug-live-preview');
+    if (slugLivePreview) slugLivePreview.innerText = effectiveSlug;
+
+    // Google SERP Snippet Preview
+    const serpSlug = document.getElementById('serp-preview-slug');
+    if (serpSlug) serpSlug.innerText = effectiveSlug;
+
+    const serpTitle = document.getElementById('serp-preview-title');
+    if (serpTitle) {
+        const displayTitle = metaTitleVal || titleVal || 'Title Preview';
+        serpTitle.innerText = displayTitle.toLowerCase().includes('diginixit') ? displayTitle : `${displayTitle} | DiginixIT`;
+    }
+
+    const serpDesc = document.getElementById('serp-preview-desc');
+    if (serpDesc) {
+        serpDesc.innerText = metaDescVal || summaryVal || 'Meta description preview will appear here in real-time as you type...';
+    }
+};
+
+function initSeoFields() {
+    const metaTitle = document.getElementById('blog-meta-title');
+    const metaDesc = document.getElementById('blog-meta-description');
+    const slugInput = document.getElementById('blog-slug');
+    const titleInput = document.getElementById('blog-title');
+    const summaryInput = document.getElementById('blog-summary');
+
+    [metaTitle, metaDesc, slugInput, titleInput, summaryInput].forEach(el => {
+        if (el && !el.getAttribute('data-seo-listener')) {
+            el.setAttribute('data-seo-listener', 'true');
+            el.addEventListener('input', window.updateSeoUiCountersAndPreview);
+            el.addEventListener('change', window.updateSeoUiCountersAndPreview);
+        }
+    });
+
+    if (slugInput && !slugInput.getAttribute('data-slug-sanitize')) {
+        slugInput.setAttribute('data-slug-sanitize', 'true');
+        slugInput.addEventListener('blur', () => {
+            if (slugInput.value) {
+                slugInput.value = generateSlugString(slugInput.value);
+                window.updateSeoUiCountersAndPreview();
+            }
+        });
+    }
+}
+
+function parseSeoMetadata(post) {
+    let meta_title = post.meta_title || '';
+    let meta_description = post.meta_description || '';
+    let slug = post.slug || '';
+    let focus_keyword = post.focus_keyword || '';
+
+    if (post.content && typeof post.content === 'string') {
+        const match = post.content.match(/<!--\s*SEO_METADATA:\s*({[\s\S]*?})\s*-->/);
+        if (match) {
+            try {
+                const parsed = JSON.parse(match[1]);
+                if (!meta_title && parsed.meta_title) meta_title = parsed.meta_title;
+                if (!meta_description && parsed.meta_description) meta_description = parsed.meta_description;
+                if (!slug && parsed.slug) slug = parsed.slug;
+                if (!focus_keyword && parsed.focus_keyword) focus_keyword = parsed.focus_keyword;
+            } catch (e) {}
+        }
+    }
+    return { meta_title, meta_description, slug, focus_keyword };
+}
+
 window.openArticleEditor = function (id = null) {
     const contents = document.querySelectorAll('.admin-tab-content');
     contents.forEach(c => c.classList.remove('active'));
@@ -1874,6 +2003,7 @@ window.openArticleEditor = function (id = null) {
 
     window.adminState.activeTab = 'article-editor';
     initCustomRichEditor();
+    initSeoFields();
 
     const pageTitle = document.getElementById('article-editor-page-title');
     const editorArea = document.getElementById('article-editor-area');
@@ -1886,11 +2016,16 @@ window.openArticleEditor = function (id = null) {
     if (id) {
         const post = window.adminState.blogs.find(b => b.id == id);
         if (post) {
+            const seo = parseSeoMetadata(post);
             document.getElementById('edit-post-id').value = post.id;
             document.getElementById('blog-title').value = post.title || '';
             document.getElementById('blog-category').value = post.category || '';
             document.getElementById('blog-author').value = post.author || '';
             document.getElementById('blog-summary').value = post.summary || '';
+            document.getElementById('blog-meta-title').value = seo.meta_title || '';
+            document.getElementById('blog-meta-description').value = seo.meta_description || '';
+            document.getElementById('blog-slug').value = seo.slug || '';
+            document.getElementById('blog-focus-keyword').value = seo.focus_keyword || '';
             if (editorArea) editorArea.innerHTML = post.content || '<p></p>';
             if (pageTitle) pageTitle.innerText = 'Edit Article';
         }
@@ -1900,10 +2035,15 @@ window.openArticleEditor = function (id = null) {
         document.getElementById('blog-category').value = '';
         document.getElementById('blog-author').value = '';
         document.getElementById('blog-summary').value = '';
+        document.getElementById('blog-meta-title').value = '';
+        document.getElementById('blog-meta-description').value = '';
+        document.getElementById('blog-slug').value = '';
+        document.getElementById('blog-focus-keyword').value = '';
         if (editorArea) editorArea.innerHTML = '<p>Start writing your article here...</p>';
         if (pageTitle) pageTitle.innerText = 'Write New Article';
     }
 
+    window.updateSeoUiCountersAndPreview();
     updateEditorWordCount();
     if (typeof lucide !== 'undefined' && lucide.createIcons) lucide.createIcons();
 };
@@ -1953,12 +2093,36 @@ function getBlogFormValues() {
         htmlContent = editorArea.innerHTML;
     }
 
+    const title = (document.getElementById('blog-title')?.value || '').trim();
+    const metaTitle = (document.getElementById('blog-meta-title')?.value || '').trim();
+    const metaDescription = (document.getElementById('blog-meta-description')?.value || '').trim();
+    let slug = (document.getElementById('blog-slug')?.value || '').trim();
+    if (!slug && title) {
+        slug = generateSlugString(title);
+    }
+    const focusKeyword = (document.getElementById('blog-focus-keyword')?.value || '').trim();
+
+    // Strip any existing SEO_METADATA comment from htmlContent
+    let cleanContent = htmlContent.replace(/<!--\s*SEO_METADATA:\s*{[\s\S]*?}\s*-->\n?/, '').trim();
+    // Inject the SEO_METADATA comment block at the very top of content
+    const seoMetaHeader = `<!-- SEO_METADATA: ${JSON.stringify({
+        meta_title: metaTitle,
+        meta_description: metaDescription,
+        slug: slug,
+        focus_keyword: focusKeyword
+    })} -->\n`;
+    htmlContent = seoMetaHeader + cleanContent;
+
     return {
         id: document.getElementById('edit-post-id').value,
-        title: document.getElementById('blog-title').value.trim(),
+        title: title,
         category: document.getElementById('blog-category').value.trim(),
         author: document.getElementById('blog-author').value.trim(),
         summary: document.getElementById('blog-summary').value.trim(),
+        meta_title: metaTitle,
+        meta_description: metaDescription,
+        slug: slug,
+        focus_keyword: focusKeyword,
         content: htmlContent
     };
 }
