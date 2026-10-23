@@ -1919,5 +1919,39 @@ code:not(.code-block code) {
     outline-offset: 1px;
 }
 
+/* style of chatbot button */
+.chatbot-button {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(63, 207, 142, 1);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 99999;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.chatbot-button:hover {
+    background: rgba(50, 190, 125, 1);
+    transform: scale(1.08);
+}
+
+.chatbot-button svg {
+    width: 30px;
+    height: 30px;
+    fill: none;
+    stroke: #ffffff;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
 
 
