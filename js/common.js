@@ -1717,20 +1717,31 @@ window.initializeAuth = initializeAuth;
 
 // --- 7. Mobile Hamburger Drawer Menu & Services Accordion Toggle ---
 function initMobileMenu() {
-    const hamburgerBtn = document.getElementById('hamburger-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
+    const hamburgerBtn = document.getElementById('hamburger-btn') || document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu') || document.getElementById('mobile-drawer');
     if (hamburgerBtn && mobileMenu) {
-        hamburgerBtn.addEventListener('click', () => {
+        hamburgerBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
             const isOpen = mobileMenu.classList.toggle('active');
+            mobileMenu.classList.toggle('open', isOpen);
             hamburgerBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
             if (isOpen) {
-                hamburgerBtn.innerHTML = `<i data-lucide="x" class="w-6 h-6"></i>`;
+                hamburgerBtn.innerHTML = `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>`;
             } else {
-                hamburgerBtn.innerHTML = `<i data-lucide="menu" class="w-6 h-6"></i>`;
+                hamburgerBtn.innerHTML = `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>`;
             }
             if (typeof lucide !== 'undefined') {
                 lucide.createIcons();
             }
+        });
+
+        // Close drawer when clicking any link inside drawer
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active', 'open');
+                hamburgerBtn.setAttribute('aria-expanded', 'false');
+                hamburgerBtn.innerHTML = `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>`;
+            });
         });
     }
 

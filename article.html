@@ -13,6 +13,7 @@
             const urlParams = new URLSearchParams(window.location.search);
             const reqId = urlParams.get('id');
             const hasSlugParam = urlParams.has('slug');
+            const isBlogPath = window.location.pathname.startsWith('/blog/');
             const slugMap = {
                 '1': 'affordable-seo-services-small-business',
                 'affordable-seo-services-small-business': 'affordable-seo-services-small-business',
@@ -55,7 +56,7 @@
                 '24': 'abraham-quiros-villalba-ai-tool',
                 'abraham-quiros-villalba-ai-tool': 'abraham-quiros-villalba-ai-tool'
             };
-            if (!hasSlugParam && reqId && slugMap[reqId]) {
+            if (!isBlogPath && !hasSlugParam && reqId && slugMap[reqId]) {
                 window.location.replace('/blog/' + slugMap[reqId]);
             }
         } catch (e) { }
@@ -303,7 +304,11 @@
         }
 
         #article-content table {
+            display: block;
             width: 100%;
+            max-width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
             border-collapse: collapse;
             margin: 1.5rem 0;
         }
@@ -860,7 +865,17 @@
 
         async function loadArticleDetail() {
             const params = new URLSearchParams(window.location.search);
-            const articleId = params.get('id') || params.get('slug');
+            let articleId = params.get('id') || params.get('slug');
+
+            if (!articleId) {
+                const pathname = window.location.pathname;
+                if (pathname.startsWith('/blog/')) {
+                    const slugFromPath = pathname.replace(/^\/blog\//, '').replace(/\.html$/, '').replace(/\/$/, '');
+                    if (slugFromPath && slugFromPath !== 'blog' && slugFromPath !== 'index') {
+                        articleId = decodeURIComponent(slugFromPath);
+                    }
+                }
+            }
 
             if (!articleId) {
                 renderNotFound("No article ID was provided.");
@@ -897,7 +912,7 @@
                 postContentClean = postContentClean.replace(/<!--\s*SEO_METADATA:\s*{[\s\S]*?}\s*-->\n?/, '').trim();
             }
 
-            if (post.slug && articleId !== post.slug && !params.get('slug')) {
+            if (post.slug && articleId !== post.slug && !params.get('slug') && !window.location.pathname.startsWith('/blog/')) {
                 window.location.replace('/blog/' + post.slug);
                 return;
             }

@@ -1832,6 +1832,7 @@ function renderBlogTable() {
         const statusBadge = isDraft
             ? `<span class="ui-badge ui-badge-outline">&#9679; Draft</span>`
             : `<span class="ui-badge ui-badge-emerald">&#9679; Published</span>`;
+        const viewLink = post.slug ? `/blog/${post.slug}` : `/article.html?id=${post.id}`;
         return `
         <tr class="ui-tr">
             <td class="ui-td font-medium max-w-xs truncate">${window.escapeHtml(post.title)}</td>
@@ -1840,6 +1841,7 @@ function renderBlogTable() {
             <td class="ui-td">${statusBadge}</td>
             <td class="ui-td text-xs text-ink-mute">${window.escapeHtml(formatLocalShortDate(post.date))}</td>
             <td class="ui-td text-right space-x-2">
+                <a href="${viewLink}" target="_blank" rel="noopener" class="ui-btn ui-btn-outline ui-btn-sm" style="text-decoration:none; display:inline-flex; align-items:center;">View</a>
                 <button class="ui-btn ui-btn-outline ui-btn-sm edit-blog-btn" data-id="${post.id}">Edit</button>
                 <button class="ui-btn ui-btn-danger ui-btn-sm delete-blog-btn" data-id="${post.id}">Delete</button>
             </td>
