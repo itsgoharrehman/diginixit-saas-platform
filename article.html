@@ -716,9 +716,9 @@
     </div>
 
     <!-- Main Content Container -->
-    <main class="pt-36 sm:pt-44 pb-20 px-6">
-        <div class="max-w-[1280px] mx-auto">
-            <div class="max-w-3xl mx-auto" id="main-article-view">
+    <main class="pt-28 sm:pt-44 pb-20 px-4 sm:px-6 w-full min-w-0 max-w-full">
+        <div class="max-w-[1280px] mx-auto w-full min-w-0">
+            <div class="max-w-3xl mx-auto w-full min-w-0" id="main-article-view">
 
                 <!-- Breadcrumbs -->
                 <div
@@ -733,10 +733,10 @@
                 </div>
 
                 <!-- Article Body Wrapper (Centered max-w-2xl mx-auto) -->
-                <div class="max-w-2xl mx-auto">
+                <div class="max-w-2xl mx-auto w-full min-w-0">
                     <!-- Article Title -->
                     <h1 id="article-title"
-                        class="text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight mb-6 leading-tight text-ink"
+                        class="text-2xl sm:text-4xl md:text-5xl font-medium tracking-tight mb-6 leading-tight text-ink break-words"
                         style="letter-spacing: -0.03em;">
                         Loading article...
                     </h1>
@@ -1070,6 +1070,10 @@
                     const rawText = pre.innerText;
                     pre.textContent = rawText;
                 });
+
+                if (window.makeTablesResponsive) {
+                    window.makeTablesResponsive(contentsContainer);
+                }
 
                 // ── Post-render list starting number alignment ──────────────
                 // Automatically calculates sequential numbering for all separate <ol> lists

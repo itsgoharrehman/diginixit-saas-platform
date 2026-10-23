@@ -244,14 +244,21 @@
             padding-left: 1.75rem !important;
             margin-bottom: 1.25rem !important;
         }
-        #article-content table {
-            display: block;
-            width: 100%;
-            max-width: 100%;
-            overflow-x: auto;
+        .table-responsive-wrapper {
+            width: 100% !important;
+            max-width: 100% !important;
+            overflow-x: auto !important;
             -webkit-overflow-scrolling: touch;
-            border-collapse: collapse;
             margin: 1.5rem 0;
+            display: block;
+            clear: both;
+        }
+        .table-responsive-wrapper table {
+            display: table !important;
+            width: 100% !important;
+            min-width: 520px;
+            border-collapse: collapse;
+            margin: 0 !important;
         }
         #article-content th,
         #article-content td {
@@ -421,8 +428,8 @@
             </nav>
 
             <div class="flex items-center gap-4">
-                <a href="/auth?mode=signin" class="text-sm font-medium text-ink-mute hover:text-ink transition-colors">Sign In</a>
-                <a href="/auth?mode=signup" class="btn-primary text-xs uppercase tracking-wider font-semibold py-2 px-4 rounded">Get Started</a>
+                <a href="/auth?mode=signin" class="hidden sm:inline-flex text-sm font-medium text-ink-mute hover:text-ink transition-colors">Sign In</a>
+                <a href="/auth?mode=signup" class="hidden sm:inline-flex btn-primary text-xs uppercase tracking-wider font-semibold py-2 px-4 rounded">Get Started</a>
                 <button id="mobile-menu-btn" class="md:hidden p-2 text-ink hover:text-primary transition-colors" aria-label="Toggle Navigation Menu">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                 </button>
@@ -442,7 +449,7 @@
     </div>
 
     <!-- Main Article Content Container -->
-    <main class="pt-32 pb-24 max-w-[820px] mx-auto px-6">
+    <main class="pt-24 sm:pt-32 pb-24 w-full min-w-0 max-w-[820px] mx-auto px-4 sm:px-6">
         <!-- Breadcrumb Navigation -->
         <nav class="flex items-center gap-2 text-xs text-ink-mute mb-8 uppercase tracking-widest font-mono" aria-label="Breadcrumb">
             <a href="/" class="hover:text-ink transition-colors">Home</a>
@@ -453,20 +460,20 @@
         </nav>
 
         <!-- Article Header -->
-        <header class="mb-10">
+        <header class="mb-10 w-full min-w-0">
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-medium bg-canvas-soft border border-hairline text-primary mb-4">
                 <span>Design</span>
                 <span>&bull;</span>
                 <span>2026-07-11</span>
             </div>
-            <h1 class="text-3xl md:text-5xl font-bold tracking-tight text-ink mb-6 leading-[1.15]" style="letter-spacing: -0.02em;">
+            <h1 class="text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight text-ink mb-6 leading-[1.2] break-words" style="letter-spacing: -0.02em;">
                 UI UX Design Roadmap for Beginners in 2026 (Complete Step-by-Step Guide)
             </h1>
 
             <!-- Author & Metadata Bar -->
-            <div class="flex items-center justify-between py-4 border-y border-hairline text-sm text-ink-mute">
+            <div class="flex flex-wrap items-center justify-between gap-3 py-4 border-y border-hairline text-sm text-ink-mute">
                 <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-full bg-canvas-soft border border-hairline flex items-center justify-center font-bold text-xs text-ink">
+                    <div class="w-10 h-10 rounded-full bg-canvas-soft border border-hairline flex items-center justify-center font-bold text-xs text-ink shrink-0">
                         DN
                     </div>
                     <div>
@@ -488,13 +495,13 @@
         </header>
 
         <!-- Hero Image -->
-        <figure class="my-8 rounded-xl overflow-hidden border border-hairline bg-canvas-soft">
+        <figure class="my-8 rounded-xl overflow-hidden border border-hairline bg-canvas-soft w-full max-w-full">
             <img src="/images/ui_ux_design.webp" alt="UI UX Design Roadmap for Beginners in 2026 (Complete Step-by-Step Guide)" width="1200" height="630" class="w-full h-auto object-cover max-h-[580px]" fetchpriority="high">
             <figcaption class="text-xs text-ink-mute py-2.5 px-4 text-center border-t border-hairline bg-canvas">UI UX Design Roadmap for Beginners in 2026 (Complete Step-by-Step Guide) — Insights by DiginixIT.</figcaption>
         </figure>
 
         <!-- Article Body Content -->
-        <article id="article-content" class="space-y-6">
+        <article id="article-content" class="space-y-6 w-full min-w-0 max-w-full">
 <p class="lead">The digital world is growing at an incredible pace, and businesses are investing more than ever in creating products that are visually appealing, easy to use, and enjoyable for customers. Whether it's a mobile application, an eCommerce website, a banking platform, or a SaaS product, great design plays a major role in its success.</p>
 <p>This is where <strong>UI (User Interface)</strong> and <strong>UX (User Experience)</strong> design become essential.</p>
 <p>If you're planning to start a career in design, 2026 is one of the best times to learn UI UX Design. Companies across the globe are actively hiring skilled designers who can create modern, user-friendly digital experiences. At the same time, freelancing opportunities have expanded, allowing designers to work with clients from anywhere in the world.</p>
@@ -525,7 +532,7 @@
 <hr/>
 <h2>UI vs UX Design Comparison</h2>
 <p>Many beginners assume UI and UX are the same, but they serve different purposes within the product cycle:</p>
-<table>
+<div class="table-responsive-wrapper"><table>
 <thead>
 <tr>
 <th>UI Design (Visuals)</th>
@@ -554,7 +561,7 @@
 <td>Wireframing &amp; prototyping</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>Think of a modern smartphone. The attractive icons, colors, and layouts represent the <strong>UI</strong>, while the ease of navigation, smooth interactions, and intuitive user flow represent the <strong>UX</strong>. Both work together to create a great product.</p>
 <hr/>
 <h2>Types of UI UX Design Specializations</h2>

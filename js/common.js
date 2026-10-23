@@ -1715,6 +1715,20 @@ async function initializeAuth() {
 }
 window.initializeAuth = initializeAuth;
 
+// --- 6b. Responsive Tables Auto-Wrap ---
+function makeTablesResponsive(container = document) {
+    if (!container || !container.querySelectorAll) return;
+    container.querySelectorAll('table').forEach(table => {
+        if (!table.parentElement || !table.parentElement.classList.contains('table-responsive-wrapper')) {
+            const wrapper = document.createElement('div');
+            wrapper.className = 'table-responsive-wrapper';
+            table.parentNode.insertBefore(wrapper, table);
+            wrapper.appendChild(table);
+        }
+    });
+}
+window.makeTablesResponsive = makeTablesResponsive;
+
 // --- 7. Mobile Hamburger Drawer Menu & Services Accordion Toggle ---
 function initMobileMenu() {
     const hamburgerBtn = document.getElementById('hamburger-btn') || document.getElementById('mobile-menu-btn');
@@ -1843,6 +1857,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initMobileMenu();
     initServicesDropdown();
     highlightActiveNav();
+    makeTablesResponsive();
     if (typeof lucide !== 'undefined') {
         lucide.createIcons();
     }

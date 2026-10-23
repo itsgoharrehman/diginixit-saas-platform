@@ -86,6 +86,7 @@ body {
     overflow-x: hidden !important;
     max-width: 100% !important;
     width: 100% !important;
+    min-width: 0;
     position: relative;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -94,12 +95,41 @@ body {
     font-weight: 400;
 }
 
+main,
+#main-content,
+.container-main,
+article,
+#article-content,
+#main-article-view {
+    min-width: 0 !important;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
 img, video, canvas, svg {
     max-width: 100%;
     height: auto;
 }
 
-table {
+.table-responsive-wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+    margin: 1.5rem 0;
+    display: block;
+    clear: both;
+}
+
+.table-responsive-wrapper table {
+    display: table !important;
+    width: 100% !important;
+    min-width: 520px;
+    border-collapse: collapse;
+    margin: 0 !important;
+}
+
+table:not(.table-responsive-wrapper table) {
     display: block;
     width: 100%;
     max-width: 100%;
@@ -113,8 +143,9 @@ pre, code, kbd, samp {
     word-break: break-word;
 }
 
-h1, h2, h3, h4, h5, h6, p, a, span {
+h1, h2, h3, h4, h5, h6, p, a, span, li, td, th {
     overflow-wrap: break-word;
+    word-break: break-word;
 }
 
 a {

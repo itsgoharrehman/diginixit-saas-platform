@@ -234,14 +234,21 @@
             padding-left: 1.75rem !important;
             margin-bottom: 1.25rem !important;
         }
-        #article-content table {
-            display: block;
-            width: 100%;
-            max-width: 100%;
-            overflow-x: auto;
+        .table-responsive-wrapper {
+            width: 100% !important;
+            max-width: 100% !important;
+            overflow-x: auto !important;
             -webkit-overflow-scrolling: touch;
-            border-collapse: collapse;
             margin: 1.5rem 0;
+            display: block;
+            clear: both;
+        }
+        .table-responsive-wrapper table {
+            display: table !important;
+            width: 100% !important;
+            min-width: 520px;
+            border-collapse: collapse;
+            margin: 0 !important;
         }
         #article-content th,
         #article-content td {
@@ -388,8 +395,8 @@
             </nav>
 
             <div class="flex items-center gap-4">
-                <a href="/auth?mode=signin" class="text-sm font-medium text-ink-mute hover:text-ink transition-colors">Sign In</a>
-                <a href="/auth?mode=signup" class="btn-primary text-xs uppercase tracking-wider font-semibold py-2 px-4 rounded">Get Started</a>
+                <a href="/auth?mode=signin" class="hidden sm:inline-flex text-sm font-medium text-ink-mute hover:text-ink transition-colors">Sign In</a>
+                <a href="/auth?mode=signup" class="hidden sm:inline-flex btn-primary text-xs uppercase tracking-wider font-semibold py-2 px-4 rounded">Get Started</a>
                 <button id="mobile-menu-btn" class="md:hidden p-2 text-ink hover:text-primary transition-colors" aria-label="Toggle Navigation Menu">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                 </button>
@@ -409,7 +416,7 @@
     </div>
 
     <!-- Main Article Content Container -->
-    <main class="pt-32 pb-24 max-w-[820px] mx-auto px-6">
+    <main class="pt-24 sm:pt-32 pb-24 w-full min-w-0 max-w-[820px] mx-auto px-4 sm:px-6">
         <!-- Breadcrumb Navigation -->
         <nav class="flex items-center gap-2 text-xs text-ink-mute mb-8 uppercase tracking-widest font-mono" aria-label="Breadcrumb">
             <a href="/" class="hover:text-ink transition-colors">Home</a>
@@ -420,20 +427,20 @@
         </nav>
 
         <!-- Article Header -->
-        <header class="mb-10">
+        <header class="mb-10 w-full min-w-0">
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-medium bg-canvas-soft border border-hairline text-primary mb-4">
                 <span>AI</span>
                 <span>&bull;</span>
                 <span>2026-10-22</span>
             </div>
-            <h1 class="text-3xl md:text-5xl font-bold tracking-tight text-ink mb-6 leading-[1.15]" style="letter-spacing: -0.02em;">
+            <h1 class="text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight text-ink mb-6 leading-[1.2] break-words" style="letter-spacing: -0.02em;">
                 Abraham Quiros Villalba AI Tool: A Complete Analysis (2026)
             </h1>
 
             <!-- Author & Metadata Bar -->
-            <div class="flex items-center justify-between py-4 border-y border-hairline text-sm text-ink-mute">
+            <div class="flex flex-wrap items-center justify-between gap-3 py-4 border-y border-hairline text-sm text-ink-mute">
                 <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-full bg-canvas-soft border border-hairline flex items-center justify-center font-bold text-xs text-ink">
+                    <div class="w-10 h-10 rounded-full bg-canvas-soft border border-hairline flex items-center justify-center font-bold text-xs text-ink shrink-0">
                         DN
                     </div>
                     <div>
@@ -455,17 +462,18 @@
         </header>
 
         <!-- Hero Image -->
-        <figure class="my-8 rounded-xl overflow-hidden border border-hairline bg-canvas-soft">
+        <figure class="my-8 rounded-xl overflow-hidden border border-hairline bg-canvas-soft w-full max-w-full">
             <img src="/images/abraham_quiros_villalba_ai_tool.webp" alt="Abraham Quiros Villalba AI Tool" width="1200" height="630" class="w-full h-auto object-cover max-h-[580px]" fetchpriority="high">
             <figcaption class="text-xs text-ink-mute py-2.5 px-4 text-center border-t border-hairline bg-canvas">Abraham Quiros Villalba AI Tool</figcaption>
         </figure>
 
         <!-- Article Body Content -->
-        <article id="article-content" class="space-y-6">
+        <article id="article-content" class="space-y-6 w-full min-w-0 max-w-full">
 <p>The rapid evolution of artificial intelligence has transformed how analysts, fund managers, and digital entrepreneurs evaluate investment opportunities. Across online forums and software discussion groups, the <strong>Abraham Quiros Villalba AI Tool</strong> has emerged as a topic of considerable curiosity. Claimed by its developer to offer automated financial analytics, asset tracking, and algorithmic sentiment scoring, this software aims to simplify complex market research. However, navigating modern financial technology requires distinguishing between marketing enthusiasm and verifiable technical capabilities. In this comprehensive review, our engineering team explores the reported architecture, potential use cases, critical risk factors, and practical due diligence steps necessary when evaluating any emerging algorithmic market research software.</p>
 <h2>What Is the Abraham Quiros Villalba AI Tool?</h2>
 <p>The underlying software is described in online technical summaries as an exploratory intelligence package designed to streamline data collection for quantitative market researchers. Rather than acting as an autonomous broker or automated execution bot, the tool is conceptualized as an intelligence platform that aggregates financial information from multiple decentralized streams. In the fast-moving world of algorithmic finance, such platforms typically synthesize structured numerical feeds alongside unstructured text disclosures, offering analysts a centralized dashboard to track market shifts.</p>
 <p>According to creator profiles, the platform’s primary objective is democratizing quantitative market intelligence. Historically, high-frequency signals, automated sentiment feeds, and cross-asset correlation models have remained exclusive to tier-one hedge funds and investment banks. By leveraging modern web frameworks and machine learning scripts, independent developers like Quiros Villalba aim to equip retail analysts and venture researchers with high-speed filtering mechanisms. At <a href="https://diginixit.com/">DiginixIT digital engineers</a> evaluate software architectures against strict benchmarks, and understanding both the conceptual merits and technical constraints of such tools is vital before deploying them in production workflows.</p>
+<div class="table-responsive-wrapper">
 <table class="wp-block-table">
 <thead>
 <tr>
@@ -508,6 +516,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <h2>The Role of Artificial Intelligence in Financial Research</h2>
 <p>To understand where this project fits, it helps to examine how modern machine learning transforms modern finance. Traditional financial analysts often spend hundreds of hours reviewing spreadsheets, regulatory disclosures, and macroeconomic releases. Today, modern organizations deploy <a href="https://diginixit.com/blog/artificial-intelligence-in-management">artificial intelligence in management decision systems</a> to automate data ingestion and spot hidden anomalies across thousands of assets simultaneously.</p>
 <p>Advanced algorithmic platforms leverage <a href="https://en.wikipedia.org/wiki/Natural_language_processing" rel="noopener" target="_blank">Natural Language Processing (NLP)</a> to parse corporate earnings calls, legal contracts, and industry whitepapers in seconds. Similarly, <a href="https://en.wikipedia.org/wiki/Sentiment_analysis" rel="noopener" target="_blank">algorithmic sentiment analysis</a> scans global headlines and real-time social feeds to gauge public confidence. While these computational techniques offer immense value when built on resilient <a href="https://diginixit.com/web-engineering">enterprise web engineering architecture</a>, a tool’s theoretical premise does not guarantee that its models deliver statistically sound outputs in volatile live markets.</p>
@@ -521,6 +530,7 @@
 <li><strong>Startup Ecosystem Intelligence:</strong> Tracking funding rounds, executive transitions, and early-stage commercial indicators to spot emerging market contenders.</li>
 <li><strong>Document Synthesis &amp; Workflow Automation:</strong> Condensing voluminous multi-page prospectuses into bite-sized executive briefing notes.</li>
 </ul>
+<div class="table-responsive-wrapper">
 <table class="wp-block-table">
 <thead>
 <tr>
@@ -557,6 +567,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <h2>Pros and Practical Advantages</h2>
 <p>When algorithmic research tools function as intended, they offer notable productivity benefits for digital analysts. In modern tech stacks, teams frequently utilize <a href="https://diginixit.com/blog/ai-business-automation-agents">AI business automation agents</a> to eliminate manual data entry. Here is what well-designed research tools can achieve:</p>
 <ul>

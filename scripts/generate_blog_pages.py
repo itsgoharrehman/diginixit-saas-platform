@@ -163,11 +163,15 @@ def build_article_html(art, other_articles):
     content_body = re.sub(r'<h1(\s*[^>]*)>', r'<h2\1>', art['content'], flags=re.IGNORECASE)
     content_body = re.sub(r'</h1>', r'</h2>', content_body, flags=re.IGNORECASE)
     
-    # Ensure any images in content_body have alt attribute
+    # Ensure any images in content_body have alt attribute and tables are wrapped in responsive containers
     soup_body = BeautifulSoup(content_body, 'html.parser')
     for img in soup_body.find_all('img'):
         if not img.get('alt'):
             img['alt'] = f"{art['title']} — illustration"
+    for table in soup_body.find_all('table'):
+        if not table.parent or 'table-responsive-wrapper' not in table.parent.get('class', []):
+            wrapper = soup_body.new_tag('div', **{'class': 'table-responsive-wrapper'})
+            table.wrap(wrapper)
     content_body = str(soup_body)
 
     html = f"""<!DOCTYPE html>
@@ -364,10 +368,21 @@ def build_article_html(art, other_articles):
             padding-left: 1.75rem !important;
             margin-bottom: 1.25rem !important;
         }}
-        #article-content table {{
-            width: 100%;
-            border-collapse: collapse;
+        .table-responsive-wrapper {{
+            width: 100% !important;
+            max-width: 100% !important;
+            overflow-x: auto !important;
+            -webkit-overflow-scrolling: touch;
             margin: 1.5rem 0;
+            display: block;
+            clear: both;
+        }}
+        .table-responsive-wrapper table {{
+            display: table !important;
+            width: 100% !important;
+            min-width: 520px;
+            border-collapse: collapse;
+            margin: 0 !important;
         }}
         #article-content th,
         #article-content td {{
@@ -537,8 +552,8 @@ def build_article_html(art, other_articles):
             </nav>
 
             <div class="flex items-center gap-4">
-                <a href="/auth?mode=signin" class="text-sm font-medium text-ink-mute hover:text-ink transition-colors">Sign In</a>
-                <a href="/auth?mode=signup" class="btn-primary text-xs uppercase tracking-wider font-semibold py-2 px-4 rounded">Get Started</a>
+                <a href="/auth?mode=signin" class="hidden sm:inline-flex text-sm font-medium text-ink-mute hover:text-ink transition-colors">Sign In</a>
+                <a href="/auth?mode=signup" class="hidden sm:inline-flex btn-primary text-xs uppercase tracking-wider font-semibold py-2 px-4 rounded">Get Started</a>
                 <button id="mobile-menu-btn" class="md:hidden p-2 text-ink hover:text-primary transition-colors" aria-label="Toggle Navigation Menu">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                 </button>
@@ -558,7 +573,7 @@ def build_article_html(art, other_articles):
     </div>
 
     <!-- Main Article Content Container -->
-    <main class="pt-32 pb-24 max-w-[820px] mx-auto px-6">
+    <main class="pt-24 sm:pt-32 pb-24 w-full min-w-0 max-w-[820px] mx-auto px-4 sm:px-6">
         <!-- Breadcrumb Navigation -->
         <nav class="flex items-center gap-2 text-xs text-ink-mute mb-8 uppercase tracking-widest font-mono" aria-label="Breadcrumb">
             <a href="/" class="hover:text-ink transition-colors">Home</a>
@@ -569,20 +584,20 @@ def build_article_html(art, other_articles):
         </nav>
 
         <!-- Article Header -->
-        <header class="mb-10">
+        <header class="mb-10 w-full min-w-0">
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-medium bg-canvas-soft border border-hairline text-primary mb-4">
                 <span>{art.get('category','Insights')}</span>
                 <span>&bull;</span>
                 <span>{art.get('date', '2026-10-22')}</span>
             </div>
-            <h1 class="text-3xl md:text-5xl font-bold tracking-tight text-ink mb-6 leading-[1.15]" style="letter-spacing: -0.02em;">
+            <h1 class="text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight text-ink mb-6 leading-[1.2] break-words" style="letter-spacing: -0.02em;">
                 {art['title']}
             </h1>
 
             <!-- Author & Metadata Bar -->
-            <div class="flex items-center justify-between py-4 border-y border-hairline text-sm text-ink-mute">
+            <div class="flex flex-wrap items-center justify-between gap-3 py-4 border-y border-hairline text-sm text-ink-mute">
                 <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-full bg-canvas-soft border border-hairline flex items-center justify-center font-bold text-xs text-ink">
+                    <div class="w-10 h-10 rounded-full bg-canvas-soft border border-hairline flex items-center justify-center font-bold text-xs text-ink shrink-0">
                         {initials}
                     </div>
                     <div>
@@ -604,13 +619,13 @@ def build_article_html(art, other_articles):
         </header>
 
         <!-- Hero Image -->
-        <figure class="my-8 rounded-xl overflow-hidden border border-hairline bg-canvas-soft">
+        <figure class="my-8 rounded-xl overflow-hidden border border-hairline bg-canvas-soft w-full max-w-full">
             <img src="{art['image']}" alt="{art['title']}" width="1200" height="630" class="w-full h-auto object-cover max-h-[580px]" fetchpriority="high">
             <figcaption class="text-xs text-ink-mute py-2.5 px-4 text-center border-t border-hairline bg-canvas">{art['image_caption']}</figcaption>
         </figure>
 
         <!-- Article Body Content -->
-        <article id="article-content" class="space-y-6">
+        <article id="article-content" class="space-y-6 w-full min-w-0 max-w-full">
 {content_body}
         </article>
 
