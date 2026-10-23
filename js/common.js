@@ -394,12 +394,13 @@ window.supabase = null;
 
 function loadScript(src) {
     return new Promise((resolve, reject) => {
-        if (document.querySelector(`script[src="${src}"]`)) {
+        const resolvedSrc = src.startsWith('/') || src.startsWith('http') ? src : '/' + src;
+        if (document.querySelector(`script[src="${src}"], script[src="${resolvedSrc}"]`)) {
             resolve();
             return;
         }
         const script = document.createElement('script');
-        script.src = src;
+        script.src = resolvedSrc;
         script.onload = resolve;
         script.onerror = reject;
         document.head.appendChild(script);
@@ -419,9 +420,9 @@ async function initSupabase() {
 
     try {
         // Load Supabase Client SDK locally
-        await loadScript('js/supabase.js');
+        await loadScript('/js/supabase.js');
         if (typeof window.builtInArticles === 'undefined') {
-            await loadScript('js/articles-data.js').catch(() => {});
+            await loadScript('/js/articles-data.js').catch(() => {});
         }
 
         if (typeof supabase !== 'undefined') {
@@ -469,14 +470,20 @@ window.apiCall = async function (action, data = null) {
                 }
 
                 if (typeof window.builtInArticles === 'undefined') {
-                    await loadScript('js/articles-data.js').catch(() => {});
+                    await loadScript('/js/articles-data.js').catch(() => {});
                 }
 
                 const existingIds = new Set(dbBlogs.map(b => String(b.id)));
                 const existingTitles = new Set(dbBlogs.map(b => (b.title || '').toLowerCase().trim()));
                 const merged = [...dbBlogs];
                 const builtIns = window.builtInArticles || [];
+                for (const article of builtIns) {
+                    if (!existingIds.has(String(article.id)) && !existingTitles.has((article.title || '').toLowerCase().trim())) {
+                        merged.push(article);
+                    }
+                }
                 const SLUG_ID_MAP = {
+                    '25': 'ai-plugin-maker-minecraft',
                     '24': 'abraham-quiros-villalba-ai-tool',
                     '22': 'artificial-intelligence-in-management',
                     '21': 'gaming-guide-tips-trends-gear',
@@ -518,6 +525,7 @@ window.apiCall = async function (action, data = null) {
                     }
                 };
                 merged.forEach(hydrateBlogSeo);
+                merged.sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
                 return merged;
             }
 
@@ -534,7 +542,7 @@ window.apiCall = async function (action, data = null) {
                 }
 
                 if (typeof window.builtInArticles === 'undefined') {
-                    await loadScript('js/articles-data.js').catch(() => {});
+                    await loadScript('/js/articles-data.js').catch(() => {});
                 }
 
                 const existingIds = new Set(dbBlogs.map(b => String(b.id)));
@@ -547,6 +555,7 @@ window.apiCall = async function (action, data = null) {
                     }
                 }
                 const SLUG_ID_MAP = {
+                    '25': 'ai-plugin-maker-minecraft',
                     '24': 'abraham-quiros-villalba-ai-tool',
                     '22': 'artificial-intelligence-in-management',
                     '21': 'gaming-guide-tips-trends-gear',
@@ -588,13 +597,27 @@ window.apiCall = async function (action, data = null) {
                     }
                 };
                 merged.forEach(hydrateBlogSeo);
+                merged.sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
                 return merged;
             }
 
             case 'save_blog': {
+                let targetId = data.id ? Number(data.id) : null;
+                if (targetId) {
+                    try {
+                        const { data: existing } = await window.supabase
+                            .from('blogs')
+                            .select('id')
+                            .eq('id', targetId)
+                            .maybeSingle();
+                        if (!existing) {
+                            targetId = null;
+                        }
+                    } catch (e) {}
+                }
                 const { error } = await window.supabase
                     .rpc('save_blog_secure', {
-                        p_id: data.id ? Number(data.id) : null,
+                        p_id: targetId,
                         p_title: data.title,
                         p_category: data.category,
                         p_author: data.author,
@@ -608,12 +631,19 @@ window.apiCall = async function (action, data = null) {
             }
 
             case 'delete_blog': {
-                const { error } = await window.supabase
-                    .rpc('delete_blog_secure', {
-                        p_id: Number(data.id),
-                        p_csrf_token: data._csrf_token
-                    });
-                if (error) throw error;
+                try {
+                    const { error } = await window.supabase
+                        .rpc('delete_blog_secure', {
+                            p_id: Number(data.id),
+                            p_csrf_token: data._csrf_token
+                        });
+                    if (error) console.warn("Supabase delete notice:", error);
+                } catch (e) {
+                    console.warn("Delete RPC error:", e);
+                }
+                if (window.builtInArticles) {
+                    window.builtInArticles = window.builtInArticles.filter(b => String(b.id) !== String(data.id));
+                }
                 return { success: true };
             }
 

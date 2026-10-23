@@ -851,10 +851,11 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="js/ui-primitives.js" defer></script>
-    <script src="js/ui-components.js" defer></script>
-    <script src="js/common.js" defer></script>
-    <script src="js/script.js" defer></script>
+    <script src="/js/ui-primitives.js" defer></script>
+    <script src="/js/ui-components.js" defer></script>
+    <script src="/js/articles-data.js" defer></script>
+    <script src="/js/common.js" defer></script>
+    <script src="/js/script.js" defer></script>
     
     <!-- Dynamic Blog Previews Loading -->
     <script>
@@ -897,6 +898,8 @@
             function getPostSlug(p) {
                 if (p.slug) return p.slug;
                 const SLUG_ID_MAP = {
+                    '25': 'ai-plugin-maker-minecraft',
+                    '24': 'abraham-quiros-villalba-ai-tool',
                     '22': 'artificial-intelligence-in-management',
                     '21': 'gaming-guide-tips-trends-gear',
                     '20': 'ai-business-automation-agents',
