@@ -483,6 +483,7 @@ window.apiCall = async function (action, data = null) {
                     }
                 }
                 const SLUG_ID_MAP = {
+                    '26': 'best-ai-tool-directories-for-backlinks',
                     '25': 'ai-plugin-maker-minecraft',
                     '24': 'abraham-quiros-villalba-ai-tool',
                     '22': 'artificial-intelligence-in-management',
@@ -555,6 +556,7 @@ window.apiCall = async function (action, data = null) {
                     }
                 }
                 const SLUG_ID_MAP = {
+                    '26': 'best-ai-tool-directories-for-backlinks',
                     '25': 'ai-plugin-maker-minecraft',
                     '24': 'abraham-quiros-villalba-ai-tool',
                     '22': 'artificial-intelligence-in-management',
