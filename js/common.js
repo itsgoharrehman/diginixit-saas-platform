@@ -483,6 +483,7 @@ window.apiCall = async function (action, data = null) {
                     }
                 }
                 const SLUG_ID_MAP = {
+                    '27': 'brandrank-ai-normalization-transformation-rules',
                     '26': 'best-ai-tool-directories-for-backlinks',
                     '25': 'ai-plugin-maker-minecraft',
                     '24': 'abraham-quiros-villalba-ai-tool',
@@ -556,6 +557,7 @@ window.apiCall = async function (action, data = null) {
                     }
                 }
                 const SLUG_ID_MAP = {
+                    '27': 'brandrank-ai-normalization-transformation-rules',
                     '26': 'best-ai-tool-directories-for-backlinks',
                     '25': 'ai-plugin-maker-minecraft',
                     '24': 'abraham-quiros-villalba-ai-tool',
