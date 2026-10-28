@@ -483,6 +483,7 @@ window.apiCall = async function (action, data = null) {
                     }
                 }
                 const SLUG_ID_MAP = {
+                    '28': 'ai-generated-doctors-and-patients-for-healthcare-marketing-compliance',
                     '27': 'brandrank-ai-normalization-transformation-rules',
                     '26': 'best-ai-tool-directories-for-backlinks',
                     '25': 'ai-plugin-maker-minecraft',
@@ -557,6 +558,7 @@ window.apiCall = async function (action, data = null) {
                     }
                 }
                 const SLUG_ID_MAP = {
+                    '28': 'ai-generated-doctors-and-patients-for-healthcare-marketing-compliance',
                     '27': 'brandrank-ai-normalization-transformation-rules',
                     '26': 'best-ai-tool-directories-for-backlinks',
                     '25': 'ai-plugin-maker-minecraft',
