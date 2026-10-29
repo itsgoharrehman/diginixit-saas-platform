@@ -483,6 +483,7 @@ window.apiCall = async function (action, data = null) {
                     }
                 }
                 const SLUG_ID_MAP = {
+                    '29': 'ai-object-detection-counting-large-equipment-industrial-inventory',
                     '28': 'ai-generated-doctors-and-patients-for-healthcare-marketing-compliance',
                     '27': 'brandrank-ai-normalization-transformation-rules',
                     '26': 'best-ai-tool-directories-for-backlinks',
@@ -558,6 +559,7 @@ window.apiCall = async function (action, data = null) {
                     }
                 }
                 const SLUG_ID_MAP = {
+                    '29': 'ai-object-detection-counting-large-equipment-industrial-inventory',
                     '28': 'ai-generated-doctors-and-patients-for-healthcare-marketing-compliance',
                     '27': 'brandrank-ai-normalization-transformation-rules',
                     '26': 'best-ai-tool-directories-for-backlinks',
