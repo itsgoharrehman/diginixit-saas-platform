@@ -483,6 +483,7 @@ window.apiCall = async function (action, data = null) {
                     }
                 }
                 const SLUG_ID_MAP = {
+                    '30': 'ai-video-generation-for-healthcare-ads-trt-hrt-glp-1-clinics',
                     '29': 'ai-object-detection-counting-large-equipment-industrial-inventory',
                     '28': 'ai-generated-doctors-and-patients-for-healthcare-marketing-compliance',
                     '27': 'brandrank-ai-normalization-transformation-rules',
@@ -559,6 +560,7 @@ window.apiCall = async function (action, data = null) {
                     }
                 }
                 const SLUG_ID_MAP = {
+                    '30': 'ai-video-generation-for-healthcare-ads-trt-hrt-glp-1-clinics',
                     '29': 'ai-object-detection-counting-large-equipment-industrial-inventory',
                     '28': 'ai-generated-doctors-and-patients-for-healthcare-marketing-compliance',
                     '27': 'brandrank-ai-normalization-transformation-rules',
